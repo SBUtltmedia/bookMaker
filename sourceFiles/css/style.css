@@ -1,0 +1,501 @@
+body {
+    background-color: #000;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.screen {
+    position: absolute;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+#header {
+    width: 100%;
+    height: 5%;
+    left: 0%;
+    top: 0%;
+    position: absolute;
+    z-index: 200;
+    pointer-events: none;
+}
+
+#headerContent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #303030;
+    z-index: 10;
+}
+
+.anim_quickFadeIn {
+    animation: quickFadeIn .1s 0s 1 linear normal forwards;
+}
+
+@keyframes quickFadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.anim_quickFadeOut {
+    animation: quickFadeOut .1s 0s 1 linear normal forwards;
+}
+
+@keyframes quickFadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+#moduleTitle {
+    width: 50%;
+    left: 25%;
+    top: 12.5%;
+    position: absolute;
+    color: white;
+    font-family: "Helvetica", sans-serif;
+    font-size: .7rem;
+    text-align: center;
+}
+
+#fullScreenButton {
+    width: 4%;
+    height: 100%;
+    left: 96%;
+    top: 0%;
+    position: absolute;
+    background-image: url(../img/fullscreen_out.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.anim_fullScreenButtonIn {
+    animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes fullScreenButtonIn {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+}
+
+.anim_fullScreenButtonOut {
+    animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes fullScreenButtonOut {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+}
+
+#footer {
+    width: 85%;
+    height: 10%;
+    left: 15%;
+    top: 90.0%;
+    position: absolute;
+    background-color: #303030;
+}
+
+#sidebar {
+    width: 15%;
+    height: 95%;
+    left: 0%;
+    top: 5%;
+    position: absolute;
+    background-color: #202020;
+    overflow-y: scroll;
+}
+
+#content {
+    width: 85%;
+    height: 85%;
+    left: 15%;
+    top: 5%;
+    position: absolute;
+    background-color: #000;
+    z-index: 100;
+    overflow: hidden;
+}
+
+#contentLoader {
+    width: 95%;
+    height: 95%;
+    position: absolute;
+}
+
+.anim_fullScreenOn {
+    animation: fullScreenOn .1s 0s 1 linear normal forwards;
+}
+
+@keyframes fullScreenOn {
+    0% {
+        width: 85%;
+        height: 85%;
+        left: 15%;
+        top: 5%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+    }
+}
+
+.anim_fullScreenOff {
+    animation: fullScreenOff .1s 0s 1 linear normal forwards;
+}
+
+@keyframes fullScreenOff {
+    0% {
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+    }
+    100% {
+        width: 85%;
+        height: 85%;
+        left: 15%;
+        top: 5%;
+    }
+}
+
+iframe {
+    width: 99%;
+    height: 99%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 200;
+    overflow: hidden;
+    visibility: hidden;
+    transform-origin: bottom right;
+}
+
+.anim_overlayOn {
+    animation: overlayOn .1s 0s 1 linear normal forwards;
+}
+
+@keyframes overlayOn {
+    0% {
+        transform: scale(.6);
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.anim_overlayOff {
+    animation: overlayOff .1s 0s 1 linear normal forwards;
+}
+
+@keyframes overlayOff {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        transform: scale(.6);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.thumbBox {
+    width: 100%;
+    height: 15%;
+    left: 0%;
+    top: 0%;
+    position: absolute;
+}
+
+.chapterBox {
+    z-index: 20;
+}
+
+.pageBox {
+    z-index: 10;
+}
+
+.thumbGlow {
+    width: 88%;
+    height: 80%;
+    left: 11%;
+    top: 10%;
+    position: absolute;
+    background-color: #fff;
+    z-index: 0;
+    opacity: .5;
+    /*animation: thumbGlow 1s 0s infinite ease-in-out alternate forwards;*/
+    visibility: hidden;
+}
+
+@keyframes thumbGlow {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+.thumb {
+    width: 75%;
+    height: 70%;
+    left: 10%;
+    top: 15%;
+    position: absolute;
+    background-color: #555;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.chapterThumb {
+    background-color: #555;
+}
+
+.pageThumb {
+    background-color: #333;
+    left: 20%;
+}
+
+.thumbText {
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    position: absolute;
+    color: #ddd;
+    font-family: "Helvetica", sans-serif;
+    font-size: .35rem;
+    z-index: 10;
+}
+
+.thumbNumber {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+    height: 70%;
+    position: absolute;
+    color: #444;
+    font-family: "Helvetica", sans-serif;
+    font-size: 2rem;
+    text-align: right;
+    z-index: 0;
+}
+
+.thumbType {
+    width: 20%;
+    height: 25%;
+    left: 0%;
+    top: 75%;
+    position: absolute;
+    background-color: #444;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.page_incomplete {
+    background-image: url(../img/gray_check.svg);
+}
+
+.page_complete{
+    background-image: url(../img/green_check.svg);
+}
+
+.chapter_incomplete {
+    background-image: url(../img/lightgray_check.svg);
+}
+
+.chapter_complete{
+  background-image: url(../img/green_check.svg);
+}
+
+.thumbTypeText {
+    width: 70%;
+    height: 15%;
+    left: 22.5%;
+    top: 82.5%;
+    position: absolute;
+    color: #888;
+    font-family: "Helvetica", sans-serif;
+    font-size: .25rem;
+    z-index: 10;
+}
+
+#contentText {
+    width: 96%;
+    height: 96%;
+    left: 0%;
+    top: 0%;
+    padding: 2%;
+    padding: 2%;
+    position: absolute;
+    font-family: "Helvetica", sans-serif;
+    font-size: .5rem;
+    color: #fff;
+    background-color: #000;
+    overflow: hidden;
+}
+
+#contentText>img {
+    width: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 5%;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #444;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #777;
+}
+
+::-webkit-scrollbar-button {
+    background-color: #777;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: black;
+}
+
+#pageNumberLabel {
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    position: absolute;
+    font-family: "Helvetica", sans-serif;
+    font-size: .5rem;
+    color: white;
+    text-align: center;
+}
+
+#pageNumberText {
+    width: 15%;
+    left: 42.5%;
+    top: 35%;
+    position: absolute;
+    font-family: "Helvetica", sans-serif;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+}
+
+#buttonPrevious {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 35%;
+    position: absolute;
+    background-image: url(../img/triangle_left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#buttonNext {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 57.5%;
+    position: absolute;
+    background-image: url(../img/triangle_right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#overlayButtons {
+    width: 9%;
+    height: 100%;
+    left: 91%;
+    top: 0%;
+    position: absolute;
+}
+
+.overlayButton {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    background-color: #404040;
+}
+
+#overlayButton1 {
+    left: 5%;
+    top: 5%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.caliperButton {
+    background-image: url(../img/calipers.svg);
+}
