@@ -80,12 +80,10 @@ button:focus, input[type="button"]:focus {
   display: block;
 }
 
-#slideImages{
-  width: 75%;
+#videoPlayer{
+  width: 100%;
   height: auto;
   text-align: center;
-  padding-left: 12.5%;
-  padding-right: 12.5%;
   padding-top: 3%;
   padding-bottom: 1%;
 }

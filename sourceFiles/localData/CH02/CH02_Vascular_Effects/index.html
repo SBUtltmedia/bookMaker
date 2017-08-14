@@ -10,20 +10,18 @@
 
 <body>
 
-  <audio id="voiceover" xmlns="http://www.w3.org/1999/xhtml" onended="setCompleted();">
-        <source src="media/voiceover.ogg" type="audio/ogg"/>
-        <source src="media/voiceover.mp3" type="audio/mpeg"/>
-        <source src="media/voiceover.wav" type="audio/x-wav"/>
-    </audio>
-
 <div id="pageBody">
   <div id="pageTitle">Vascular Effects</div>
   <div id="pageImages">
-    <img id="slideImages" alt="Vascular Effects" src="media/vascular.gif">
-  </div>
+    <!-- <img id="slideImages" alt="Vascular Effects" src="media/vascular.gif"> -->
+  <video id="videoPlayer" onended="setCompleted();">
+    <source src="media/skinn.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
 
   <div id="pageButton">
-    <button class="button" id="playButton" onclick="playAudio();">Play Audio To Complete Page</button>
+    <button class="button" id="playButton" onclick="playPause();">Play Video To Complete Page</button>
   </div>
 </div>
 

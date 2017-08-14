@@ -24,7 +24,7 @@
                 build: "6.0.0.400",
                 scaleToFit: "none",
                 centerStage: "none",
-                resizeInstances: false,
+                resizeInstances: true,
                 content: {
                     dom: [
                         {

@@ -10,16 +10,14 @@
 
 <body>
 
-  <audio id="voiceover" xmlns="http://www.w3.org/1999/xhtml" onended="setCompleted();">
-        <source src="media/voiceover.ogg" type="audio/ogg"/>
-        <source src="media/voiceover.mp3" type="audio/mpeg"/>
-        <source src="media/voiceover.wav" type="audio/x-wav"/>
-    </audio>
-
 <div id="pageBody">
   <div id="pageTitle">Neuromuscular Effects</div>
   <div id="pageImages">
-    <img id="slideImages" alt="Neuromuscular Effects" src="media/neuromuscularEffects.gif">
+    <!-- <img id="slideImages" alt="Neuromuscular Effects" src="media/neuromuscularEffects.gif"> -->
+    <video id="videoPlayer" onended="setCompleted();">
+      <source src="media/neuron.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
   </div>
 
   <div id="pageButton">
