@@ -14,6 +14,8 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
 
      Symbol.bindTimelineAction(compId, symbolName, "Default Timeline", "complete", function(sym, e) {
      setCompleted();
+     Symbol.stop(0);
+     Symbol.$("boy3")[0].currentTime = 0;
    });
 
    })("stage");

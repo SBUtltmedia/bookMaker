@@ -23,11 +23,21 @@ function setupVideo(){
     centerStage: "horizontal",
     minW: "0rem",
     maxW: "undefined",
+    minH: "0rem",
+    maxH: "undefined",
     width: "550px",
     height: "400px",
     bScaleToParent: true
 }, {dom: [ ]}, {dom: [ ]})
 
+}
+
+function resizeVideo(){
+  var symbol = AdobeEdge.getComposition("EDGE-39385733").getStage().getSymbol("Stage");
+
+  symbol.stop(0);
+  symbol.$("boy3")[0].pause();
+  symbol.$("boy3")[0].currentTime = 0;
 }
 
 function replay(){

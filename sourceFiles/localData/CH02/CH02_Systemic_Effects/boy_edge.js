@@ -232,7 +232,7 @@
                 },
                 timeline: {
                     duration: 59329.478,
-                    autoPlay: false,
+                    autoPlay: true,
                     data: [
                         [
                             "eid144",

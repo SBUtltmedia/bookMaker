@@ -36,6 +36,7 @@ function setCompleted() {
   }
 
   window.parent.updateCompletion();
+  $("#videoPlayer")[0].currentTime = '0';
   $('#playButton').css("background-color","#2ab673");
   $('#playButton').html("Replay Video")
 }
