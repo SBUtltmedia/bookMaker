@@ -101,7 +101,7 @@ function setCompleted() {
 ```
 
 ## Special Mentions:
-Special mentions to the creators (Jamie Greco & Joanne Cesiro) of PTP Book the first book made for this program and example included in this repo for the book.
+Special mentions to the creators ([Jamie Greco](https://google.com/) & Joanne Cesiro) of PTP Book the first book made for this program and example included in this repo for the book.
 
 ## Author:
 Created by [Rahul Sondhi](https://github.com/RahulSondhi) & [Jim Palmeri](https://github.com/SBUtltmedia) at TLL(Teaching Learning Lab) in Stony Brook University
