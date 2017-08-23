@@ -18,12 +18,9 @@ Create Json file with name "module". Start Json file for questions like this:
   "chapters": [
     (chapters)
   ],
-  
-  "overlayURLs": {
-    "calipers": "https://example.com/link/to/ekg-slider/"
-   },
-    "localStorageKey":"[Insert your Storage Key Name]"
-  
+
+  "localStorageKey":"[Insert your Storage Key Name]"
+
 }
 
 ```
@@ -101,7 +98,7 @@ function setCompleted() {
 ```
 
 ## Special Mentions:
-Special mentions to the creators (Jamie Greco & Joanne Cesiro) of PTP Book the first book made for this program and example included in this repo for the book.
+Special mentions to the creators ([Jamie Greco](https://healthtechnology.stonybrookmedicine.edu/programs/pt/eldpt/faculty/greco) & [Joanne Cesiro](https://healthtechnology.stonybrookmedicine.edu/programs/pt/eldpt/faculty/cesiro)) of PTP Book the first book made for this program and example included in this repo for the book.
 
 ## Author:
 Created by [Rahul Sondhi](https://github.com/RahulSondhi) & [Jim Palmeri](https://github.com/SBUtltmedia) at TLL(Teaching Learning Lab) in Stony Brook University
