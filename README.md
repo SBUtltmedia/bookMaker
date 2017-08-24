@@ -98,11 +98,7 @@ function setCompleted() {
 ```
 
 ## Special Mentions:
-<<<<<<< HEAD
 Special mentions to the creators ([Jamie Greco](https://healthtechnology.stonybrookmedicine.edu/programs/pt/eldpt/faculty/greco) & [Joanne Cesiro](https://healthtechnology.stonybrookmedicine.edu/programs/pt/eldpt/faculty/cesiro)) of PTP Book the first book made for this program and example included in this repo for the book.
-=======
-Special mentions to the creators ([Jamie Greco](https://google.com/) & Joanne Cesiro) of PTP Book the first book made for this program and example included in this repo for the book.
->>>>>>> 4c65166ecdc9a983f1b5c8f362300c8a36bb2947
 
 ## Author:
 Created by [Rahul Sondhi](https://github.com/RahulSondhi) & [Jim Palmeri](https://github.com/SBUtltmedia) at TLL(Teaching Learning Lab) in Stony Brook University
