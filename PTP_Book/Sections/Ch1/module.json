@@ -71,9 +71,9 @@
 	},{
             "title": "Specific Agents- Paraffin (general info)",
             "pages": [{
-                "type": "html",
+                "type": "Animation",
                 "title": "Treatment procedure narrative",
-                "content": ""
+                "content": "localData/CH05/CH05_Treatment_procedure_narrative/index.html"
 		}, {
                 "type": "html",
                 "title": "Maintaining the equipment",
