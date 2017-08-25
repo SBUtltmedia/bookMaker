@@ -4,18 +4,30 @@ $(function() {
   $.getJSON("Sections/module.json", function(data) {
 
   }).done(function(data) {
-    setupChapters(data);
-  });;
-
+    setupSections(data);
+    setSection(0);
   });
 
+});
 
-function setupChapters(book) {
+var Sections = [];
+
+function setupSections(book) {
   for(var i = 0; i < book.Sections.length; i++){
-    var divID = "CH" + (i+1);
-    var url = book.Sections[i].url;
-    var name = book.Sections[i].title;
 
-    $( "#Chapters" ).append( '<a href="'+url+'" class="pages" target="_self"><object type="image/svg+xml" data="media/page.svg" id='+ divID +' class="pagesIcon" onclick="window.open('+url+',_blank)"> </object><p>'+name+'</p></a>' );
+    var page = {};
+
+    page.id = "CH" + (i+1);
+    page.url = book.Sections[i].url;
+    page.name = book.Sections[i].title;
+    page.description = book.Sections[i].description;
+    page.button = "Go to" + book.Sections[i].title;
+
+    Sections.push(page);
   }
+}
+
+function setSection(pageNum){
+  $("#title").html(Sections[pageNum].name);
+  $("#description").html(Sections[pageNum].description);
 }
