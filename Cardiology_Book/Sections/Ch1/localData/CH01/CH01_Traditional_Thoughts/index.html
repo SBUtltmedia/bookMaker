@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="../../../sourceFiles/js/progress.js"></script>
+  <script src="js/script.js"></script>
+</header>
+
+<body>
+
+  <audio id="voiceover" xmlns="http://www.w3.org/1999/xhtml" onended="setCompleted();">
+        <source src="media/voiceover.ogg" type="audio/ogg"/>
+        <source src="media/voiceover.mp3" type="audio/mpeg"/>
+        <source src="media/voiceover.wav" type="audio/x-wav"/>
+    </audio>
+
+<div id="pageBody">
+  <div id="pageTitle">Traditional Thoughts</div>
+  <div id="pageText">
+    <ul>
+      <li>What comes to mind when you think about therapeutic heat?</li>
+      <li>Why do you think we would use it with patients?</li>
+    </ul>
+  </div>
+
+  <div id="pageButton">
+    <button class="button" id="playButton" onclick="playAudio();">Play Audio To Complete Page</button>
+  </div>
+</div>
+
+  <div id="pageImages">
+    <img id="slideImages" alt="Hands" src="media/themHands.jpeg">
+    <img id="slideImages" alt="Sleeping Girl" src="media/sleepingGirl.jpeg">
+  </div>
+
+</body>
+
+</html>

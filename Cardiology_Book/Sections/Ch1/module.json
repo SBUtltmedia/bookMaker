@@ -1,0 +1,149 @@
+{
+    "chapters": [
+        {
+            "title": "Introduction",
+            "pages": [{
+                "type": "Voiceover",
+                "title": "Learning Objectives",
+                "content": "localData/CH01/CH01_Learning_Objectives/index.html"
+		}, {
+                "type": "Voiceover",
+                "title": "Traditional Thoughts",
+                "content": "localData/CH01/CH01_Traditional_Thoughts/index.html"
+		}, {
+                "type": "Animation",
+                "title": "Methods of Heat Transfer",
+                "content": ""
+		}]
+	},{
+            "title": "Physiological Response to Heat",
+            "pages": [{
+                "type": "Animation",
+                "title": "Metabolic Reactions",
+                "content": "localData/CH02/CH02_Metabolic_Reactions/index.html"
+		}, {
+                "type": "Video",
+                "title": "Vascular Effects",
+                "content": "localData/CH02/CH02_Vascular_Effects/index.html"
+		}, {
+                "type": "Video",
+                "title": "Neuromuscular Effects",
+                "content": "localData/CH02/CH02_Neuromuscular_Effects/index.html"
+		},{
+                "type": "Video",
+                "title": "Connective Tissue Effects",
+                "content": "localData/CH02/CH02_Connective_Tissue_Effects/index.html"
+		},{
+                "type": "Animation",
+                "title": "Systemic Effects",
+                "content": "localData/CH02/CH02_Systemic_Effects/index.html"
+		},{
+                "type": "Voiceover",
+                "title": "Biophysical effects depend on",
+                "content": "localData/CH02/CH02_Biophysical_Effects/index.html"
+		}]
+	},{
+            "title": "To Use or Not to Use",
+            "pages": [{
+                "type": "html",
+                "title": "Indications",
+                "content": ""
+		}, {
+                "type": "Voiceover",
+                "title": "Contraindications",
+                "content": "localData/CH03/CH03_Contraindications/index.html"
+		}]
+	},{
+            "title": "Specific Agents- Moist Heat (general info)",
+            "pages": [{
+                "type": "Animation",
+                "title": "Treatment procedure narrative",
+                "content": "localData/CH04/CH04_Treatment_procedure_narrative/index.html"
+		}, {
+                "type": "html",
+                "title": "Maintaining equipment",
+                "content": ""
+		},{
+                "type": "html",
+                "title": "Treatment procedure video",
+                "content": ""
+		}]
+	},{
+            "title": "Specific Agents- Paraffin (general info)",
+            "pages": [{
+                "type": "Animation",
+                "title": "Treatment procedure narrative",
+                "content": "localData/CH05/CH05_Treatment_procedure_narrative/index.html"
+		}, {
+                "type": "html",
+                "title": "Maintaining the equipment",
+                "content": ""
+		}, {
+                "type": "html",
+                "title": "Treatment procedure video",
+                "content": ""
+		}],
+            "overlayURLs": {
+                "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
+            }
+	},{
+            "title": "Specific Agents- Fluidotherapy (general info)",
+            "pages": [{
+                "type": "html",
+                "title": "Video of control panel and voiceover explanation",
+                "content": ""
+		}, {
+                "type": "html",
+                "title": "Treatment procedure narrative",
+                "content": ""
+		}, {
+                "type": "html",
+                "title": "Treatment procedure video",
+                "content": ""
+		},{
+                "type": "html",
+                "title": "Check your understanding",
+                "content": ""
+		}]
+	},{
+            "title": "How Will You Choose?",
+            "pages": [{
+                "type": "html",
+                "title": "Choose your own adventure slides to follow, highlighting advantages, disadvantages of each agent",
+                "content": ""
+		}]
+	},{
+            "title": "Evidence",
+            "pages": [{
+                "type": "text",
+                "title": "EBP articles (voice over)",
+                "content": "Test to show text box working"
+		}, {
+                "type": "html",
+                "title": "APTA top 5 choosing wisely campaign",
+                "content": ""
+		}]
+	},{
+            "title": "In Conclusion- Key Points to Remember",
+            "pages": [{
+                "type": "html",
+                "title": "TBD",
+                "content": ""
+		}]
+	},{
+            "title": "Check Your Understanding- QUIZ",
+            "pages": [{
+                "type": "quiz",
+                "title": "TBD",
+                "content": "localData/CH10/CH10_HotPackQuiz/index.html"
+		}]
+	}
+    ],
+            "overlayURLs": {
+                "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
+            },
+    "localStorageKey":"PTP"
+
+
+
+}
