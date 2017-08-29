@@ -17,7 +17,13 @@ function setPage(factor){
   var tempPage = SectionIndex + factor;
   console.log(tempPage, Sections.length);
 
-  if(tempPage >= Sections.length-1){
+  if(Sections.length == 1){
+
+    $("#leftArrow").addClass("hide");
+    $("#rightArrow").addClass("hide");
+    setSection(SectionIndex);
+
+  }else if(tempPage >= Sections.length-1){
 
     $("#leftArrow").removeClass("hide");
     $("#rightArrow").addClass("hide");

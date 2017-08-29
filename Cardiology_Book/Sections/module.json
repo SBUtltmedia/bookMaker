@@ -1,13 +1,9 @@
 {
     "Sections": [
         {
-            "title": "Chapter 1",
+            "title": "Section 1",
             "url": "Sections/Ch1/index.html",
             "description":"Description"
-	},{
-            "title": "Chapter 2",
-            "url": "Sections/Ch2/index.html",
-            "description":"Description2"
 	}
     ]
 
