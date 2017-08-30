@@ -56,14 +56,14 @@ body {
 
 .overlay {
     height: 100%;
-    width: 0;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: -100%;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.75s;
 }
 
 .overlay-content {
@@ -98,12 +98,13 @@ body {
 
 #completedDisplayText,
 #OverlayChosenOptionsText,
-#OverlayChosenPosition,
-#OverlayCorrectChoice{
+#OverlayChosenOption,
+#OverlayCorrectChoice,
+#OverlayCorrectImage{
     padding: 1rem;
     text-decoration: none;
     font-size: 1.875rem;
-    color: #ffffff;
+    color: black;
     display: block;
     text-align: center;
     transition: 0.3s;
@@ -115,6 +116,21 @@ body {
   float: right;
   width: 50%;
 }
+
+#OverlayCorrectImage{
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+}
+
+#correctImage{
+  width: 100%;
+}
+
+#image{
+  width: 20%;
+}
+
 
 .overlay a:hover, .overlay a:focus {
     color: #ff0303;

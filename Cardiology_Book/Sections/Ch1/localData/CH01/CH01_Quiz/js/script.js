@@ -39,7 +39,8 @@ $.ajax({
     scenario["optionsText"] = {};
     scenario["scenarioText"] = quizInfo[i + 1][quizInfo[0].indexOf("Question")];
     scenario["correct_options"] = quizInfo[i + 1][quizInfo[0].indexOf("Correct Answer")];
-    scenario["correct_image"] = quizInfo[i + 1][quizInfo[0].indexOf("Image")];
+    scenario["image"] = quizInfo[i + 1][quizInfo[0].indexOf("Image")];
+    scenario["correct_image"] = quizInfo[i + 1][quizInfo[0].indexOf("Answer Image")];
     answerEnum["options"].forEach(function(val, idx) {
 
       scenario["options"][idx] = quizInfo[i + 1][quizInfo[0].indexOf(val)];
@@ -52,6 +53,7 @@ $.ajax({
   }
 
   startQuestion();
+  createAnswerAreas();
 
   //scenarios.push([quizInfo[i+1][0],[quizInfo[i+1][1],quizInfo[i+1][2]]]);
 })
@@ -65,15 +67,22 @@ function closeAnswerDisplay() {
     openCompletedDisplay();
     nextQuestion();
   }
-  document.getElementById("answerDisplay").style.width = "0%";
+  document.getElementById("answerDisplay").style.left = "-100%";
+  setTimeout(function() {
+    createAnswerAreas();
+  }, 250);
 }
 
 function closeCompletedDisplay() {
-  document.getElementById("completedDisplay").style.width = "0%";
+  document.getElementById("completedDisplay").style.left = "-100%";
+  setTimeout(function() {
+    createAnswerAreas();
+  }, 250);
 }
 
-function createAnswerAreas(answer) {
+function createAnswerAreas() {
 
+  var answer = scenarios[questionsNotAnswered[currentIndex]];
   $("#options").empty();
 
   for (var propertyName in answerEnum) {
@@ -83,44 +92,48 @@ function createAnswerAreas(answer) {
       var posDiv = $('<div/>')
       $(posDiv).html(answer.options[idx])
       $(posDiv).attr("id", val)
+      $(posDiv).attr("class", "answerOption")
 
       $('#' + propertyName).append(posDiv)
 
     })
+
     $('#' + propertyName + " div").on("click", handleClick);
+    $('#' + propertyName + " div").on("mouseenter", handleHover);
     $('#' + propertyName + " div").css("cursor", "pointer");
+    $("#image").attr("src", answer.image);
+    $("#image").on("click", function(){
+      window.open(answer.image);
+    });
+    $("#correctImage").attr("src", answer.correct_image);
+    $("#correctImage").on("click", function(){
+      window.open(answer.correct_image);
+    });
   }
 }
 
 function handleClick(evt) {
 
-  var clickedItem = evt.target.id
-  var clickedCategory = $(evt.target).parent().attr("id")
+  var clickedItem = $(evt.target).html();
+  var clickedCategory = $(evt.target).parent().attr("id");
   var correctItem = capitalizeFirstLetter(scenarios[currentScenario]["correct_" + clickedCategory]);
 
-  $('#' + clickedCategory + 'TextHeader').html(clickedItem);
-  $('#' + clickedCategory + "Text").html(scenarios[currentScenario][clickedCategory][clickedItem]);
+  $('#optionsTextHeader').html(clickedItem);
+  $('#optionsText').html(scenarios[currentScenario][clickedCategory][clickedItem]);
 
   if (clickedItem.toLowerCase() == correctItem.toLowerCase()) {
-    answerCount++;
+
     $('#' + clickedCategory + 'Container').css({
       "pointer-events": "none"
     });
 
-    if (answerCount > 0) {
-      $("#hotPacksSection").css("visibility", "visible");
-    }
-
-    if (answerCount == 2) {
-      showCorrect(clickedItem, clickedCategory);
-    }
+    showCorrect(clickedItem, clickedCategory);
 
   } else {
     showIncorrect(clickedItem, clickedCategory);
   }
 
 }
-
 
 function nextQuestion() {
   if (questionsNotAnswered.length != 0) {
@@ -142,7 +155,7 @@ function repopulatingQuestionsNotAnswered() {
 }
 
 function openAnswerDisplay(ChosenItem, ChosenCategory) {
-  document.getElementById("answerDisplay").style.width = "100%";
+  document.getElementById("answerDisplay").style.left = "0%";
 
   var chosenOptionsDisplay;
   var chosenOptionsDisplayText;
@@ -188,7 +201,7 @@ function showIncorrect(clickedItem, clickedCategory) {
 }
 
 function openCompletedDisplay() {
-  document.getElementById("completedDisplay").style.width = "100%";
+  document.getElementById("completedDisplay").style.left = "0%";
   progress.setKey(urlVars["key"], "done");
 
   if (urlVars["testing"] == "true") {
@@ -211,6 +224,14 @@ function startQuestion() {
     "background-color": "#7e828c",
     "color": "white"
   });
+}
 
-  createAnswerAreas(scenarios[questionsNotAnswered[currentIndex]]);
+function handleHover(evt) {
+
+  var clickedItem = $(evt.target).html();
+  var clickedCategory = $(evt.target).attr("id").toString();
+  var num = parseInt(clickedCategory.charAt(7))-1;
+
+  $("#optionsTextHeader").html("<span>" + $(evt.target).html() + "</span>");
+  $("#optionsText").html("<span>" + scenarios[currentScenario]["optionsText"][num] + "</span>");
 }
