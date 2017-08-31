@@ -80,10 +80,18 @@ function closeCompletedDisplay() {
   }, 250);
 }
 
+function closeImageEnlargeDisplay() {
+  document.getElementById("imageEnlargeDisplay").style.left = "-100%";
+  setTimeout(function() {
+    createAnswerAreas();
+  }, 250);
+}
+
 function createAnswerAreas() {
 
   var answer = scenarios[questionsNotAnswered[currentIndex]];
   $("#options").empty();
+
 
   for (var propertyName in answerEnum) {
 
@@ -102,13 +110,9 @@ function createAnswerAreas() {
     $('#' + propertyName + " div").on("mouseenter", handleHover);
     $('#' + propertyName + " div").css("cursor", "pointer");
     $("#image").attr("src", answer.image);
-    $("#image").on("click", function(){
-      window.open(answer.image);
-    });
+    $("#imageEnlarge").attr("src", answer.image);
     $("#correctImage").attr("src", answer.correct_image);
-    $("#correctImage").on("click", function(){
-      window.open(answer.correct_image);
-    });
+
   }
 }
 
@@ -211,6 +215,10 @@ function openCompletedDisplay() {
   }
 
   window.parent.updateCompletion();
+}
+
+function openImageEnlargeDisplay() {
+  document.getElementById("imageEnlargeDisplay").style.left = "0%";
 }
 
 function startQuestion() {

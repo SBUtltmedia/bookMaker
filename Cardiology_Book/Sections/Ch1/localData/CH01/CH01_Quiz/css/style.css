@@ -76,6 +76,7 @@ body {
 #OverlayChosenOptionsHeader,
 #OverlayCorrectChoiceHeader,
 #completedDisplayHeader,
+#imageEnlargeHeader,
 #completedDisplayText,
 .overlay a {
     padding: 1rem;
@@ -87,6 +88,7 @@ body {
 }
 
 #completedDisplayHeader,
+#imageEnlargeHeader,
 #OverlayHeader{
   padding: 1.5rem;
   text-decoration: none;
@@ -100,7 +102,8 @@ body {
 #OverlayChosenOptionsText,
 #OverlayChosenOption,
 #OverlayCorrectChoice,
-#OverlayCorrectImage{
+#OverlayCorrectImage,
+#imageEnlargeImage{
     padding: 1rem;
     text-decoration: none;
     font-size: 1.875rem;
@@ -121,6 +124,12 @@ body {
   display: inline-block;
   text-align: center;
   width: 50%;
+}
+
+#imageEnlarge{
+  width: 50%;
+  text-align: center;
+  left: 25%;
 }
 
 #correctImage{

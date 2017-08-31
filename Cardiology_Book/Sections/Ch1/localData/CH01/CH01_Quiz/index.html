@@ -27,7 +27,18 @@
 
       <div id="OverlayCorrectDescription">
         <div id="OverlayCorrectImageHeader">Correct Image:</div>
-        <div id="OverlayCorrectImage"><img id="correctImage" src="" alt="Image If Avaliable" onclick=""></img></div>
+        <div id="OverlayCorrectImage"><img id="correctImage" src="openImageEnlargeDisplay();" alt="Image If Avaliable" onclick=""></img></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="imageEnlargeDisplay" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeImageEnlargeDisplay()">&times;</a>
+    <div class="overlay-content">
+
+      <div id="imageEnlargeHeader">Enlarged Image:</div>
+        <div id="imageEnlargeImage"><img id="imageEnlarge" alt="Image If Avaliable" onclick=""></img></div>
       </div>
 
     </div>
@@ -55,7 +66,7 @@
     </div>
     <div id="optionsTextContainer">
       <div id="optionsTextHeader"></div>
-      <div id="optionsImageContainer"><img id="image" src="" alt="Image If Avaliable" onclick=""></img></div>
+      <div id="optionsImageContainer"><img id="image" src="" alt="Image If Avaliable" onclick="openImageEnlargeDisplay();"></img></div>
       <div id="optionsText"></div>
     </div>
   </div>
