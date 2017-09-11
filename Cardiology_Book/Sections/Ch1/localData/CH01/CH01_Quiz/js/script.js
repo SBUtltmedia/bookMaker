@@ -18,7 +18,7 @@ var questionsNotAnswered = [];
 var answerCount;
 var scenarios = []; // ANSWER KEY
 $.ajax({
-  url: "//apps.tlt.stonybrook.edu/gproxy/?id=e/2PACX-1vQBU9RsWb2EraX9ZwBbANyiHq6b63FUB_U5FnYqiQEDi2KdAIoounM9huMhDb6VSB5wpDR1_StfUEpp&gid=1760465612"
+  url: "/gproxy/?id=e/2PACX-1vQBU9RsWb2EraX9ZwBbANyiHq6b63FUB_U5FnYqiQEDi2KdAIoounM9huMhDb6VSB5wpDR1_StfUEpp&gid=1760465612"
 }).done(function(data) {
 
   var quizInfo = $.csv.toArrays(data);
