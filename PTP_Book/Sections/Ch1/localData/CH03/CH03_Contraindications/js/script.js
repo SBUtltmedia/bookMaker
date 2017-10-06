@@ -44,6 +44,18 @@ $(function() {
 
   });
 
+  $(".hex,text").on("click", function(evt) {
+
+    var currentHover = $('.hex').index($(evt.target))
+
+    $('#hoverText').html(defaultText)
+
+    $('#sound' + (currentHover + 1))[0].currentTime = 0;
+    $('#sound' + (currentHover + 1))[0].play();
+    $('#sound' + (currentHover + 1))[0].loop = false;
+
+  });
+
   checkDefaultText();
 });
 

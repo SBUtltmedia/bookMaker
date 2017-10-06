@@ -73,11 +73,11 @@ function closeAnswerDisplay() {
     openCompletedDisplay();
     nextQuestion();
   }
-  document.getElementById("answerDisplay").style.width = "0%";
+  document.getElementById("answerDisplay").style.left = "-100%";
 }
 
 function closeCompletedDisplay() {
-  document.getElementById("completedDisplay").style.width = "0%";
+  document.getElementById("completedDisplay").style.left = "-100%";
 }
 
 function createAnswerAreas() {
@@ -149,7 +149,7 @@ function repopulatingQuestionsNotAnswered() {
 }
 
 function openAnswerDisplay(ChosenItem, ChosenCategory) {
-  document.getElementById("answerDisplay").style.width = "100%";
+  document.getElementById("answerDisplay").style.left = "0";
 
   var chosenHotPacksDisplay;
   var chosenHotPacksDisplayText;
@@ -214,7 +214,7 @@ function showIncorrect(clickedItem, clickedCategory) {
 }
 
 function openCompletedDisplay() {
-  document.getElementById("completedDisplay").style.width = "100%";
+  document.getElementById("completedDisplay").style.left = "0";
   progress.setKey(urlVars["key"], "done");
 
   if (urlVars["testing"] == "true") {

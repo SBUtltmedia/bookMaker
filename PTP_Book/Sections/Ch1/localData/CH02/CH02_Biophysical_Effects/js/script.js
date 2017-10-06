@@ -36,6 +36,15 @@ $(function() {
 
   });
 
+  $(".mouse").on("click", function(evt) {
+    var currentHover = $('.mouse').index($(evt.target))
+
+    $('#sound' + (currentHover + 1))[0].currentTime = 0;
+    $('#sound' + (currentHover + 1))[0].play();
+    $('#sound' + (currentHover + 1))[0].loop = false;
+
+  });
+
   checkDefaultText();
 });
 
