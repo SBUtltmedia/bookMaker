@@ -71,7 +71,7 @@ function show(){
     "width":"20%",
     "height":"10%",
     "left": "40%",
-    "top": "45%"
+    "top": "52.5%"
   });
   $("#playButton").removeClass("disabled");
 }

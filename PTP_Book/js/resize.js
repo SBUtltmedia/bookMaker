@@ -105,6 +105,7 @@ function resizeWindow() {
         });
     }
     $("html").css("font-size", (stageHeight / 20) + "px");
+    $("text").css("font-size", (stageHeight / 20) + "px");
 
     // Resize the stripes
     var stripeSize = stageHeight * .05;

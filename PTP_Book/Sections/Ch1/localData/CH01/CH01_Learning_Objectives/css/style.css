@@ -70,6 +70,7 @@ button:focus, input[type="button"]:focus {
   font-size: 1.5rem;
   color: #000000;
   padding: 0.25rem;
+  padding-left: 0rem;
 }
 
 #pageTitle,
@@ -92,4 +93,13 @@ button:focus, input[type="button"]:focus {
   display: inline;
   float: left;
   padding: 3%
+}
+
+#pageText{
+  width: 100%;
+}
+
+#points,#subtitle{
+  padding-left: 0rem;
+  list-style-position: inside;
 }

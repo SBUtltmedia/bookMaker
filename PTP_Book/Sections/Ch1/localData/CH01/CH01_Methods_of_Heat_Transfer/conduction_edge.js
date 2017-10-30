@@ -374,7 +374,7 @@
                         }
                     ],
                     style: {
-                        '${Stage}': {
+                        '${stage}': {
                             isStage: true,
                             rect: ['null', 'null', '550px', '400px', 'auto', 'auto'],
                             overflow: 'hidden',

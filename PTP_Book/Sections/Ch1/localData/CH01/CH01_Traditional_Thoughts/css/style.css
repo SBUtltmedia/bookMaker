@@ -86,3 +86,12 @@ button:focus, input[type="button"]:focus {
   float: left;
   padding: 3%
 }
+
+#pageText{
+  width: 100%;
+}
+
+#points,#subtitle{
+  padding-left: 0rem;
+  list-style-position: inside;
+}

@@ -54,7 +54,7 @@
                 "content": "localData/CH03/CH03_Contraindications/index.html"
 		}]
 	},{
-            "title": "Specific Agents- Moist Heat (general info)",
+            "title": "Specific Agents- Moist Heat",
             "pages": [{
                 "type": "Animation",
                 "title": "Treatment procedure narrative",
@@ -69,7 +69,7 @@
                 "content": ""
 		}]
 	},{
-            "title": "Specific Agents- Paraffin (general info)",
+            "title": "Specific Agents- Paraffin",
             "pages": [{
                 "type": "Animation",
                 "title": "Treatment procedure narrative",
@@ -87,54 +87,36 @@
                 "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
             }
 	},{
-            "title": "Specific Agents- Fluidotherapy (general info)",
+            "title": "Specific Agents- Fluidotherapy",
             "pages": [{
-                "type": "html",
-                "title": "Video of control panel and voiceover explanation",
-                "content": ""
+                        "type": "Voiceover",
+                        "title": "General Info Fluidotherapy",
+                        "content": ""
+        		},{
+                "type": "Animation",
+                "title": "Control Panel Explanation",
+                "content": "localData/CH06/CH06_Video_Of_Control_Panel/index.html"
 		}, {
                 "type": "html",
                 "title": "Treatment procedure narrative",
-                "content": ""
-		}, {
-                "type": "html",
-                "title": "Treatment procedure video",
-                "content": ""
-		},{
-                "type": "html",
-                "title": "Check your understanding",
-                "content": ""
-		}]
-	},{
-            "title": "How Will You Choose?",
-            "pages": [{
-                "type": "html",
-                "title": "Choose your own adventure slides to follow, highlighting advantages, disadvantages of each agent",
                 "content": ""
 		}]
 	},{
             "title": "Evidence",
             "pages": [{
-                "type": "text",
-                "title": "EBP articles (voice over)",
-                "content": "Test to show text box working"
-		}, {
-                "type": "html",
-                "title": "APTA top 5 choosing wisely campaign",
+                "type": "Voiceover",
+                "title": "EBP Articles",
                 "content": ""
-		}]
-	},{
-            "title": "In Conclusion- Key Points to Remember",
-            "pages": [{
+		},{
                 "type": "html",
-                "title": "TBD",
+                "title": "APTA Top 5 Choosing Wisely Campaign",
                 "content": ""
 		}]
 	},{
             "title": "Check Your Understanding- QUIZ",
             "pages": [{
                 "type": "quiz",
-                "title": "TBD",
+                "title": "Hotpack Quiz",
                 "content": "localData/CH10/CH10_HotPackQuiz/index.html"
 		}]
 	}

@@ -57,6 +57,12 @@ button:focus, input[type="button"]:focus {
   padding:0.5rem;
   margin: 1rem;
   border-radius: 12px;
+  height: 80%;
+  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 2.5%;
+
 }
 
 #pageTitle{
@@ -85,6 +91,14 @@ button:focus, input[type="button"]:focus {
   left: 40%;
   width: 20%;
   height: 10%;
-  top: 45%;
+  top: 52.5%;
   z-index: 2000;
+}
+
+#stageHandler{
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 17.5%;
+  position: absolute;
 }

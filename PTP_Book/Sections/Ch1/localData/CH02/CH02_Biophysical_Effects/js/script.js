@@ -1,17 +1,9 @@
 var defaultText = "Hover Over The Areas Above To Learn More About Them. (Hover Over All To Complete Page)"
 
 $(function() {
-  resize();
-  $(window).resize(resize);
-
   checkDefaultText();
 
-  $('#hoverText').html(defaultText);
-
-  function resize() {
-    $('html').css('fontSize', $('svg').width() / 50 + "px")
-    $('#hoverText').css('height', $('svg').width() / 40 + "px")
-  }
+  $('#hoverTextText').html(defaultText);
 
   $(".mouse").on("mouseover", function(evt) {
 
@@ -88,5 +80,5 @@ function setCompleted() {
 
   window.parent.updateCompletion();
   checkDefaultText();
-  $('#hoverText').html(defaultText);
+  $('#hoverTextText').html(defaultText);
 }

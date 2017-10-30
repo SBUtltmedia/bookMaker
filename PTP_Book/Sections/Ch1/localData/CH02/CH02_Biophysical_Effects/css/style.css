@@ -4,13 +4,19 @@
     color: whitesmoke;
     background-color: #0d48a8;
     font-weight: bold;
-    height: 20%;
+    height: 12.5%;
     width: 90%;
-    left: 4%;
-    padding: 0.5rem;
+    left: 5%;
     border-radius: 1rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
+}
+
+#hoverTextText{
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: 50%;
 }
 
 .a {
@@ -33,7 +39,7 @@
 .effect text {
   font-family: 'Helvetica', 'Arial', sans-serif;
   fill: white;
-  font-size: 1.0rem;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -80,4 +86,6 @@ body{
       -ms-user-select: none; /* Internet Explorer/Edge */
           user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
+
+  overflow: hidden;
  }
