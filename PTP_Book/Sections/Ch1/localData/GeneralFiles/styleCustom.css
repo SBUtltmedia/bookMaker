@@ -1,0 +1,139 @@
+#headerContent{
+  background: #0F1626;
+}
+
+#footer{
+  background: #0F1626;
+}
+
+#sidebar{
+  background: #0F1626;
+}
+
+.chapterThumb,
+.pageThumb{
+  background-color: #FF533D;
+}
+
+.thumbText{
+  color : white;
+}
+
+.thumbNumber{
+  color: white;
+    font-size: 1.25rem;
+    top: 35%;
+    width: 95%;
+    left: 0%;
+}
+
+.thumbType{
+  background-color: white;
+}
+
+.thumbTypeText{
+  color: white;
+}
+
+#fullScreenButton {
+    width: 4%;
+    height: 100%;
+    left: 96%;
+    top: 0%;
+    position: absolute;
+    background-image: url(img/fullscreen_out.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.anim_fullScreenButtonIn {
+    animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes fullScreenButtonIn {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(img/fullscreen_out.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(img/fullscreen_out.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(img/fullscreen_in.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(img/fullscreen_in.svg);
+    }
+}
+
+.anim_fullScreenButtonOut {
+    animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+}
+
+@keyframes fullScreenButtonOut {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(img/fullscreen_in.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(img/fullscreen_in.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(img/fullscreen_out.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(img/fullscreen_out.svg);
+    }
+}
+
+.page_incomplete {
+    background-image: url(img/gray_check.svg);
+}
+
+.page_complete{
+    background-image: url(img/green_check.svg);
+}
+
+.chapter_incomplete {
+    background-image: url(img/lightgray_check.svg);
+}
+
+.chapter_complete{
+  background-image: url(img/green_check.svg);
+}
+
+#buttonPrevious {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 35%;
+    position: absolute;
+    background-image: url(img/triangle_left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#buttonNext {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 57.5%;
+    position: absolute;
+    background-image: url(img/triangle_right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}

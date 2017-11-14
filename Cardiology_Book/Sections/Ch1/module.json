@@ -7,10 +7,10 @@
                 "title": "Quiz",
                 "content": "localData/CH01/CH01_Quiz/index.html"
 		},{
-        "type": "VQ",
-        "title": "VQ",
-        "content": "/vq/rasondhi/2/"
-      }]
+          "type": "VQ",
+          "title": "VQ",
+          "content": "localData/CH01/CH01_Test/index.html"
+        }]
 	   }
     ],
             "overlayURLs": {

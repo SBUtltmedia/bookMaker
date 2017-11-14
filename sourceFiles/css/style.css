@@ -34,6 +34,7 @@ body {
 
 .anim_quickFadeIn {
     animation: quickFadeIn .1s 0s 1 linear normal forwards;
+    -webkit-animation: quickFadeIn .1s 0s 1 linear normal forwards;
 }
 
 @keyframes quickFadeIn {
@@ -47,11 +48,34 @@ body {
     }
 }
 
+@-webkit-keyframes quickFadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 .anim_quickFadeOut {
     animation: quickFadeOut .1s 0s 1 linear normal forwards;
+    -webkit-animation: quickFadeOut .1s 0s 1 linear normal forwards;
 }
 
 @keyframes quickFadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes quickFadeOut {
     0% {
         opacity: 1;
         visibility: visible;
@@ -90,6 +114,7 @@ body {
 
 .anim_fullScreenButtonIn {
     animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+    -webkit-animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
 }
 
 @keyframes fullScreenButtonIn {
@@ -111,11 +136,50 @@ body {
     }
 }
 
+@-webkit-keyframes fullScreenButtonIn {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+}
+
 .anim_fullScreenButtonOut {
     animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+    -webkit-animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
 }
 
 @keyframes fullScreenButtonOut {
+    0% {
+        transform: rotateY(0deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    25% {
+        transform: rotateY(90deg);
+        background-image: url(../img/fullscreen_in.svg);
+    }
+    25.1% {
+        transform: rotateY(270deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-image: url(../img/fullscreen_out.svg);
+    }
+}
+
+@-webkit-keyframes fullScreenButtonOut {
     0% {
         transform: rotateY(0deg);
         background-image: url(../img/fullscreen_in.svg);
@@ -145,7 +209,7 @@ body {
 
 #sidebar {
     width: 15%;
-    height: 95%;
+    height: 97.5%;
     left: 0%;
     top: 5%;
     position: absolute;
@@ -172,6 +236,7 @@ body {
 
 .anim_fullScreenOn {
     animation: fullScreenOn .1s 0s 1 linear normal forwards;
+    -webkit-animation: fullScreenOn .1s 0s 1 linear normal forwards;
 }
 
 @keyframes fullScreenOn {
@@ -189,11 +254,42 @@ body {
     }
 }
 
+@-webkit-keyframes fullScreenOn {
+    0% {
+        width: 85%;
+        height: 85%;
+        left: 15%;
+        top: 5%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+    }
+}
+
 .anim_fullScreenOff {
     animation: fullScreenOff .1s 0s 1 linear normal forwards;
+    -webkit-animation: fullScreenOff .1s 0s 1 linear normal forwards;
 }
 
 @keyframes fullScreenOff {
+    0% {
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+    }
+    100% {
+        width: 85%;
+        height: 85%;
+        left: 15%;
+        top: 5%;
+    }
+}
+
+@-webkit-keyframes fullScreenOff {
     0% {
         width: 100%;
         height: 100%;
@@ -229,6 +325,7 @@ iframe {
 
 .anim_overlayOn {
     animation: overlayOn .1s 0s 1 linear normal forwards;
+    -webkit-animation: overlayOn .1s 0s 1 linear normal forwards;
 }
 
 @keyframes overlayOn {
@@ -244,11 +341,38 @@ iframe {
     }
 }
 
+@-webkit-keyframes overlayOn {
+    0% {
+        transform: scale(.6);
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 .anim_overlayOff {
     animation: overlayOff .1s 0s 1 linear normal forwards;
+    -webkit-animation: overlayOff .1s 0s 1 linear normal forwards;
 }
 
 @keyframes overlayOff {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        transform: scale(.6);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes overlayOff {
     0% {
         transform: scale(1);
         opacity: 1;
@@ -291,6 +415,15 @@ iframe {
 }
 
 @keyframes thumbGlow {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+@-webkit-keyframes thumbGlow {
     0% {
         opacity: .4;
     }
