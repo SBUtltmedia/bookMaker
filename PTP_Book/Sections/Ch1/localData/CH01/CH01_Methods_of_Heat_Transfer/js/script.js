@@ -7,10 +7,6 @@ $(function() {
 
   resize();
   $(window).resize(resize);
-
-  function resize() {
-    $('html').css('fontSize', $('body').width() / 50 + "px")
-  }
 });
 
 var urlVars = getUrlVars();

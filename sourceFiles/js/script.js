@@ -66,6 +66,8 @@ $(function() {
         showOverlay(false);
       }
     }
+
+    resizeWindow();
   });
 
   $(document).keydown(function (e) {

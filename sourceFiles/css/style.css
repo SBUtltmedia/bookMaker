@@ -93,7 +93,7 @@ body {
     position: absolute;
     color: white;
     font-family: "Helvetica", sans-serif;
-    font-size: .7rem;
+    font-size: .25rem;
     text-align: center;
 }
 
@@ -461,7 +461,7 @@ iframe {
     position: absolute;
     color: #ddd;
     font-family: "Helvetica", sans-serif;
-    font-size: .35rem;
+    font-size: .325rem;
     z-index: 10;
 }
 
@@ -473,7 +473,7 @@ iframe {
     position: absolute;
     color: #444;
     font-family: "Helvetica", sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: right;
     z-index: 0;
 }
@@ -511,11 +511,11 @@ iframe {
     width: 70%;
     height: 15%;
     left: 22.5%;
-    top: 82.5%;
+    top: 80%;
     position: absolute;
     color: #888;
     font-family: "Helvetica", sans-serif;
-    font-size: .25rem;
+    font-size: 0.3rem;
     z-index: 10;
 }
 
@@ -528,7 +528,6 @@ iframe {
     padding: 2%;
     position: absolute;
     font-family: "Helvetica", sans-serif;
-    font-size: .5rem;
     color: #fff;
     background-color: #000;
     overflow: hidden;
@@ -564,7 +563,7 @@ iframe {
     top: 10%;
     position: absolute;
     font-family: "Helvetica", sans-serif;
-    font-size: .5rem;
+    font-size: .50rem;
     color: white;
     text-align: center;
 }

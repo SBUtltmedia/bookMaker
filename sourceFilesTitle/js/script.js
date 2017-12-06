@@ -8,6 +8,7 @@ $(function() {
 
   }).done(function(data) {
     setupSections(data);
+    resizeWindow();
   });
 
 });
