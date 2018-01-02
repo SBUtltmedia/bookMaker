@@ -34,7 +34,7 @@ body{
 
 .button{
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   background-color: #ed1c24;
   padding: 0.5rem;
   text-decoration: none;
@@ -69,7 +69,7 @@ button:focus, input[type="button"]:focus {
 }
 
 #pageTitle{
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ffffff;
   background-color: #565960;
   border-radius: 1rem;

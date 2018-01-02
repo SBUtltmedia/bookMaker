@@ -99,14 +99,33 @@ function launchFullscreen() {
   } else if(i.msRequestFullscreen) {
     i.msRequestFullscreen();
   }else{
+    var w = $(window).width();
+    var h = $(window).height();
+
+    var aw = $("#contentLoader").width();
+    var ah = $("#contentLoader").height();
+    // If the aspect ratio is greater than or equal to 4:3, fix height and set width based on height
+    if ((w / h) >= 4 / 3) {
+        stageHeight = h;
+        stageWidth = (4 / 3) * h;
+    }
+    // If the aspect ratio is less than 4:3, fix width and set height based on width
+    else {
+        stageWidth = w;
+        stageHeight = (3 / 4) * w;
+    }
+
+    var shiftw = (stageWidth/2);
+    var shifth = (stageHeight/2);
+
+    $("#content").css("transform","scale("+ stageWidth/aw +", "+stageHeight/ah+")");
     $("#content").css({
-      "width" : "100%",
-      "height" : "100%",
-      "left" : "0%",
-      "top" : "0%",
-    });
-  $("#headerContent").css("visibility","hidden");
+      "left":"7.5%",
+      "top":"7.5%"
+    })
+    $("#headerContent").css("visibility","hidden");
   }
+
   $("#fullScreenButton").removeClass("anim_fullScreenButtonOut");
   $("#fullScreenButton").addClass("anim_fullScreenButtonIn");
 }
@@ -119,18 +138,25 @@ function exitFullscreen() {
   } else if(document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
   }else{
-    $("#content").css({
-      "width" : "85%",
-      "height" : "85%",
-      "left" : "15%",
-      "top" : "5%",
-    });
-    $("#headerContent").css("visibility","visible");
+    iosExitFullscreen();
   }
   $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
   $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
   resizeWindow();
 }
+
+function iosExitFullscreen()
+
+{
+  $("#content").css({"transform":"scale(1, 1)"});
+  $("#content").css({
+    "left":"15%",
+    "top":"5%"
+  })
+
+  $("#headerContent").css("visibility","visible");
+}
+
 
 function dumpFullscreen() {
   console.log("document.fullscreenElement is: ", document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
@@ -364,11 +390,11 @@ function setContent(pg, chapterID, pageID) {
   $("#contentLoader").empty();
   if (pg.type == "text") {
     // TODO: display text
-    $("#contentLoader").append('<div id="contentText"></div>');
+    $("#contentLoader").append('<div id="contentText" style="width: 100%; height: 100%;"></div>');
     $("#contentText").html(pg.content);
   } else {
     // Display an iframe containing the specified video quiz
-    $("#contentLoader").append('<iframe id="contentFrame"></iframe>');
+    $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;"></iframe>');
     if (pg.content) {
       $("#contentFrame").attr("src", pg.content + "?testing=" + testing + "&key=" + pg.type + "_" + chapterID + "_" + pageID + "&local=" + module.localStorageKey);
     }

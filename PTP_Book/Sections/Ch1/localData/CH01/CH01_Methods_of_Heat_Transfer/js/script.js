@@ -1,12 +1,6 @@
 $(function() {
-  resize();
-  $(window).resize(resize);
-
   checkButton();
   setupVideo();
-
-  resize();
-  $(window).resize(resize);
 });
 
 var urlVars = getUrlVars();

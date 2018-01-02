@@ -30,7 +30,7 @@ body{
 
 .button{
   border-radius: 1rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   background-color: #ed1c24;
   padding: 0.5rem;
   text-decoration: none;
@@ -54,13 +54,13 @@ button:focus, input[type="button"]:focus {
 
 #pageBody{
   background-color: #f2f2f2;
-  padding:0.5rem;
+  padding:1.75rem;
   margin: 1rem;
   border-radius: 1rem;
 }
 
 #pageTitle{
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: #ffffff;
   background-color: #565960;
   border-radius: 1rem;
@@ -68,7 +68,7 @@ button:focus, input[type="button"]:focus {
 }
 
 #pageText li{
-  font-size: 1rem;
+  font-size: 1.75rem;
   color: #000000;
   padding: 0.25rem;
 }

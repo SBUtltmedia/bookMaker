@@ -30,7 +30,7 @@ body{
 
 .button{
   border-radius: 1rem;
-  font-size: 0.5rem;
+  font-size: 1.5rem;
   background-color: #ed1c24;
   padding: 0.5rem;
   text-decoration: none;
@@ -60,7 +60,7 @@ button:focus, input[type="button"]:focus {
 }
 
 #pageTitle{
-  font-size: 1rem;
+  font-size: 2rem;
   color: #ffffff;
   background-color: #565960;
   border-radius: 1rem;
@@ -68,7 +68,7 @@ button:focus, input[type="button"]:focus {
 }
 
 #subtitle li{
-  font-size: 1rem;
+  font-size: 1.75rem;
   color: #000000;
   padding: 0.25rem;
   padding-left: 0rem;
@@ -83,7 +83,7 @@ button:focus, input[type="button"]:focus {
 
 #points li {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   color: #000000;
   padding: 0.25rem;
 }
