@@ -13,29 +13,25 @@
 <body>
     <div id="stage" class="screen">
 
-        <div id="header">
-            <div id="headerContent">
-                <div id="moduleTitle">PTP Book</div>
-            </div>
-        </div>
-
         <div id="content">
             <div id="Chapters">
               <img src="media/triangle_left.svg" class="arrow" id="leftArrow" onclick="setPage(-1);">
               <img src="media/triangle_right.svg" class="arrow" id="rightArrow" onclick="setPage(1)">
               <div id="TitlePhoto"><img src="media/title.svg" id="titlepage"></div>
-              <div id="ChapterPhoto"><img src="media/page.svg" id="page"></div>
+              <div id="ChapterPhoto"><img src="media/fire.svg" id="page"></div>
 
-                <div id="title"></div>
+                <div id="title"><div id="titleName"></div></div>
                 <div id="description"></div>
                 <div id="number"></div>
                 <button class="button" id="goButton">Go To <p id="goTitle"></p> </button>
+                
             </div>
         </div>
 
         <div id="footer">
             <div id="footerContent">
-                <div id="footerTitle">Brought to you by Teaching Learning Lab in Stony Brook University</div>
+                  <img src="media/TLL_New.svg" id="footerLogo">
+                  <div id="footerTitle">bookMaker</div>
             </div>
         </div>
 

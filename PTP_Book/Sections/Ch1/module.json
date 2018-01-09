@@ -44,9 +44,9 @@
   }, {
     "title": "To Use or Not to Use",
     "pages": [{
-      "type": "html",
+      "type": "Video",
       "title": "Indications",
-      "content": ""
+      "content": "localData/CH03/CH03_Indications/index.html"
     }, {
       "type": "Voiceover",
       "title": "Contraindications",

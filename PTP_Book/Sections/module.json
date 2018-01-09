@@ -3,11 +3,11 @@
         {
             "title": "Chapter 1",
             "url": "Sections/Ch1/index.html",
-            "description":"Description"
+            "description":"Physical Heat Therapy"
 	},{
             "title": "Chapter 2",
             "url": "Sections/Ch2/index.html",
-            "description":"Description2"
+            "description":"Physical Cold Therapy"
 	}
     ]
 

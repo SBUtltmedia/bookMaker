@@ -78,7 +78,7 @@ function setupSections(book) {
 
 function setSection(pageNum){
   if(pageNum == 0){
-    $("#title").html("");
+    $("#titleName").html("");
     $("#TitlePhoto").removeClass("hide");
     $("#number").addClass("hide");
 
@@ -86,7 +86,7 @@ function setSection(pageNum){
     $("#ChapterPhoto").addClass("hide");
     $("#goButton").addClass("hide");
     $("#goTitle").addClass("hide");
-  }else{
+  }else if(pageNum == 1){
     $("#TitlePhoto").addClass("hide");
     $("#number").removeClass("hide");
 
@@ -95,7 +95,41 @@ function setSection(pageNum){
     $("#goButton").removeClass("hide");
     $("#goTitle").removeClass("hide");
 
-    $("#title").html(Sections[pageNum].name);
+    $("#page").attr("src","media/fire.svg");
+    $("#titleName").html(Sections[pageNum].name);
+    $("#number").html(pageNum);
+    $("#description").html(Sections[pageNum].description);
+    $("#goTitle").html(Sections[pageNum].name);
+    $("#goButton").click(function(){
+      window.open(Sections[pageNum].url, "_self");
+    });
+  } else if(pageNum == 2){
+    $("#TitlePhoto").addClass("hide");
+    $("#number").removeClass("hide");
+
+    $("#description").removeClass("hide");
+    $("#ChapterPhoto").removeClass("hide");
+    $("#goButton").removeClass("hide");
+    $("#goTitle").removeClass("hide");
+
+    $("#page").attr("src","media/ice.svg");
+    $("#titleName").html(Sections[pageNum].name);
+    $("#number").html(pageNum);
+    $("#description").html(Sections[pageNum].description);
+    $("#goTitle").html(Sections[pageNum].name);
+    $("#goButton").click(function(){
+      window.open(Sections[pageNum].url, "_self");
+    });
+  } else{
+    $("#TitlePhoto").addClass("hide");
+    $("#number").removeClass("hide");
+
+    $("#description").removeClass("hide");
+    $("#ChapterPhoto").removeClass("hide");
+    $("#goButton").removeClass("hide");
+    $("#goTitle").removeClass("hide");
+
+    $("#titleName").html(Sections[pageNum].name);
     $("#number").html(pageNum);
     $("#description").html(Sections[pageNum].description);
     $("#goTitle").html(Sections[pageNum].name);
