@@ -39,7 +39,7 @@
                             type: 'text',
                             rect: ['206px', '50px', 'auto', 'auto', 'auto', 'auto'],
                             opacity: '0',
-                            text: "<p style=\"margin: 0px;\">​Parafin</p>",
+                            text: "<p style=\"margin: 0px;\">​Paraffin</p>",
                             font: ['Arial, Helvetica, sans-serif', [44, "px"], "rgba(0,0,0,1)", "normal", "none", "", "break-word", "nowrap"]
                         },
                         {

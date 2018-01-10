@@ -96,20 +96,20 @@
       "title": "Control Panel Explanation",
       "content": "localData/CH06/CH06_Video_Of_Control_Panel/index.html"
     }, {
-      "type": "html",
+      "type": "Animation",
       "title": "Treatment procedure narrative",
-      "content": ""
+      "content": "localData/CH06/CH06_Treatment_procedure/index.html"
     }]
   }, {
     "title": "Evidence",
     "pages": [{
-      "type": "Voiceover",
+      "type": "Video",
       "title": "EBP Articles",
-      "content": ""
+      "content": "localData/CH07/CH07_EBPArticles/index.html"
     }, {
-      "type": "html",
+      "type": "Voiceover",
       "title": "APTA Top 5 Choosing Wisely Campaign",
-      "content": ""
+      "content": "localData/CH07/CH07_APTA/index.html"
     }]
   }, {
     "title": "Check Your Understanding- QUIZ",
