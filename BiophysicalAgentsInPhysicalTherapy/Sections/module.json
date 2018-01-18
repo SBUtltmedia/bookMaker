@@ -1,0 +1,16 @@
+{
+    "Sections": [
+        {
+            "title": "Chapter 1",
+            "url": "Sections/Ch1/index.html",
+            "description":"Physical Heat Therapy",
+            "img":"fire.svg"
+	},{
+            "title": "Chapter 2",
+            "url": "Sections/Ch2/index.html",
+            "description":"Physical Cold Therapy",
+            "img":"ice.svg"
+	}
+    ]
+
+}

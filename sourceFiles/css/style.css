@@ -633,3 +633,8 @@ iframe {
 .caliperButton {
     background-image: url(../img/calipers.svg);
 }
+
+#overlayFrame{
+  width: 100%;
+  height: 100%;
+}

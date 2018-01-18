@@ -1,0 +1,106 @@
+@font-face {
+    font-family: "FuturaBook";
+    src: url("/fonts/FuturaPTBook.otf");
+}
+
+@font-face {
+    font-family: "FuturaMedium";
+    src: url("/fonts/FuturaPTMedium.otf");
+}
+
+@font-face {
+    font-family: "FuturaDemi";
+    src: url("/fonts/FuturaPTDemi.otf");
+}
+
+@font-face {
+    font-family: "FuturaBold";
+    src: url("/fonts/FuturaPTBold.otf");
+}
+
+@font-face {
+    font-family: "FuturaHeavy";
+    src: url("/fonts/FuturaPTHeavy.otf");
+}
+
+body{
+  background-color: #ffffff;
+  font-family: "FuturaDemi";
+}
+
+.button{
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background-color: #ed1c24;
+  padding: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffffff;
+  border-color: rgba(0,0,0,0);
+}
+
+.button:hover{
+  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.24), 0 1rem 3rem 0 rgba(0,0,0,0.19);
+}
+
+button:focus, input[type="button"]:focus {
+    outline: none;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#pageBody{
+  background-color: #f2f2f2;
+  padding:0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+#pageTitle{
+  font-size: 2rem;
+  color: #ffffff;
+  background-color: #565960;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+#subtitle li{
+  font-size: 1.75rem;
+  color: #000000;
+  padding: 0.25rem;
+  padding-left: 0rem;
+}
+
+#pageTitle,
+#subtitle li,
+#pageButton{
+  text-align: center;
+  display: block;
+}
+
+#points p {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000000;
+  padding: 0.25rem;
+}
+
+#slideImages{
+  width: 44%;
+  height: auto;
+  display: inline;
+  float: left;
+  padding: 3%
+}
+
+#pageText{
+  width: 100%;
+}
+
+#points,#subtitle{
+  padding-left: 0rem;
+  list-style-position: inside;
+}

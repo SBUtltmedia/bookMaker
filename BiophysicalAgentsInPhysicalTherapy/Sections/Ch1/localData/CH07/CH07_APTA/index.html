@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+  <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="../../../sourceFiles/js/progress.js"></script>
+  <script src="/resize/resize.js"></script>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</header>
+
+<body>
+
+  <audio id="voiceover" xmlns="http://www.w3.org/1999/xhtml" onended="setCompleted();">
+        <source src="media/voiceover.ogg" type="audio/ogg"/>
+        <source src="media/voiceover.mp3" type="audio/mpeg"/>
+        <source src="media/voiceover.wav" type="audio/x-wav"/>
+    </audio>
+
+<div id="pageBody">
+  <div id="pageTitle">Top 5 Choosing Wisely Campaign</div>
+  <div id="pageText">
+    <ul id="subtitle">
+      <li><u>Don’t use (superficial or deep) heat to obtain clinically important long term
+outcomes in musculoskeletal conditions. </u></li>
+    </ul>
+    <ol id="points">
+      <p>
+        "1) There is limited evidence for use of superficial or deep heat to obtain clinically important long term outcomes for musculoskeletal conditions. While
+there is some evidence of short-term pain relief for heat, the addition of heat should be supported by evidence and used to facilitate an active treatment
+program. A carefully designed active treatment plan has a greater impact on pain, mobility, function and quality of life. There is emerging evidence
+that passive treatment strategies can harm patients by exacerbating fears and anxiety about being physically active when in pain, which can prolong
+recovery, increase costs and increase the risk of exposure to invasive and costly interventions such as injections or surgery"<br><br><a href="http://integrity.apta.org/ChoosingWisely/5Things/" target="_blank">From Five Things Physical Therapists
+and Patients Should Question</a>
+      </p>
+    </ol>
+  </div>
+
+  <div id="pageButton">
+    <button class="button" id="playButton" onclick="playAudio();">Play Audio To Complete Page</button>
+  </div>
+</div>
+
+</body>
+
+</html>
