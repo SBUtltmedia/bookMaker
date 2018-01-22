@@ -36,11 +36,12 @@ body {
     background-color: #ffffff;
     font-size: 1.5rem;
     font-family: "FuturaDemi";
+    margin: 0;
 }
 
 #viewScene div {
-    padding: 0.5rem;
-    margin: 1rem;
+    padding: 0.5%;
+    margin: 1%;
     background-color: #f2f2f2;
 }
 

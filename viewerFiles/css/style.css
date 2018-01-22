@@ -3,6 +3,11 @@
     src: url("/fonts/FuturaPTBook.otf");
 }
 
+    @font-face {
+      font-family: "BodoniSvtyTwoSCITCTT-Book";
+      src: url('viewerFiles/font/font.ttf');
+    }
+
 @font-face {
     font-family: "FuturaMedium";
     src: url("/fonts/FuturaPTMedium.otf");

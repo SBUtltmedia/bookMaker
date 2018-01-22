@@ -67,9 +67,11 @@ function setupBooks(book) {
 }
 
 function setSection(pageNum){
+
     $("#page").attr("src",Books[pageNum].img);
     $("#goTitle").html(Books[pageNum].name);
     $("#goButton").click(function(){
       window.open(Books[pageNum].url, "_self");
     });
+
 }

@@ -2,6 +2,7 @@ body {
     background-color: #000;
     user-select: none;
     -webkit-user-select: none;
+    margin: 0;
 }
 
 .screen {
@@ -212,6 +213,7 @@ body {
     height: 97.5%;
     left: 0%;
     top: 5%;
+    margin: 0;
     position: absolute;
     background-color: #202020;
     overflow-y: scroll;
@@ -448,11 +450,13 @@ iframe {
 
 .chapterThumb {
     background-color: #555;
+    margin: 0;
 }
 
 .pageThumb {
     background-color: #333;
     left: 20%;
+    margin: 0;
 }
 
 .thumbText {
@@ -485,6 +489,7 @@ iframe {
     height: 25%;
     left: 0%;
     top: 75%;
+    margin: 0;
     position: absolute;
     background-color: #444;
     overflow: hidden;
@@ -540,7 +545,7 @@ iframe {
 }
 
 ::-webkit-scrollbar {
-    width: 5%;
+    width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {

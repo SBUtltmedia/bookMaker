@@ -1,4 +1,9 @@
 @font-face {
+      font-family: BodoniSvtyTwoSCITCTT-Book;
+      src: url('/bookMaker/viewerFiles/font/font.ttf');
+    }
+
+@font-face {
     font-family: "FuturaBook";
     src: url("/fonts/FuturaPTBook.otf");
 }
