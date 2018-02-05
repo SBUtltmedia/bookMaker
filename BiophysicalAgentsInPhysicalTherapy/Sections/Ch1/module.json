@@ -59,11 +59,11 @@
       "title": "Treatment procedure narrative",
       "content": "localData/CH04/CH04_Treatment_procedure_narrative/index.html"
     }, {
-      "type": "html",
+      "type": "text",
       "title": "Maintaining equipment",
       "content": ""
     }, {
-      "type": "html",
+      "type": "text",
       "title": "Treatment procedure video",
       "content": ""
     }]
@@ -74,11 +74,11 @@
       "title": "Treatment procedure narrative",
       "content": "localData/CH05/CH05_Treatment_procedure_narrative/index.html"
     }, {
-      "type": "html",
+      "type": "text",
       "title": "Maintaining the equipment",
       "content": ""
     }, {
-      "type": "html",
+      "type": "text",
       "title": "Treatment procedure video",
       "content": ""
     }],

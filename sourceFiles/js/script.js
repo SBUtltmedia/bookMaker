@@ -1,7 +1,7 @@
 var chapters = [];
 
 var testing = false;
-var clearLocalStorage = true;
+var clearLocalStorage = false;
 
 var refreshInterval = -1;
 
@@ -392,6 +392,7 @@ function setContent(pg, chapterID, pageID) {
     // TODO: display text
     $("#contentLoader").append('<div id="contentText" style="width: 100%; height: 100%;"></div>');
     $("#contentText").html(pg.content);
+
   } else {
     // Display an iframe containing the specified video quiz
     $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;"></iframe>');
@@ -442,6 +443,7 @@ function nextPage(offset) {
           moved = true;
         }
       }
+      $("#thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
       offset--;
     } else if (offset < 0) {
       if (currentPage.quizID > 0) {
@@ -454,6 +456,7 @@ function nextPage(offset) {
           moved = true;
         }
       }
+      $("#thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
       offset++;
     }
   }
@@ -502,6 +505,12 @@ function updatePages(i,completedPages){
     if (pg.type == "text" && $("#thumb" + i + "-" + j).attr("clicked")) {
 
       thumbEl.addClass("page_complete");
+      completedPages++;
+
+    } else if (pg.type == "cover" && $("#thumb" + i + "-" + j).attr("clicked")) {
+
+      thumbEl.addClass("page_complete");
+      completedPages++;
 
     } else if (pg.type == "vq") {
 
