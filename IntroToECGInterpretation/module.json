@@ -7,49 +7,128 @@
           "content": "localData/CH00/CH00_Title/index.html"
         }]
       },{
-      "title": "Chapter 1",
+      "title": "Module 1",
       "pages": [{
         "type": "cover",
-        "title": "Chapter 1 Title Page",
+        "title": "Module 1 Title Page",
         "content": "localData/CH01/CH01_Title/index.html"
-      },{
-        "type": "quiz",
-        "title": "Chapter 1 Quiz",
-        "content": "localData/CH01/CH01_Quiz/index.html",
-        "overlays": ["calipers"]
       }, {
         "type": "VQ",
-        "title": "Chapter 1 Video",
-        "content": "localData/CH01/CH01/index.html"
-      }]
+        "title": "The Normal ECG 1",
+        "content": "localData/CH01/Video1/index.html"
+      }, {
+        "type": "VQ",
+        "title": "The Normal ECG 2",
+        "content": "localData/CH01/Video2/index.html"
+      }, {
+        "type": "VQ",
+        "title": "ECG Interpretation",
+        "content": "localData/CH01/Video3/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 1 Quiz",
+        "content": "localData/CH01/CH01_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }
+    ]
     },
     {
-      "title": "Chapter 2",
+      "title": "Module 2",
       "pages": [{
         "type": "cover",
-        "title": "Chapter 2 Title Page",
+        "title": "Module 2 Title Page",
         "content": "localData/CH02/CH02_Title/index.html"
       },{
         "type": "VQ",
-        "title": "Chapter 2 Video",
-        "content": "localData/CH02/CH02/index.html"
+        "title": "ECG Abnormalities",
+        "content": "localData/CH02/Video1/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 2 Quiz",
+        "content": "localData/CH02/CH02_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
       }]
     },
     {
-      "title": "Chapter 3",
+      "title": "Module 3",
       "pages": [{
         "type": "cover",
-        "title": "Chapter 3 Title Page",
+        "title": "Module 3 Title Page",
         "content": "localData/CH03/CH03_Title/index.html"
       },{
         "type": "VQ",
-        "title": "Chapter 3 Video",
-        "content": "localData/CH03/CH03/index.html"
+        "title": "Sinus Tachycardia & Sinus Bradycardia",
+        "content": "localData/CH03/Video1/index.html"
+      },{
+        "type": "VQ",
+        "title": "Atrial Fibrillation & Atrial Flutter",
+        "content": "localData/CH03/Video2/index.html"
+      },{
+        "type": "VQ",
+        "title": "WPW & pSVT",
+        "content": "localData/CH03/Video3/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 3 Quiz",
+        "content": "localData/CH03/CH03_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 4",
+      "pages": [{
+        "type": "cover",
+        "title": "Module 4 Title Page",
+        "content": "localData/CH04/CH04_Title/index.html"
+      },{
+        "type": "VQ",
+        "title": "AV Block",
+        "content": "localData/CH04/Video1/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 4 Quiz",
+        "content": "localData/CH04/CH04_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 5",
+      "pages": [{
+        "type": "cover",
+        "title": "Module 5 Title Page",
+        "content": "localData/CH05/CH05_Title/index.html"
+      },{
+        "type": "VQ",
+        "title": "Ventricular Arrhythmias",
+        "content": "localData/CH05/Video1/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 5 Quiz",
+        "content": "localData/CH05/CH05_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 6",
+      "pages": [{
+        "type": "cover",
+        "title": "Module 6 Title Page",
+        "content": "localData/CH06/CH06_Title/index.html"
+      },{
+        "type": "VQ",
+        "title": "Ischemia/ACS",
+        "content": "localData/CH06/Video1/index.html"
+      }, {
+        "type": "quiz",
+        "title": "Module 6 Quiz",
+        "content": "localData/CH06/CH06_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
       }]
     }
   ],
   "overlayURLs": {
-    "calipers": "/ekg-slider/"
+    "calipers": "localData/ekg-slider/index.html",
+    "cheatSheet": "localData/GeneralFiles/cheatSheet/cheatSheet.html"
   },
   "localStorageKey": "CardioB"
 

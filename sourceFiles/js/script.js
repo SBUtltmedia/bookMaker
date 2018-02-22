@@ -58,18 +58,6 @@ $(function() {
     }
   });
 
-  $("#overlayButton1").click(function() {
-    if (canShowOverlay) {
-      if (!showingOverlay) {
-        showOverlay(true);
-      } else {
-        showOverlay(false);
-      }
-    }
-
-    resizeWindow();
-  });
-
   $(document).keydown(function (e) {
     switch(e.which) {
         case 37: // left
@@ -390,12 +378,12 @@ function setContent(pg, chapterID, pageID) {
   $("#contentLoader").empty();
   if (pg.type == "text") {
     // TODO: display text
-    $("#contentLoader").append('<div id="contentText" style="width: 100%; height: 100%;"></div>');
+    $("#contentLoader").append('<div id="contentText" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></div>');
     $("#contentText").html(pg.content);
 
   } else {
     // Display an iframe containing the specified video quiz
-    $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;"></iframe>');
+    $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
     if (pg.content) {
       $("#contentFrame").attr("src", pg.content + "?testing=" + testing + "&key=" + pg.type + "_" + chapterID + "_" + pageID + "&local=" + module.localStorageKey);
     }
@@ -407,19 +395,54 @@ function setContent(pg, chapterID, pageID) {
   }
   $(".overlayButton").removeClass("caliperButton");
   $(".overlayButton").removeClass("btn");
+  $(".overlayButton").removeClass("hidden");
+  $("#overlayMenu").addClass("hidden");
   $("#overlay").empty();
+  $("#overlayMenuOptions").html("");
   canShowOverlay = false;
   if (pg.overlays != null && pg.overlays != undefined) {
     if (pg.overlays.length > 0) {
       $("#overlayButton1").addClass("btn");
-      var overlay = pg.overlays[0];
-      if (overlay == "calipers") {
-        $("#overlayButton1").addClass("caliperButton");
+
+      if (pg.overlays.length == 1) {
+        var overlay = pg.overlays[0];
+        if (overlay == "calipers") {
+          $("#overlayButton1").addClass("caliperButton");
+        }
+        $("#overlay").append('<iframe id="overlayFrame" ALLOWTRANSPARENCY="true"></iframe>');
+        $("#overlayFrame").attr("src", module.overlayURLs[overlay]);
+        canShowOverlay = true;
+
+        $("#overlayButton1").click(function() {
+          if (canShowOverlay) {
+            if (!showingOverlay) {
+              showOverlay(true);
+            } else {
+              showOverlay(false);
+            }
+          }
+          resizeWindow();
+        });
+
+      }else{
+        for(var i = 0;i < pg.overlays.length;i++){
+          linkOverlay(pg.overlays[i]);
+        }
+        $("#overlayButton1").on("click",
+          function(){
+            if($("#overlayMenu").hasClass("hidden")){
+              $("#overlayMenu").removeClass("hidden");
+            }else{
+              $("#overlayMenu").addClass("hidden");
+            }
+          }
+        );
+        canShowOverlay = true;
       }
-      $("#overlay").append('<iframe id="overlayFrame"></iframe>');
-      $("#overlayFrame").attr("src", module.overlayURLs[overlay]);
-      canShowOverlay = true;
+
     }
+  }else{
+    $(".overlayButton").addClass("hidden");
   }
   $(".thumbGlow").css("visibility", "hidden");
   $("#thumbGlow" + chapterID + "-" + pageID).css("visibility", "visible");
@@ -427,6 +450,40 @@ function setContent(pg, chapterID, pageID) {
   resizeWindow();
 
 
+}
+
+function linkOverlay(overlay){
+  $("#overlay").append('<iframe class="'+overlay+' overlay" ALLOWTRANSPARENCY="true"></iframe>');
+  $("."+overlay).attr("src", module.overlayURLs[overlay]);
+  var option = $("<a></a>");
+  option.addClass('overlayMenuItem');
+  option.attr('id',overlay);
+  option.html(overlay);
+
+  option.on("click",function(){
+    if ($("."+overlay).hasClass("anim_overlayOff")) {
+
+      $(".overlay").each(function(){
+        $(this).removeClass("anim_overlayOn");
+        $(this).addClass("anim_overlayOff");
+      })
+
+      $("."+overlay).removeClass("anim_overlayOff");
+      $("."+overlay).addClass("anim_overlayOn");
+      resizeWindow();
+    } else {
+
+      $(".overlay").each(function(){
+        $(this).removeClass("anim_overlayOn");
+        $(this).addClass("anim_overlayOff");
+      })
+
+      $("."+overlay).removeClass("anim_overlayOn");
+      $("."+overlay).addClass("anim_overlayOff");
+      resizeWindow();
+    }
+  })
+  $("#overlayMenuOptions").append(option);
 }
 
 function nextPage(offset) {
@@ -460,8 +517,10 @@ function nextPage(offset) {
       offset++;
     }
   }
+  console.log(moved);
   if (moved) {
     setContent(chapters[currentPage.chapterID].pages[currentPage.quizID], currentPage.chapterID, currentPage.quizID);
+    $("thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
   }
 }
 

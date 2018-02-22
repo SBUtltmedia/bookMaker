@@ -11,6 +11,10 @@ body {
     overflow: hidden;
 }
 
+.hidden{
+  display: none;
+}
+
 .btn {
     cursor: pointer;
 }
@@ -499,7 +503,7 @@ iframe {
 }
 
 .page_incomplete {
-    background-image: url(../img/gray_check.svg);
+
 }
 
 .page_complete{
@@ -507,7 +511,7 @@ iframe {
 }
 
 .chapter_incomplete {
-    background-image: url(../img/lightgray_check.svg);
+
 }
 
 .chapter_complete{
@@ -639,7 +643,41 @@ iframe {
     background-image: url(../img/calipers.svg);
 }
 
-#overlayFrame{
+#overlay iframe{
   width: 100%;
   height: 100%;
+}
+
+#overlayMenu{
+  width: 90%;
+  background-color: #404040;
+  position: absolute;
+  height: 160%;
+  left: 5%;
+  top: -130%;
+  z-index: 1000000;
+
+}
+
+#overlayMenuOptions{
+  display: inline-flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 90%;
+  top: 5%;
+  left: 5%;
+  height: 80%;
+  position: absolute;
+  background-color: #f9f9f9;
+}
+
+#overlayMenu a{
+  width: 90%;
+  padding: 5%;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+#overlayMenu a:hover{
+  background-color: #f1f1f1;
 }

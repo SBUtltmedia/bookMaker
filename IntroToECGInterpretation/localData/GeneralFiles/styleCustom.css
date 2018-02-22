@@ -97,7 +97,7 @@
 }
 
 .page_incomplete {
-    background-image: url(img/gray_check.svg);
+    
 }
 
 .page_complete{
@@ -105,7 +105,7 @@
 }
 
 .chapter_incomplete {
-    background-image: url(img/lightgray_check.svg);
+
 }
 
 .chapter_complete{
