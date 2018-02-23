@@ -57,7 +57,7 @@
         "content": "localData/CH03/CH03_Title/index.html"
       },{
         "type": "VQ",
-        "title": "Sinus Tachycardia & Sinus Bradycardia",
+        "title": "Sinus Tachycardia & Bradycardia",
         "content": "localData/CH03/Video1/index.html"
       },{
         "type": "VQ",
@@ -130,6 +130,7 @@
     "calipers": "localData/ekg-slider/index.html",
     "cheatSheet": "localData/GeneralFiles/cheatSheet/cheatSheet.html"
   },
-  "localStorageKey": "CardioB"
+  "localStorageKey": "CardioB",
+  "zero": true
 
 }

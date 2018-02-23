@@ -122,5 +122,6 @@
   "overlayURLs": {
     "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
   },
-  "localStorageKey": "PTP"
+  "localStorageKey": "PTP",
+  "zero": false
 }

@@ -14,13 +14,14 @@ var isFullScreen = false;
 
 var canShowOverlay = false;
 var showingOverlay = false;
-
+var debug = false;
 var progress;
+var zero = false;
 
 // Called on page load.
 $(function() {
 
-  if(clearLocalStorage){
+  if (clearLocalStorage) {
     localStorage.clear();
     console.log("Cleared for Testing!")
   }
@@ -58,17 +59,18 @@ $(function() {
     }
   });
 
-  $(document).keydown(function (e) {
-    switch(e.which) {
-        case 37: // left
+  $(document).keydown(function(e) {
+    switch (e.which) {
+      case 37: // left
         $("#buttonPrevious").click();
         break;
 
-        case 39: // right
+      case 39: // right
         $("#buttonNext").click();
         break;
 
-        default: return; // exit this handler for other keys
+      default:
+        return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
   });
@@ -78,15 +80,15 @@ $(function() {
 // Find the right method, call on correct element
 function launchFullscreen() {
   var i = document.getElementById("contentLoader");
-  if(i.requestFullscreen) {
+  if (i.requestFullscreen) {
     i.requestFullscreen();
-  } else if(i.mozRequestFullScreen) {
+  } else if (i.mozRequestFullScreen) {
     i.mozRequestFullScreen();
-  } else if(i.webkitRequestFullscreen) {
+  } else if (i.webkitRequestFullscreen) {
     i.webkitRequestFullscreen();
-  } else if(i.msRequestFullscreen) {
+  } else if (i.msRequestFullscreen) {
     i.msRequestFullscreen();
-  }else{
+  } else {
     var w = $(window).width();
     var h = $(window).height();
 
@@ -94,24 +96,24 @@ function launchFullscreen() {
     var ah = $("#contentLoader").height();
     // If the aspect ratio is greater than or equal to 4:3, fix height and set width based on height
     if ((w / h) >= 4 / 3) {
-        stageHeight = h;
-        stageWidth = (4 / 3) * h;
+      stageHeight = h;
+      stageWidth = (4 / 3) * h;
     }
     // If the aspect ratio is less than 4:3, fix width and set height based on width
     else {
-        stageWidth = w;
-        stageHeight = (3 / 4) * w;
+      stageWidth = w;
+      stageHeight = (3 / 4) * w;
     }
 
-    var shiftw = (stageWidth/2);
-    var shifth = (stageHeight/2);
+    var shiftw = (stageWidth / 2);
+    var shifth = (stageHeight / 2);
 
-    $("#content").css("transform","scale("+ stageWidth/aw +", "+stageHeight/ah+")");
+    $("#content").css("transform", "scale(" + stageWidth / aw + ", " + stageHeight / ah + ")");
     $("#content").css({
-      "left":"7.5%",
-      "top":"7.5%"
+      "left": "7.5%",
+      "top": "7.5%"
     })
-    $("#headerContent").css("visibility","hidden");
+    $("#headerContent").css("visibility", "hidden");
   }
 
   $("#fullScreenButton").removeClass("anim_fullScreenButtonOut");
@@ -119,13 +121,13 @@ function launchFullscreen() {
 }
 
 function exitFullscreen() {
-  if(document.exitFullscreen) {
+  if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if(document.mozCancelFullScreen) {
+  } else if (document.mozCancelFullScreen) {
     document.mozCancelFullScreen();
-  } else if(document.webkitExitFullscreen) {
+  } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
-  }else{
+  } else {
     iosExitFullscreen();
   }
   $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
@@ -136,13 +138,15 @@ function exitFullscreen() {
 function iosExitFullscreen()
 
 {
-  $("#content").css({"transform":"scale(1, 1)"});
   $("#content").css({
-    "left":"15%",
-    "top":"5%"
+    "transform": "scale(1, 1)"
+  });
+  $("#content").css({
+    "left": "15%",
+    "top": "5%"
   })
 
-  $("#headerContent").css("visibility","visible");
+  $("#headerContent").css("visibility", "visible");
 }
 
 
@@ -155,11 +159,11 @@ function dumpFullscreen() {
 document.addEventListener("fullscreenchange", function(e) {
   console.log("fullscreenchange event! ", e);
 
-  if(isFullScreen){
+  if (isFullScreen) {
     $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
     $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
     isFullScreen = false;
-  }else{
+  } else {
 
     isFullScreen = true;
   }
@@ -167,11 +171,11 @@ document.addEventListener("fullscreenchange", function(e) {
 document.addEventListener("mozfullscreenchange", function(e) {
   console.log("mozfullscreenchange event! ", e);
 
-  if(isFullScreen){
+  if (isFullScreen) {
     $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
     $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
     isFullScreen = false;
-  }else{
+  } else {
 
     isFullScreen = true;
   }
@@ -179,11 +183,11 @@ document.addEventListener("mozfullscreenchange", function(e) {
 document.addEventListener("webkitfullscreenchange", function(e) {
   console.log("webkitfullscreenchange event! ", e);
 
-  if(isFullScreen){
+  if (isFullScreen) {
     $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
     $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
     isFullScreen = false;
-  }else{
+  } else {
 
     isFullScreen = true;
   }
@@ -191,11 +195,11 @@ document.addEventListener("webkitfullscreenchange", function(e) {
 document.addEventListener("msfullscreenchange", function(e) {
   console.log("msfullscreenchange event! ", e);
 
-  if(isFullScreen){
+  if (isFullScreen) {
     $("#fullScreenButton").removeClass("anim_fullScreenButtonIn");
     $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
     isFullScreen = false;
-  }else{
+  } else {
 
     isFullScreen = true;
   }
@@ -225,6 +229,7 @@ function setFullScreen(bool) {
 function loadModule(m) {
   // Clear sidebar
   clearSidebar();
+  zero = m.zero;
   // Create sidebar thumbnails
   for (var i = 0; i < m.chapters.length; i++) {
     // For each chapter...
@@ -264,24 +269,46 @@ function makeChapterThumbnail(ch, chapterID) {
   // Set title text
   $("#thumbText" + chapterID).text(ch.title);
   // Set chapter number
-  $("#thumbNumber" + chapterID).text(chapterID + 1);
+  if (zero) {
+    $("#thumbNumber" + chapterID).text(chapterID);
+  } else {
+    $("#thumbNumber" + chapterID).text(chapterID + 1);
+  }
   // Bind event listener
   initChapterThumbnailClick(chapterID);
 }
 
 function initChapterThumbnailClick(i) {
   $("#thumb" + i).click(function() {
-    chapters[i].expanded = !chapters[i].expanded;
-    for (var j = 0; j < chapters[i].pages.length; j++) {
-      if ($("#thumbBox" + i + "-" + j).css("visibility") == "hidden") {
-        $("#thumbBox" + i + "-" + j).css("visibility", "visible");
-        $("#thumbGlow" + i + "-" + j).css("left", "11%");
-      } else {
-        $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
-        $("#thumbGlow" + i + "-" + j).css("left", "6%");
+    for (var x = 0; x < chapters.length; x++) {
+      if (chapters[x].expanded == true && i != x) {
+        chapters[x].expanded = !chapters[x].expanded;
+        for (var j = 0; j < chapters[x].pages.length; j++) {
+          if ($("#thumbBox" + x + "-" + j).css("visibility") == "hidden") {
+            $("#thumbBox" + x + "-" + j).css("visibility", "visible");
+            $("#thumbGlow" + x + "-" + j).css("left", "11%");
+          } else {
+            $("#thumbBox" + x + "-" + j).css("visibility", "hidden");
+            $("#thumbGlow" + x + "-" + j).css("left", "6%");
+          }
+        }
+        animateThumbPositions(chapters, false);
       }
     }
-    animateThumbPositions(chapters, false);
+
+    if (chapters[i].expanded == false) {
+      chapters[i].expanded = !chapters[i].expanded;
+      for (var j = 0; j < chapters[i].pages.length; j++) {
+        if ($("#thumbBox" + i + "-" + j).css("visibility") == "hidden") {
+          $("#thumbBox" + i + "-" + j).css("visibility", "visible");
+          $("#thumbGlow" + i + "-" + j).css("left", "11%");
+        } else {
+          $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
+          $("#thumbGlow" + i + "-" + j).css("left", "6%");
+        }
+      }
+      animateThumbPositions(chapters, false);
+    }
   });
 }
 
@@ -317,7 +344,7 @@ function initPageThumbnailClick(i, j) {
     currentPage.quizID = j;
     setContent(chapters[i].pages[j], i, j);
     $("#thumb" + i + "-" + j).attr("clicked", true)
-      updateCompletion();
+    updateCompletion();
   });
 }
 
@@ -424,15 +451,16 @@ function setContent(pg, chapterID, pageID) {
           resizeWindow();
         });
 
-      }else{
-        for(var i = 0;i < pg.overlays.length;i++){
+      } else {
+        for (var i = 0; i < pg.overlays.length; i++) {
           linkOverlay(pg.overlays[i]);
         }
+        $("#overlayButton1").off("click");
         $("#overlayButton1").on("click",
-          function(){
-            if($("#overlayMenu").hasClass("hidden")){
+          function() {
+            if ($("#overlayMenu").hasClass("hidden")) {
               $("#overlayMenu").removeClass("hidden");
-            }else{
+            } else {
               $("#overlayMenu").addClass("hidden");
             }
           }
@@ -441,7 +469,7 @@ function setContent(pg, chapterID, pageID) {
       }
 
     }
-  }else{
+  } else {
     $(".overlayButton").addClass("hidden");
   }
   $(".thumbGlow").css("visibility", "hidden");
@@ -452,34 +480,34 @@ function setContent(pg, chapterID, pageID) {
 
 }
 
-function linkOverlay(overlay){
-  $("#overlay").append('<iframe class="'+overlay+' overlay" ALLOWTRANSPARENCY="true"></iframe>');
-  $("."+overlay).attr("src", module.overlayURLs[overlay]);
+function linkOverlay(overlay) {
+  $("#overlay").append('<iframe class="' + overlay + ' overlay" ALLOWTRANSPARENCY="true"></iframe>');
+  $("." + overlay).attr("src", module.overlayURLs[overlay]);
   var option = $("<a></a>");
   option.addClass('overlayMenuItem');
-  option.attr('id',overlay);
+  option.attr('id', overlay);
   option.html(overlay);
 
-  option.on("click",function(){
-    if ($("."+overlay).hasClass("anim_overlayOff")) {
+  option.on("click", function() {
+    if ($("." + overlay).hasClass("anim_overlayOff")) {
 
-      $(".overlay").each(function(){
+      $(".overlay").each(function() {
         $(this).removeClass("anim_overlayOn");
         $(this).addClass("anim_overlayOff");
       })
 
-      $("."+overlay).removeClass("anim_overlayOff");
-      $("."+overlay).addClass("anim_overlayOn");
+      $("." + overlay).removeClass("anim_overlayOff");
+      $("." + overlay).addClass("anim_overlayOn");
       resizeWindow();
     } else {
 
-      $(".overlay").each(function(){
+      $(".overlay").each(function() {
         $(this).removeClass("anim_overlayOn");
         $(this).addClass("anim_overlayOff");
       })
 
-      $("."+overlay).removeClass("anim_overlayOn");
-      $("."+overlay).addClass("anim_overlayOff");
+      $("." + overlay).removeClass("anim_overlayOn");
+      $("." + overlay).addClass("anim_overlayOff");
       resizeWindow();
     }
   })
@@ -500,7 +528,6 @@ function nextPage(offset) {
           moved = true;
         }
       }
-      $("#thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
       offset--;
     } else if (offset < 0) {
       if (currentPage.quizID > 0) {
@@ -513,14 +540,50 @@ function nextPage(offset) {
           moved = true;
         }
       }
-      $("#thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
       offset++;
     }
   }
   console.log(moved);
   if (moved) {
-    setContent(chapters[currentPage.chapterID].pages[currentPage.quizID], currentPage.chapterID, currentPage.quizID);
-    $("thumb"+currentPage.chapterID+"-"+currentPage.quizID).click();
+    //#####################################
+    var i = currentPage.chapterID;
+    var j = currentPage.quizID;
+    setContent(chapters[i].pages[j], i, j);
+    $("#thumb" + i + "-" + j).attr("clicked", true)
+    updateCompletion();
+    //#####################################
+    if (j == 0) {
+      for (var x = 0; x < chapters.length; x++) {
+        if (chapters[x].expanded == true && i != x) {
+          chapters[x].expanded = !chapters[x].expanded;
+          for (var j = 0; j < chapters[x].pages.length; j++) {
+            if ($("#thumbBox" + x + "-" + j).css("visibility") == "hidden") {
+              $("#thumbBox" + x + "-" + j).css("visibility", "visible");
+              $("#thumbGlow" + x + "-" + j).css("left", "11%");
+            } else {
+              $("#thumbBox" + x + "-" + j).css("visibility", "hidden");
+              $("#thumbGlow" + x + "-" + j).css("left", "6%");
+            }
+          }
+          animateThumbPositions(chapters, false);
+        }
+      }
+
+      if (chapters[i].expanded == false) {
+        chapters[i].expanded = !chapters[i].expanded;
+        for (var j = 0; j < chapters[i].pages.length; j++) {
+          if ($("#thumbBox" + i + "-" + j).css("visibility") == "hidden") {
+            $("#thumbBox" + i + "-" + j).css("visibility", "visible");
+            $("#thumbGlow" + i + "-" + j).css("left", "11%");
+          } else {
+            $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
+            $("#thumbGlow" + i + "-" + j).css("left", "6%");
+          }
+        }
+        animateThumbPositions(chapters, false);
+      }
+    }
+    //#####################################
   }
 }
 
@@ -530,27 +593,29 @@ function updateCompletion() {
   $(".thumbType").removeClass("page_incomplete");
   $(".thumbType").removeClass("page_complete");
 
-  console.log('\n' + "----------Update Completion----------");
-
+  if (debug) {
+    console.log('\n' + "----------Update Completion----------");
+  }
   for (var i = 0; i < chapters.length; i++) {
 
-      var completedPages = 0;
-      var chapterSelected = chapters[i];
-      var chapterEl = $("#thumbType" + i);
+    var completedPages = 0;
+    var chapterSelected = chapters[i];
+    var chapterEl = $("#thumbType" + i);
 
-      completedPages = updatePages(i,completedPages);
+    completedPages = updatePages(i, completedPages);
 
-    if(completedPages == chapterSelected.pages.length){
-        chapterEl.addClass("chapter_complete")
-    }else{
+    if (completedPages == chapterSelected.pages.length) {
+      chapterEl.addClass("chapter_complete")
+    } else {
       chapterEl.addClass("chapter_incomplete")
     }
   }
-
-  console.log("----------End Update Completion----------" + '\n');
+  if (debug) {
+    console.log("----------End Update Completion----------" + '\n');
+  }
 }
 
-function updatePages(i,completedPages){
+function updatePages(i, completedPages) {
 
   for (var j = 0; j < chapters[i].pages.length; j++) {
 
@@ -559,8 +624,9 @@ function updatePages(i,completedPages){
     var thumbEl = $("#thumbType" + i + "-" + j)
     var key = progress.getKey(pg.type + "_" + i + "_" + j);
 
-    console.log(key,pg.type,i,j, $("#thumb" + i + "-" + j).attr("clicked"))
-
+    if (debug) {
+      console.log(key, pg.type, i, j, $("#thumb" + i + "-" + j).attr("clicked"))
+    }
     if (pg.type == "text" && $("#thumb" + i + "-" + j).attr("clicked")) {
 
       thumbEl.addClass("page_complete");
@@ -588,7 +654,7 @@ function updatePages(i,completedPages){
     } else if (progress.getKey(pg.type + "_" + i + "_" + j)) {
       thumbEl.addClass("page_complete");
       completedPages++;
-  } else{
+    } else {
       thumbEl.addClass("page_incomplete");
     }
   }
