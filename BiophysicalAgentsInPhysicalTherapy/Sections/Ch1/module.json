@@ -123,5 +123,6 @@
     "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
   },
   "localStorageKey": "PTP",
-  "zero": false
+  "zero": false,
+  "numbers":true
 }

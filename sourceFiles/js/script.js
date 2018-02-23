@@ -17,6 +17,7 @@ var showingOverlay = false;
 var debug = false;
 var progress;
 var zero = false;
+var numbers = true;
 
 // Called on page load.
 $(function() {
@@ -164,7 +165,6 @@ document.addEventListener("fullscreenchange", function(e) {
     $("#fullScreenButton").addClass("anim_fullScreenButtonOut");
     isFullScreen = false;
   } else {
-
     isFullScreen = true;
   }
 });
@@ -230,6 +230,7 @@ function loadModule(m) {
   // Clear sidebar
   clearSidebar();
   zero = m.zero;
+  numbers = m.numbers;
   // Create sidebar thumbnails
   for (var i = 0; i < m.chapters.length; i++) {
     // For each chapter...
@@ -269,11 +270,13 @@ function makeChapterThumbnail(ch, chapterID) {
   // Set title text
   $("#thumbText" + chapterID).text(ch.title);
   // Set chapter number
+if(numbers){
   if (zero) {
     $("#thumbNumber" + chapterID).text(chapterID);
   } else {
     $("#thumbNumber" + chapterID).text(chapterID + 1);
   }
+}
   // Bind event listener
   initChapterThumbnailClick(chapterID);
 }

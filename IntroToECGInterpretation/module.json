@@ -7,7 +7,7 @@
           "content": "localData/CH00/CH00_Title/index.html"
         }]
       },{
-      "title": "Module 1",
+      "title": "Module 1: ECG Basics",
       "pages": [{
         "type": "cover",
         "title": "Module 1 Title Page",
@@ -33,7 +33,7 @@
     ]
     },
     {
-      "title": "Module 2",
+      "title": "Module 2: ECG Abnormalities",
       "pages": [{
         "type": "cover",
         "title": "Module 2 Title Page",
@@ -50,7 +50,7 @@
       }]
     },
     {
-      "title": "Module 3",
+      "title": "Module 3: N/A",
       "pages": [{
         "type": "cover",
         "title": "Module 3 Title Page",
@@ -75,7 +75,7 @@
       }]
     },
     {
-      "title": "Module 4",
+      "title": "Module 4: AV Blocks ",
       "pages": [{
         "type": "cover",
         "title": "Module 4 Title Page",
@@ -92,7 +92,7 @@
       }]
     },
     {
-      "title": "Module 5",
+      "title": "Module 5: Ventricular Arrhythmias",
       "pages": [{
         "type": "cover",
         "title": "Module 5 Title Page",
@@ -109,7 +109,7 @@
       }]
     },
     {
-      "title": "Module 6",
+      "title": "Module 6: Ischemia / ACS",
       "pages": [{
         "type": "cover",
         "title": "Module 6 Title Page",
@@ -131,6 +131,7 @@
     "cheatSheet": "localData/GeneralFiles/cheatSheet/cheatSheet.html"
   },
   "localStorageKey": "CardioB",
-  "zero": true
+  "zero": false,
+  "numbers":false
 
 }

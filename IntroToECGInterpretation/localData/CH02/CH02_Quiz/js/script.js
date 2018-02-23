@@ -226,8 +226,8 @@ function startQuestion() {
   answerCount = 0;
   currentScenario = questionsNotAnswered[currentIndex];
   $("#scenarioHeader").html("Scenario " + (currentScenario + 1) + " / " + scenarios.length);
-  $('#scenarioText').html(scenarios[questionsNotAnswered[currentIndex]].scenarioText);
-
+  $('#scenarioText').html("<pre>"+scenarios[questionsNotAnswered[currentIndex]].scenarioText+"</pre>");
+$("pre").css("font-family","FuturaDemi");
 
   $("#optionsTextHeader").html("Choose One Above").css({
     "background-color": "#7e828c",
