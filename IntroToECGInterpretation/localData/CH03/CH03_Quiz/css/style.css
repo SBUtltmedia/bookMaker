@@ -126,11 +126,16 @@ body {
   transition: 0.3s;
 }
 
-#OverlayCorrectDescription{
+.OverlayCorrectDescription{
   display: inline-block;
   text-align: center;
   float: right;
-  width: 50%;
+  width: 48%;
+  padding: 1%;
+}
+
+#OverlayCorrectDescription{
+  overflow-y: auto;
 }
 
 #OverlayCorrectImage{
@@ -150,7 +155,7 @@ body {
 }
 
 #image{
-  width: 50%;
+  width: 49%;
 }
 
 

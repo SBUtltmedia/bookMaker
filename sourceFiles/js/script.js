@@ -44,6 +44,10 @@ $(function() {
     nextPage(1);
   });
 
+  $("#gradingInfo").click(function() {
+    showGrades();
+  });
+
   $("#fullScreenButton").click(function() {
     var userAgent = window.navigator.userAgent;
     if (isFullScreen) {
@@ -136,9 +140,7 @@ function exitFullscreen() {
   resizeWindow();
 }
 
-function iosExitFullscreen()
-
-{
+function iosExitFullscreen(){
   $("#content").css({
     "transform": "scale(1, 1)"
   });
@@ -149,7 +151,6 @@ function iosExitFullscreen()
 
   $("#headerContent").css("visibility", "visible");
 }
-
 
 function dumpFullscreen() {
   console.log("document.fullscreenElement is: ", document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
@@ -270,13 +271,13 @@ function makeChapterThumbnail(ch, chapterID) {
   // Set title text
   $("#thumbText" + chapterID).text(ch.title);
   // Set chapter number
-if(numbers){
-  if (zero) {
-    $("#thumbNumber" + chapterID).text(chapterID);
-  } else {
-    $("#thumbNumber" + chapterID).text(chapterID + 1);
+  if (numbers) {
+    if (zero) {
+      $("#thumbNumber" + chapterID).text(chapterID);
+    } else {
+      $("#thumbNumber" + chapterID).text(chapterID + 1);
+    }
   }
-}
   // Bind event listener
   initChapterThumbnailClick(chapterID);
 }
@@ -416,10 +417,27 @@ function setContent(pg, chapterID, pageID) {
     $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
     if (pg.content) {
       $("#contentFrame").attr("src", pg.content + "?testing=" + testing + "&key=" + pg.type + "_" + chapterID + "_" + pageID + "&local=" + module.localStorageKey);
+      if (pg.type.toLowerCase() == "vq") {
+        $('#contentFrame').on("load", function() {
+          $('#contentFrame')
+            .contents().find("head")
+            .append($('<script>$("#scoreBox").css("display","none"); $("#noQuestionText").css("display","none");            </script>'));
+        });
+      }
+      if (pg.type.toLowerCase() == "cover") {
+        $('#contentFrame').on("load", function() {
+          $('#contentFrame')
+            .contents().find("body")
+            .append($('<div style="width:50.5%; position: absolute; left: 21.75%; height:8%; top:1%; background-color:white; z-index:-1;padding:3%; font-size:3rem; ">' + ((chapters[chapterID].title).split(":"))[1] + '</div>'));
+          if (chapterID > 0) {
+            $('#contentFrame')
+              .contents().find("body")
+              .append($('<div style="width: 5.5%; position: absolute; left: 69%; height: 5.5%; top: 10.5%; color: white; z-index: 1; font-size: 2.5rem; text-align: center;">' + chapterID + '</div>'));
+          }
+        });
+      }
     }
-
   }
-
   if (showingOverlay) {
     showOverlay(false);
   }
@@ -588,6 +606,74 @@ function nextPage(offset) {
     }
     //#####################################
   }
+}
+
+function showGrades() {
+  var htAccess = true;
+  if (htAccess) {
+    $.ajax({
+      url: "sourceFiles/api/getUser"
+    }).done(function(keydata) {
+
+      var studentInfo = organizeKey(keydata);
+      console.log(studentInfo)
+
+      grading(studentInfo);
+
+      $("#gradesOverlay").toggleClass("hidden");
+      $("#gradesOverlayTransparent").toggleClass("hidden");
+      $("#gradesOverlayContent").html(studentInfo[0]+"'s Grading<br><strong style='color:#FF3B3F'>Not Active Yet</strong><br>For This Class");
+    });
+  } else {
+    $("#gradesOverlay").toggleClass("hidden");
+    $("#gradesOverlayTransparent").toggleClass("hidden");
+    $("#gradesOverlayContent").html("Grading Was<br><strong style='color:#FF3B3F'>Not Enabled</strong><br>For This Class");
+  }
+}
+
+function grading(studentInfo){
+  for (var x = 0; x < chapters.length; x++){
+    var currentChapter = chapters[x];
+    for(var y = 0; y < currentChapter.pages.length; y++){
+      var currentPage = currentChapter.pages[y];
+      if(currentPage.type.toLowerCase() == "vq"){
+        var currentGrade = createGrade(currentPage,studentInfo);
+        console.log(currentGrade);
+      }
+    }
+  }
+}
+
+function createGrade(currentPage,studentInfo){
+  var grade = {};
+  grade.page = currentPage.title;
+  grade.grade = currentPage.content+"data/"+studentInfo[2];
+
+  var linkSplit = currentPage.content.split("/");
+
+  // $.ajax({
+  //   url: "sourceFiles/api/getVQGrade/"+linkSplit[3]+"/"+linkSplit[4]+"/"+studentInfo[2]
+  // }).done(function(keydata) {
+  //   console.log(keydata);
+  // });
+
+  return grade;
+}
+
+function organizeKey(keydata){
+  var data = keydata.split(",");
+
+  for(var i = 0; i < data.length; i++){
+    var segment = data[i];
+
+    segment = segment.split('"').join('');
+    segment = segment.split('}').join('');
+    var index = segment.indexOf(':');
+
+    data[i] = segment.slice(index + 1,segment.length);
+  }
+
+  return data;
 }
 
 // Update completion

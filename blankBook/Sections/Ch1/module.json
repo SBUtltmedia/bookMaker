@@ -1,0 +1,16 @@
+{
+  "chapters": [{
+    "title": "Introduction",
+    "pages": [{
+        "type": "VQ",
+        "title": "Welcome!",
+        "content": "/vq/users/japalmeri/10/"
+      }]
+  }],
+  "overlayURLs": {
+    "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
+  },
+  "localStorageKey": "blank",
+  "zero": false,
+  "numbers":true
+}

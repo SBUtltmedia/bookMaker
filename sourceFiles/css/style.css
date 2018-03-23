@@ -37,6 +37,8 @@ body {
     z-index: 10;
 }
 
+
+
 .anim_quickFadeIn {
     animation: quickFadeIn .1s 0s 1 linear normal forwards;
     -webkit-animation: quickFadeIn .1s 0s 1 linear normal forwards;
@@ -680,4 +682,68 @@ iframe {
 
 #overlayMenu a:hover{
   background-color: #f1f1f1;
+}
+
+#gradesOverlayTransparent{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+#gradesOverlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+#gradesOverlayHeader{
+  width: 80%;
+  left: 10%;
+  top: 4%;
+  height: 16%;
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#gradesOverlayContent{
+  width: 80%;
+  left: 10%;
+  top: 20%;
+  height: 76%;
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#gradingInfo{
+  width: 5%;
+  height: 60%;
+  top: 20%;
+  border-radius: 100%;
+  position: absolute;
+  left: 1%;
+  background-image: url(../img/info.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  cursor: pointer;
+}
+
+#gradingInfo:hover{
+  background-color: #FF3B3F;
+}
+
+#gradingInfo:active {
+  box-shadow: 0 0.3125rem grey;
+  transform: translateY(0.250rem);
 }

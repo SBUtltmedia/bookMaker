@@ -1,0 +1,78 @@
+#headerContent{
+
+}
+
+#footer{
+
+}
+
+#sidebar{
+
+}
+
+.chapterThumb,
+.pageThumb{
+
+}
+
+.thumbText{
+
+}
+
+.thumbNumber{
+
+    font-size: 3rem;
+    top: 35%;
+    width: 95%;
+    left: 0%;
+}
+
+.thumbType{
+
+}
+
+.thumbTypeText{
+
+}
+
+.page_incomplete {
+    /*background-image: url(img/gray_check.svg);*/
+}
+
+.page_complete{
+    /*background-image: url(img/green_check.svg);*/
+}
+
+.chapter_incomplete {
+    /*background-image: url(img/lightgray_check.svg);*/
+}
+
+.chapter_complete{
+  /*background-image: url(img/green_check.svg);*/
+}
+
+/*#buttonPrevious {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 35%;
+    position: absolute;
+    background-image: url(img/triangle_left.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#buttonNext {
+    width: 7.5%;
+    height: 80%;
+    top: 10%;
+    left: 57.5%;
+    position: absolute;
+    background-image: url(img/triangle_right.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+}*/
