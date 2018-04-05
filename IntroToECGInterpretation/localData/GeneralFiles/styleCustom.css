@@ -10,9 +10,12 @@
   background: #0F1626;
 }
 
-.chapterThumb,
 .pageThumb{
   background-color: #00A79D;
+}
+
+.chapterThumb{
+  background-color: #0090a7;
 }
 
 .thumbText{
@@ -97,7 +100,7 @@
 }
 
 .page_incomplete {
-    
+
 }
 
 .page_complete{

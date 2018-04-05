@@ -19,8 +19,7 @@ $app->get('/getUser', function (){
 
 });
 
-$app->post('/getVQGrade/:VQ/:VQNum/:netId', function ($VQ,$VQNum,$netId){
-      global $body;
+$app->get('/getVQGrade/:VQ/:VQNum/:netId', function ($VQ,$VQNum,$netId){
 
       getVQGrade($VQ,$VQNum,$netId);
       exit;

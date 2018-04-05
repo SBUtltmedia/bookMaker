@@ -313,6 +313,12 @@ function initChapterThumbnailClick(i) {
       }
       animateThumbPositions(chapters, false);
     }
+
+    currentPage.chapterID = i;
+    currentPage.quizID = 0;
+    setContent(chapters[i].pages[0], i, 0);
+    $("#thumb" + i + "-" + 0).attr("clicked", true)
+    updateCompletion();
   });
 }
 
@@ -616,7 +622,6 @@ function showGrades() {
     }).done(function(keydata) {
 
       var studentInfo = organizeKey(keydata);
-      console.log(studentInfo)
 
       grading(studentInfo);
 
@@ -650,12 +655,11 @@ function createGrade(currentPage,studentInfo){
   grade.grade = currentPage.content+"data/"+studentInfo[2];
 
   var linkSplit = currentPage.content.split("/");
-
-  // $.ajax({
-  //   url: "sourceFiles/api/getVQGrade/"+linkSplit[3]+"/"+linkSplit[4]+"/"+studentInfo[2]
-  // }).done(function(keydata) {
-  //   console.log(keydata);
-  // });
+  $.ajax({
+    url: "sourceFiles/api/getVQGrade/"+linkSplit[3]+"/"+linkSplit[4]+"/"+studentInfo[2]
+  }).done(function(keydata) {
+    console.log(organizeKey(keydata))
+  });
 
   return grade;
 }

@@ -109,7 +109,7 @@ RegExp.escape= function(s) {
             options.state.colNum = 1;
             return;
           }
-          
+
           if(options.onParseEntry === undefined) {
             // onParseEntry hook not set
             data.push(entry);
@@ -121,7 +121,7 @@ RegExp.escape= function(s) {
             }
           }
           //console.log('entry:' + entry);
-          
+
           // cleanup
           entry = [];
 
@@ -129,7 +129,7 @@ RegExp.escape= function(s) {
           if(options.end && options.state.rowNum >= options.end) {
             exit = true;
           }
-          
+
           // update global state
           options.state.rowNum++;
           options.state.colNum = 1;
@@ -283,10 +283,10 @@ RegExp.escape= function(s) {
         var entry = '';
         var exit = false;
 
-        function endOfLine() {          
+        function endOfLine() {
           // reset the state
           state = 0;
-          
+
           // if 'start' hasn't been met, don't output
           if(options.start && options.state.rowNum < options.start) {
             // update global state
@@ -294,7 +294,7 @@ RegExp.escape= function(s) {
             options.state.rowNum++;
             return;
           }
-          
+
           if(options.onParseEntry === undefined) {
             // onParseEntry hook not set
             entries.push(entry);
@@ -313,7 +313,7 @@ RegExp.escape= function(s) {
           if(options.end && options.state.rowNum >= options.end) {
             exit = true;
           }
-          
+
           // update global state
           options.state.rowNum++;
         }
@@ -448,7 +448,7 @@ RegExp.escape= function(s) {
         // cache settings
         var separator = options.separator;
         var delimiter = options.delimiter;
-        
+
         // set initial state if it's missing
         if(!options.state.rowNum) {
           options.state.rowNum = 1;
@@ -485,7 +485,7 @@ RegExp.escape= function(s) {
           // escape regex-specific control chars
           var escSeparator = RegExp.escape(separator);
           var escDelimiter = RegExp.escape(delimiter);
-          
+
           // compile the regEx str using the custom delimiter/separator
           var match = /(D|S|\n|\r|[^DS\r\n]+)/;
           var matchSrc = match.source;
@@ -600,7 +600,7 @@ RegExp.escape= function(s) {
         for (o in objects) {
           for (propName in objects[o]) {
             if ((objects[o].hasOwnProperty(propName)) &&
-                (props.indexOf(propName) < 0) && 
+                (props.indexOf(propName) < 0) &&
                 (typeof objects[o][propName] !== 'function')) {
 
               props.push(propName);
@@ -729,7 +729,7 @@ RegExp.escape= function(s) {
       config.delimiter = 'delimiter' in options ? options.delimiter : $.csv.defaults.delimiter;
       config.headers = 'headers' in options ? options.headers : $.csv.defaults.headers;
       options.start = 'start' in options ? options.start : 1;
-      
+
       // account for headers
       if(config.headers) {
         options.start++;
@@ -790,7 +790,7 @@ RegExp.escape= function(s) {
       } else {
         options.state.rowNum = 1;
       }
-      
+
       // convert data to objects
       for(var i=0, len=lines.length; i<len; i++) {
         var entry = $.csv.toArray(lines[i], options);
@@ -803,7 +803,7 @@ RegExp.escape= function(s) {
         } else {
           data.push(object);
         }
-        
+
         // update row state
         options.state.rowNum++;
       }

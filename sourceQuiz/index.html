@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="js/jquery.csv.js"></script>
+  <script src="../../../sourceFiles/js/progress.js"></script>
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <div id="answerDisplay" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeAnswerDisplay()">Next</a>
+    <div class="overlay-content">
+
+      <div id="OverlayHeader"></div>
+      <div id="OverlayCorrectContainer">
+      <div class="OverlayCorrectDescription" id="OverlayCorrectDescription">
+
+        <div id="OverlayChosenOptionHeader">Chosen Option:</div>
+        <div id="OverlayChosenOption"></div>
+        <div id="OverlayChosenOptionText"></div>
+
+        <div id="OverlayCorrectChoiceHeader">Correct Option:</div>
+        <div id="OverlayCorrectChoice"></div>
+      </div>
+
+      <div class="OverlayCorrectDescription" id="OverlayCorrectDescriptionImage">
+        <div id="OverlayCorrectImageHeader">Correct Image:</div>
+        <div id="OverlayCorrectImage"><img id="correctImage" style="display: none" src="" onclick=""></img></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div id="imageEnlargeDisplay" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeImageEnlargeDisplay()">&times;</a>
+    <div class="overlay-content">
+
+      <div id="imageEnlargeHeader">Enlarged Image:</div>
+        <div id="imageEnlargeImage"><img id="imageEnlarge" onclick=""></img></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="completedDisplay" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeCompletedDisplay()">&times;</a>
+    <div class="overlay-content">
+      <div id="completedDisplayHeader">Quiz Complete!</div>
+      <div id="completedDisplayText">
+        <p>You have answered everything correctly.</p>
+        <p>Close out of this screen to restart quiz.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="viewScene">
+    <div id="scenarioContainer">
+      <div id="scenarioHeader"></div>
+      <div id="scenarioText"></div>
+    </div>
+    <div id="optionsContainer">
+      <div id="optionsHeader">Options</div>
+      <div id="options"></div>
+    </div>
+    <div id="optionsTextContainer">
+      <div id="optionsTextHeader"></div>
+      <div id="optionsImageContainer"><img id="image" src="" onclick="openImageEnlargeDisplay();"></img></div>
+      <div id="optionsText"></div>
+    </div>
+  </div>
+</body>
+
+</html>
