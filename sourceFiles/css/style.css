@@ -1,656 +1,650 @@
 body {
-    background-color: #000;
-    user-select: none;
-    -webkit-user-select: none;
-    margin: 0;
+  background-color: #000;
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 0;
 }
 
 .screen {
-    position: absolute;
-    background-color: #000;
-    overflow: hidden;
+  position: absolute;
+  background-color: #000;
+  overflow: hidden;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
 .btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #header {
-    width: 100%;
-    height: 5%;
-    left: 0%;
-    top: 0%;
-    position: absolute;
-    z-index: 200;
-    pointer-events: none;
+  width: 100%;
+  height: 5%;
+  left: 0%;
+  top: 0%;
+  position: absolute;
+  z-index: 200;
+  pointer-events: none;
 }
 
 #headerContent {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #303030;
-    z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #303030;
+  z-index: 10;
 }
 
-
-
 .anim_quickFadeIn {
-    animation: quickFadeIn .1s 0s 1 linear normal forwards;
-    -webkit-animation: quickFadeIn .1s 0s 1 linear normal forwards;
+  animation: quickFadeIn .1s 0s 1 linear normal forwards;
+  -webkit-animation: quickFadeIn .1s 0s 1 linear normal forwards;
 }
 
 @keyframes quickFadeIn {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
-    }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @-webkit-keyframes quickFadeIn {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
-    }
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .anim_quickFadeOut {
-    animation: quickFadeOut .1s 0s 1 linear normal forwards;
-    -webkit-animation: quickFadeOut .1s 0s 1 linear normal forwards;
+  animation: quickFadeOut .1s 0s 1 linear normal forwards;
+  -webkit-animation: quickFadeOut .1s 0s 1 linear normal forwards;
 }
 
 @keyframes quickFadeOut {
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 @-webkit-keyframes quickFadeOut {
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 #moduleTitle {
-    width: 50%;
-    left: 25%;
-    top: 12.5%;
-    position: absolute;
-    color: white;
-    font-family: "Helvetica", sans-serif;
-    font-size: .75rem;
-    text-align: center;
+  width: 50%;
+  left: 25%;
+  top: 12.5%;
+  position: absolute;
+  color: white;
+  font-family: "Helvetica", sans-serif;
+  font-size: .75rem;
+  text-align: center;
 }
 
 #fullScreenButton {
-    width: 4%;
-    height: 100%;
-    left: 96%;
-    top: 0%;
-    position: absolute;
-    background-image: url(../img/fullscreen_out.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    z-index: 20;
-    pointer-events: auto;
-    cursor: pointer;
+  width: 4%;
+  height: 100%;
+  left: 96%;
+  top: 0%;
+  position: absolute;
+  background-image: url(../img/fullscreen_out.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .anim_fullScreenButtonIn {
-    animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
-    -webkit-animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+  animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+  -webkit-animation: fullScreenButtonIn .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
 }
 
 @keyframes fullScreenButtonIn {
-    0% {
-        transform: rotateY(0deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    25% {
-        transform: rotateY(90deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    25.1% {
-        transform: rotateY(270deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    100% {
-        transform: rotateY(360deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
+  0% {
+    transform: rotateY(0deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  25% {
+    transform: rotateY(90deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  25.1% {
+    transform: rotateY(270deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  100% {
+    transform: rotateY(360deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
 }
 
 @-webkit-keyframes fullScreenButtonIn {
-    0% {
-        transform: rotateY(0deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    25% {
-        transform: rotateY(90deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    25.1% {
-        transform: rotateY(270deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    100% {
-        transform: rotateY(360deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
+  0% {
+    transform: rotateY(0deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  25% {
+    transform: rotateY(90deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  25.1% {
+    transform: rotateY(270deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  100% {
+    transform: rotateY(360deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
 }
 
 .anim_fullScreenButtonOut {
-    animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
-    -webkit-animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+  animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
+  -webkit-animation: fullScreenButtonOut .1s 0s 1 cubic-bezier(0, .5, .5, 1) normal forwards;
 }
 
 @keyframes fullScreenButtonOut {
-    0% {
-        transform: rotateY(0deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    25% {
-        transform: rotateY(90deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    25.1% {
-        transform: rotateY(270deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    100% {
-        transform: rotateY(360deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
+  0% {
+    transform: rotateY(0deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  25% {
+    transform: rotateY(90deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  25.1% {
+    transform: rotateY(270deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  100% {
+    transform: rotateY(360deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
 }
 
 @-webkit-keyframes fullScreenButtonOut {
-    0% {
-        transform: rotateY(0deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    25% {
-        transform: rotateY(90deg);
-        background-image: url(../img/fullscreen_in.svg);
-    }
-    25.1% {
-        transform: rotateY(270deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
-    100% {
-        transform: rotateY(360deg);
-        background-image: url(../img/fullscreen_out.svg);
-    }
+  0% {
+    transform: rotateY(0deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  25% {
+    transform: rotateY(90deg);
+    background-image: url(../img/fullscreen_in.svg);
+  }
+  25.1% {
+    transform: rotateY(270deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
+  100% {
+    transform: rotateY(360deg);
+    background-image: url(../img/fullscreen_out.svg);
+  }
 }
 
 #footer {
-    width: 85%;
-    height: 10%;
-    left: 15%;
-    top: 90.0%;
-    position: absolute;
-    background-color: #303030;
+  width: 85%;
+  height: 10%;
+  left: 15%;
+  top: 90.0%;
+  position: absolute;
+  background-color: #303030;
 }
 
 #sidebar {
-    width: 15%;
-    height: 97.5%;
-    left: 0%;
-    top: 5%;
-    margin: 0;
-    position: absolute;
-    background-color: #202020;
-    overflow-y: scroll;
+  width: 15%;
+  height: 97.5%;
+  left: 0%;
+  top: 5%;
+  margin: 0;
+  position: absolute;
+  background-color: #202020;
+  overflow-y: scroll;
 }
 
 #content {
+  width: 85%;
+  height: 85%;
+  left: 15%;
+  top: 5%;
+  position: absolute;
+  background-color: #000;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#contentLoader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.anim_fullScreenOn {
+  animation: fullScreenOn .1s 0s 1 linear normal forwards;
+  -webkit-animation: fullScreenOn .1s 0s 1 linear normal forwards;
+}
+
+@keyframes fullScreenOn {
+  0% {
     width: 85%;
     height: 85%;
     left: 15%;
     top: 5%;
-    position: absolute;
-    background-color: #000;
-    z-index: 100;
-    overflow: hidden;
-}
-
-#contentLoader {
+  }
+  100% {
     width: 100%;
     height: 100%;
-    position: absolute;
-}
-
-.anim_fullScreenOn {
-    animation: fullScreenOn .1s 0s 1 linear normal forwards;
-    -webkit-animation: fullScreenOn .1s 0s 1 linear normal forwards;
-}
-
-@keyframes fullScreenOn {
-    0% {
-        width: 85%;
-        height: 85%;
-        left: 15%;
-        top: 5%;
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-        left: 0%;
-        top: 0%;
-    }
+    left: 0%;
+    top: 0%;
+  }
 }
 
 @-webkit-keyframes fullScreenOn {
-    0% {
-        width: 85%;
-        height: 85%;
-        left: 15%;
-        top: 5%;
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-        left: 0%;
-        top: 0%;
-    }
+  0% {
+    width: 85%;
+    height: 85%;
+    left: 15%;
+    top: 5%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+  }
 }
 
 .anim_fullScreenOff {
-    animation: fullScreenOff .1s 0s 1 linear normal forwards;
-    -webkit-animation: fullScreenOff .1s 0s 1 linear normal forwards;
+  animation: fullScreenOff .1s 0s 1 linear normal forwards;
+  -webkit-animation: fullScreenOff .1s 0s 1 linear normal forwards;
 }
 
 @keyframes fullScreenOff {
-    0% {
-        width: 100%;
-        height: 100%;
-        left: 0%;
-        top: 0%;
-    }
-    100% {
-        width: 85%;
-        height: 85%;
-        left: 15%;
-        top: 5%;
-    }
+  0% {
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+  }
+  100% {
+    width: 85%;
+    height: 85%;
+    left: 15%;
+    top: 5%;
+  }
 }
 
 @-webkit-keyframes fullScreenOff {
-    0% {
-        width: 100%;
-        height: 100%;
-        left: 0%;
-        top: 0%;
-    }
-    100% {
-        width: 85%;
-        height: 85%;
-        left: 15%;
-        top: 5%;
-    }
+  0% {
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+  }
+  100% {
+    width: 85%;
+    height: 85%;
+    left: 15%;
+    top: 5%;
+  }
 }
 
 iframe {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    border: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 #overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 200;
-    overflow: hidden;
-    visibility: hidden;
-    transform-origin: bottom right;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 200;
+  overflow: hidden;
+  visibility: hidden;
+  transform-origin: bottom right;
 }
 
 .anim_overlayOn {
-    animation: overlayOn .1s 0s 1 linear normal forwards;
-    -webkit-animation: overlayOn .1s 0s 1 linear normal forwards;
+  animation: overlayOn .1s 0s 1 linear normal forwards;
+  -webkit-animation: overlayOn .1s 0s 1 linear normal forwards;
 }
 
 @keyframes overlayOn {
-    0% {
-        transform: scale(.6);
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-        visibility: visible;
-    }
+  0% {
+    transform: scale(.6);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @-webkit-keyframes overlayOn {
-    0% {
-        transform: scale(.6);
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-        visibility: visible;
-    }
+  0% {
+    transform: scale(.6);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .anim_overlayOff {
-    animation: overlayOff .1s 0s 1 linear normal forwards;
-    -webkit-animation: overlayOff .1s 0s 1 linear normal forwards;
+  animation: overlayOff .1s 0s 1 linear normal forwards;
+  -webkit-animation: overlayOff .1s 0s 1 linear normal forwards;
 }
 
 @keyframes overlayOff {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        transform: scale(.6);
-        opacity: 0;
-        visibility: hidden;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: scale(.6);
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 @-webkit-keyframes overlayOff {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        transform: scale(.6);
-        opacity: 0;
-        visibility: hidden;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    transform: scale(.6);
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .thumbBox {
-    width: 100%;
-    height: 15%;
-    left: 0%;
-    top: 0%;
-    position: absolute;
+  width: 100%;
+  height: 15%;
+  left: 0%;
+  top: 0%;
+  position: absolute;
 }
 
 .chapterBox {
-    z-index: 20;
+  z-index: 20;
 }
 
 .pageBox {
-    z-index: 10;
+  z-index: 10;
 }
 
 .thumbGlow {
-    width: 88%;
-    height: 80%;
-    left: 11%;
-    top: 10%;
-    position: absolute;
-    background-color: #fff;
-    z-index: 0;
-    opacity: .5;
-    /*animation: thumbGlow 1s 0s infinite ease-in-out alternate forwards;*/
-    visibility: hidden;
+  width: 88%;
+  height: 80%;
+  left: 11%;
+  top: 10%;
+  position: absolute;
+  background-color: #fff;
+  z-index: 0;
+  opacity: .5;
+  /*animation: thumbGlow 1s 0s infinite ease-in-out alternate forwards;*/
+  visibility: hidden;
 }
 
 @keyframes thumbGlow {
-    0% {
-        opacity: .4;
-    }
-    100% {
-        opacity: .6;
-    }
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: .6;
+  }
 }
 
 @-webkit-keyframes thumbGlow {
-    0% {
-        opacity: .4;
-    }
-    100% {
-        opacity: .6;
-    }
+  0% {
+    opacity: .4;
+  }
+  100% {
+    opacity: .6;
+  }
 }
 
 .thumb {
-    width: 75%;
-    height: 70%;
-    left: 10%;
-    top: 15%;
-    position: absolute;
-    background-color: #555;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 10;
+  width: 75%;
+  height: 70%;
+  left: 10%;
+  top: 15%;
+  position: absolute;
+  background-color: #555;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .chapterThumb {
-    background-color: #555;
-    margin: 0;
+  background-color: #555;
+  margin: 0;
 }
 
 .pageThumb {
-    background-color: #333;
-    left: 20%;
-    margin: 0;
+  background-color: #333;
+  left: 20%;
+  margin: 0;
 }
 
 .thumbText {
-    width: 90%;
-    height: 90%;
-    left: 5%;
-    top: 5%;
-    position: absolute;
-    color: #ddd;
-    font-family: "Helvetica", sans-serif;
-    font-size: 1rem;
-    z-index: 10;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  position: absolute;
+  color: #ddd;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1rem;
+  z-index: 10;
 }
 
 .thumbNumber {
-    width: 100%;
-    left: 0%;
-    top: 5%;
-    height: 70%;
-    position: absolute;
-    color: #444;
-    font-family: "Helvetica", sans-serif;
-    font-size: 3rem;
-    text-align: right;
-    z-index: 0;
+  width: 100%;
+  left: 0%;
+  top: 5%;
+  height: 70%;
+  position: absolute;
+  color: #444;
+  font-family: "Helvetica", sans-serif;
+  font-size: 3rem;
+  text-align: right;
+  z-index: 0;
 }
 
 .thumbType {
-    width: 20%;
-    height: 25%;
-    left: 0%;
-    top: 75%;
-    margin: 0;
-    position: absolute;
-    background-color: #444;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
+  width: 20%;
+  height: 25%;
+  left: 0%;
+  top: 75%;
+  margin: 0;
+  position: absolute;
+  background-color: #444;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
 }
 
-.page_incomplete {
+.page_incomplete {}
 
+.page_complete {
+  background-image: url(../img/green_check.svg);
 }
 
-.page_complete{
-    background-image: url(../img/green_check.svg);
-}
+.chapter_incomplete {}
 
-.chapter_incomplete {
-
-}
-
-.chapter_complete{
+.chapter_complete {
   background-image: url(../img/green_check.svg);
 }
 
 .thumbTypeText {
-    width: 70%;
-    height: 15%;
-    left: 22.5%;
-    top: 85%;
-    position: absolute;
-    color: #888;
-    font-family: "Helvetica", sans-serif;
-    font-size: 0.5rem;
-    z-index: 10;
+  width: 70%;
+  height: 15%;
+  left: 22.5%;
+  top: 85%;
+  position: absolute;
+  color: #888;
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.5rem;
+  z-index: 10;
 }
 
 #contentText {
-    width: 96%;
-    height: 96%;
-    left: 0%;
-    top: 0%;
-    padding: 2%;
-    padding: 2%;
-    position: absolute;
-    font-family: "Helvetica", sans-serif;
-    color: #fff;
-    background-color: #000;
-    overflow: hidden;
+  width: 96%;
+  height: 96%;
+  left: 0%;
+  top: 0%;
+  padding: 2%;
+  padding: 2%;
+  position: absolute;
+  font-family: "Helvetica", sans-serif;
+  color: #fff;
+  background-color: #000;
+  overflow: hidden;
 }
 
 #contentTextimg {
-    width: 50%;
+  width: 50%;
 }
 
 ::-webkit-scrollbar {
-    width: 0.5rem;
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #444;
+  background-color: #444;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #777;
+  background-color: #777;
 }
 
 ::-webkit-scrollbar-button {
-    background-color: #777;
+  background-color: #777;
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: black;
+  background-color: black;
 }
 
 #pageNumberLabel {
-    width: 10%;
-    left: 45%;
-    top: 10%;
-    position: absolute;
-    font-family: "Helvetica", sans-serif;
-    font-size: 1.5rem;
-    color: white;
-    text-align: center;
+  width: 10%;
+  left: 45%;
+  top: 10%;
+  position: absolute;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
 }
 
 #pageNumberText {
-    width: 15%;
-    left: 42.5%;
-    top: 35%;
-    position: absolute;
-    font-family: "Helvetica", sans-serif;
-    font-size: 2.5rem;
-    color: white;
-    text-align: center;
+  width: 15%;
+  left: 42.5%;
+  top: 35%;
+  position: absolute;
+  font-family: "Helvetica", sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
 }
 
 #buttonPrevious {
-    width: 7.5%;
-    height: 80%;
-    top: 10%;
-    left: 35%;
-    position: absolute;
-    background-image: url(../img/triangle_left.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    cursor: pointer;
+  width: 7.5%;
+  height: 80%;
+  top: 10%;
+  left: 35%;
+  position: absolute;
+  background-image: url(../img/triangle_left.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  cursor: pointer;
 }
 
 #buttonNext {
-    width: 7.5%;
-    height: 80%;
-    top: 10%;
-    left: 57.5%;
-    position: absolute;
-    background-image: url(../img/triangle_right.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    cursor: pointer;
+  width: 7.5%;
+  height: 80%;
+  top: 10%;
+  left: 57.5%;
+  position: absolute;
+  background-image: url(../img/triangle_right.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  cursor: pointer;
 }
 
 #overlayButtons {
-    width: 9%;
-    height: 100%;
-    left: 91%;
-    top: 0%;
-    position: absolute;
+  width: 9%;
+  height: 100%;
+  left: 91%;
+  top: 0%;
+  position: absolute;
 }
 
 .overlayButton {
-    width: 90%;
-    height: 90%;
-    position: absolute;
-    background-color: #404040;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  background-color: #404040;
 }
 
 #overlayButton1 {
-    left: 5%;
-    top: 5%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+  left: 5%;
+  top: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .caliperButton {
-    background-image: url(../img/calipers.svg);
+  background-image: url(../img/calipers.svg);
 }
 
-#overlay iframe{
+#overlay iframe {
   width: 100%;
   height: 100%;
 }
 
-#overlayMenu{
+#overlayMenu {
   width: 90%;
   background-color: #404040;
   position: absolute;
@@ -658,10 +652,9 @@ iframe {
   left: 5%;
   top: -130%;
   z-index: 1000000;
-
 }
 
-#overlayMenuOptions{
+#overlayMenuOptions {
   display: inline-flex;
   flex-direction: column;
   overflow-y: auto;
@@ -673,18 +666,18 @@ iframe {
   background-color: #f9f9f9;
 }
 
-#overlayMenu a{
+#overlayMenu a {
   width: 90%;
   padding: 5%;
   font-size: 0.75rem;
   text-align: center;
 }
 
-#overlayMenu a:hover{
+#overlayMenu a:hover {
   background-color: #f1f1f1;
 }
 
-#gradesOverlayTransparent{
+#gradesOverlayTransparent {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -695,7 +688,7 @@ iframe {
   filter: alpha(opacity=50);
 }
 
-#gradesOverlay{
+#gradesOverlay {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -703,29 +696,32 @@ iframe {
   z-index: 10000;
 }
 
-#gradesOverlayHeader{
+#gradesOverlayHeader {
   width: 80%;
-  left: 10%;
+  left: 8%;
   top: 4%;
-  height: 16%;
+  padding: 2%;
+  height: 5%;
   position: absolute;
   color: white;
   text-align: center;
   font-size: 2rem;
 }
 
-#gradesOverlayContent{
-  width: 80%;
-  left: 10%;
-  top: 20%;
-  height: 76%;
+#gradesOverlayContent {
+  width: 90%;
+  left: 5%;
+  top: 14%;
+  height: 83%;
   position: absolute;
   color: white;
   text-align: center;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
-#gradingInfo{
+#gradingInfo {
   width: 5%;
   height: 60%;
   top: 20%;
@@ -739,11 +735,88 @@ iframe {
   cursor: pointer;
 }
 
-#gradingInfo:hover{
+#gradingInfo:hover {
   background-color: #FF3B3F;
 }
 
 #gradingInfo:active {
   box-shadow: 0 0.3125rem grey;
   transform: translateY(0.250rem);
+}
+
+.gradingTitleSection {
+  background-color: #0F1626;
+      margin: 2%;
+      margin-bottom: 6%;
+      width: 94%;
+      height: 6%;
+      padding: 1.5%;
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 1rem;
+      z-index: 1000;
+      box-shadow: 0.3125rem 0.3125rem 0.3125rem grey;
+}
+
+.gradingTitleSection:active {
+  box-shadow: 0 0.3125rem grey;
+  transform: translateY(0.250rem);
+}
+
+.gradeTitleItem {
+  background-color: #0090a7;
+      margin: 2%;
+      width: 55%;
+      height: 6%;
+      padding: 1%;
+      padding-top: 2.1%;
+      padding-left: 0;
+      padding-right: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      position: absolute;
+      border-radius: 1rem;
+      z-index: 1000;
+}
+
+.gradeGradesItem {
+  background-color: #00A79D;
+  margin: 2%;
+  width: 46%;
+  left: 48%;
+  height: 6%;
+  padding: 1.5%;
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute;
+  border-radius: 1rem;
+}
+
+.gradeItem {
+  width: 100%;
+  height: 14%;
+  margin-bottom: 2%;
+}
+
+#vqGrading,
+#quizGrading {
+  width: 75%;
+      height: 100%;
+      left: 25%;
+      position: absolute;
+          overflow-y: auto;
+}
+
+#gradingSelection{
+  width: 25%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+}
+
+#QUIZgradingTitleSection,
+#VQgradingTitleSection{
+
 }

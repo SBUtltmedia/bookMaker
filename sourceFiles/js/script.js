@@ -140,7 +140,7 @@ function exitFullscreen() {
   resizeWindow();
 }
 
-function iosExitFullscreen(){
+function iosExitFullscreen() {
   $("#content").css({
     "transform": "scale(1, 1)"
   });
@@ -620,14 +620,15 @@ function showGrades() {
     $.ajax({
       url: "sourceFiles/api/getUser"
     }).done(function(keydata) {
-
+      $("#gradesOverlayContent").html("Grading<br><strong style='color:#FF3B3F'>Loading</strong><br>Please Wait!");
       var studentInfo = organizeKey(keydata);
 
       grading(studentInfo);
 
+
       $("#gradesOverlay").toggleClass("hidden");
       $("#gradesOverlayTransparent").toggleClass("hidden");
-      $("#gradesOverlayContent").html(studentInfo[0]+"'s Grading<br><strong style='color:#FF3B3F'>Not Active Yet</strong><br>For This Class");
+      $("#gradesOverlayHeader").html("<u>" + studentInfo[0] + "'s Grades</u>");
     });
   } else {
     $("#gradesOverlay").toggleClass("hidden");
@@ -636,45 +637,94 @@ function showGrades() {
   }
 }
 
-function grading(studentInfo){
-  for (var x = 0; x < chapters.length; x++){
+function grading(studentInfo) {
+  $("#gradesOverlayContent").html("<div id='vqGrading' class='hidden'></div><div id='quizGrading' class='hidden'></div>");
+  $("#gradesOverlayContent").append("<div id='gradingSelection' class=''><div id='VQgradingTitleSection' class='gradingTitleSection'>VQ Grades</div><div id='QUIZgradingTitleSection' class='gradingTitleSection'>Quiz Grades</div></div>");
+
+  $("#QUIZgradingTitleSection").click(function(){
+    $("#vqGrading").removeClass("hidden");
+    $("#quizGrading").removeClass("hidden");
+    $("#vqGrading").addClass("hidden");
+  });
+
+  $("#VQgradingTitleSection").click(function(){
+    $("#vqGrading").removeClass("hidden");
+    $("#quizGrading").removeClass("hidden");
+    $("#quizGrading").addClass("hidden");
+  });
+
+  for (var x = 0; x < chapters.length; x++) {
     var currentChapter = chapters[x];
-    for(var y = 0; y < currentChapter.pages.length; y++){
+    for (var y = 0; y < currentChapter.pages.length; y++) {
       var currentPage = currentChapter.pages[y];
-      if(currentPage.type.toLowerCase() == "vq"){
-        var currentGrade = createGrade(currentPage,studentInfo);
-        console.log(currentGrade);
+      if (currentPage.type.toLowerCase() == "vq") {
+        createVQGrade(currentPage, studentInfo);
+      } else if (currentPage.type.toLowerCase() == "quiz") {
+        createQUIZGrade(currentPage, studentInfo, x, y);
       }
     }
   }
 }
 
-function createGrade(currentPage,studentInfo){
+function resetGrading
+
+function showDemQuizGrades(fullgrades) {
+  var gradeTitle = "<div class='gradeTitleItem'><u>" + fullgrades.page + "</u></div>";
+  var gradeGrades = "<div class='gradeGradesItem'>" + fullgrades.grade + "</div>";
+  var grade = "<div class='gradeItem '>" + gradeTitle + gradeGrades + "</div>";
+  $("#quizGrading").append(grade);
+}
+
+function showDemVQGrades(fullgrades) {
+    var gradeTitle = "<div class='gradeTitleItem'><u>" + fullgrades.page + "</u></div>";
+    var gradeGrades = "<div class='gradeGradesItem'>" + fullgrades.grade + "</div>";
+    var grade = "<div class='gradeItem '>" + gradeTitle + gradeGrades + "</div>";
+    $("#vqGrading").append(grade);
+}
+
+function createVQGrade(currentPage, studentInfo) {
   var grade = {};
   grade.page = currentPage.title;
-  grade.grade = currentPage.content+"data/"+studentInfo[2];
 
   var linkSplit = currentPage.content.split("/");
   $.ajax({
-    url: "sourceFiles/api/getVQGrade/"+linkSplit[3]+"/"+linkSplit[4]+"/"+studentInfo[2]
+    url: "sourceFiles/api/getVQGrade/" + linkSplit[3] + "/" + linkSplit[4] + "/" + studentInfo[2]
   }).done(function(keydata) {
-    console.log(organizeKey(keydata))
+    var calcgrade = keydata.split("/");
+    if (calcgrade[1] != 0) {
+      grade.grade = ((calcgrade[0] / calcgrade[1]) * 100.00).toFixed(2);
+      console.log(grade.grade);
+    } else {
+      grade.grade = 100;
+    }
+    showDemVQGrades(grade);
   });
-
-  return grade;
 }
 
-function organizeKey(keydata){
+function createQUIZGrade(currentPage, studentInfo, x, y) {
+  var grade = {};
+  grade.page = currentPage.title;
+
+  if (progress.getKey(currentPage.type + "_" + x + "_" + y) == "done") {
+    grade.grade = 100;
+  } else {
+    grade.grade = 0;
+  }
+
+  showDemQuizGrades(grade);
+}
+
+function organizeKey(keydata) {
   var data = keydata.split(",");
 
-  for(var i = 0; i < data.length; i++){
+  for (var i = 0; i < data.length; i++) {
     var segment = data[i];
 
     segment = segment.split('"').join('');
     segment = segment.split('}').join('');
     var index = segment.indexOf(':');
 
-    data[i] = segment.slice(index + 1,segment.length);
+    data[i] = segment.slice(index + 1, segment.length);
   }
 
   return data;

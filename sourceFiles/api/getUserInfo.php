@@ -11,7 +11,6 @@ global $path;
 
     print_r(json_encode($userInfo));
 
-
 }
 
 function getVQGrade($VQ,$VQNum,$netId){
@@ -23,16 +22,17 @@ function getVQGrade($VQ,$VQNum,$netId){
     $theway = $theway.$VQ."/".$VQNum."/data/".$netId;
     if(file_exists($theway)){
       $theway = file_get_contents($theway);
+      $thenewway = json_decode($theway,true);
       $total = 0;
       $score = 0;
-      // for($x=0;$x<$theway["answerData"].length;$x++){
-      //   $total++;
-      //   $score = $score + $theway["answerData"][$x];
-      // }
+      for($x=0;$x<count($thenewway["answerData"]);$x++){
+        $total++;
+        $score = $score + $thenewway["answerData"][$x]["score"];
+      }
     }else{
       $score = 0;
     }
-    print_r($score);
+    print_r($score."/".$total);
   }
 
 }
