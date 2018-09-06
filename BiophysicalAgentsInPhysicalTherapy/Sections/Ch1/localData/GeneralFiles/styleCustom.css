@@ -11,7 +11,7 @@
 }
 
 .chapterThumb,
-.pageThumb{
+.pageThumb, .subpageThumb{
   background-color: #FF533D;
 }
 
@@ -19,13 +19,13 @@
   color : white;
 }
 
-.thumbNumber{
+/* .thumbNumber{
   color: white;
     font-size: 3rem;
-    top: 35%;
+    top: 15%;
     width: 95%;
     left: 0%;
-}
+} */
 
 .thumbType{
   background-color: white;

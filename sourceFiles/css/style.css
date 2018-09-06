@@ -393,20 +393,12 @@ iframe {
   }
 }
 
-.thumbBox {
-  width: 100%;
-  height: 15%;
-  left: 0%;
-  top: 0%;
-  position: absolute;
-}
 
-.chapterBox {
-  z-index: 20;
-}
 
-.pageBox {
-  z-index: 10;
+
+.pageBox,.subpageBox{
+
+  display: none;
 }
 
 .thumbGlow {
@@ -440,71 +432,77 @@ iframe {
   }
 }
 
-.thumb {
-  width: 75%;
-  height: 70%;
-  left: 10%;
-  top: 15%;
-  position: absolute;
-  background-color: #555;
-  overflow: hidden;
+/* applies to all thumbs: doesn't work? */
+/* .thumb.thumb {
+  width: 80%;
+} */
+
+.thumb{
+  width: 80%;
+  height:6.5rem;
+  margin:.5rem;
   cursor: pointer;
-  z-index: 10;
+  background-image:url(../img/incomplete.svg);
+  background-repeat:no-repeat;
+  background-position: bottom left;
+  background-size: 20%;
 }
 
-.chapterThumb {
-  background-color: #555;
-  margin: 0;
+/* used pageThumb instead of thumb.thumb */
+.pageThumb{
+  margin-left: 10%;
 }
 
-.pageThumb {
-  background-color: #333;
-  left: 20%;
-  margin: 0;
+.subpageThumb {
+  margin-left: 15%;
 }
 
 .thumbText {
-  width: 90%;
-  height: 90%;
-  left: 5%;
-  top: 5%;
+  width: 65%;
+  padding-left: 5%;
+  padding-top: 5%;
   position: absolute;
   color: #ddd;
   font-family: "Helvetica", sans-serif;
-  font-size: 1rem;
+  font-size: .9rem;
   z-index: 10;
 }
 
 .thumbNumber {
-  width: 100%;
+  padding-top: 31.25%;
+  padding-right: 5%;
+  /* width: 95%;
   left: 0%;
-  top: 5%;
-  height: 70%;
-  position: absolute;
-  color: #444;
+  top: 15%;
+  height: 70%; */
+
+  color: white;
   font-family: "Helvetica", sans-serif;
   font-size: 3rem;
   text-align: right;
   z-index: 0;
 }
 
-.thumbType {
+/* .thumbType {
   width: 20%;
   height: 25%;
   left: 0%;
-  top: 75%;
+  bottom: 100%;
   margin: 0;
-  position: absolute;
+  top:0%;
+position:absolute;
+
   background-color: #444;
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
-}
+} */
 
 .page_incomplete {}
 
 .page_complete {
+  /* needs to change */
   background-image: url(../img/green_check.svg);
 }
 

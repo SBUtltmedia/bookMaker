@@ -1,7 +1,10 @@
 {
   "chapters": [{
     "title": "Introduction",
-    "pages": [{
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=1&",
+    "pages":
+    [{
       "type": "Voiceover",
       "title": "Learning Objectives",
       "content": "localData/CH01/CH01_Learning_Objectives/index.html"
@@ -16,6 +19,8 @@
     }]
   }, {
     "title": "Physiological Response to Heat",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=2&",
     "pages": [{
       "type": "Animation",
       "title": "Metabolic Reactions",
@@ -43,6 +48,8 @@
     }]
   }, {
     "title": "To Use or Not to Use",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=3&",
     "pages": [{
       "type": "Video",
       "title": "Indications",
@@ -54,6 +61,8 @@
     }]
   }, {
     "title": "Specific Agents- Moist Heat",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=4&",
     "pages": [{
       "type": "Animation",
       "title": "Treatment procedure narrative",
@@ -63,12 +72,35 @@
       "title": "Maintaining equipment",
       "content": ""
     }, {
-      "type": "text",
-      "title": "Treatment procedure video",
-      "content": ""
+      "type": "subsection",
+      "title": "Treatment procedure videos",
+      "content": "",
+      "subPages": [{
+        "type": "video",
+        "title": "Hot Pack Contrainidications",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jcesiro/1/"
+      }, {
+        "type": "video",
+        "title": "hot pack prep",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jcesiro/3/"
+      }, {
+        "type": "video",
+        "title": "hot pack placement",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jcesiro/4/"
+      }, {
+        "type": "video",
+        "title": "hot pack 5 min skin check",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/9/"
+      }, {
+        "type": "video",
+        "title": "hot pack 10 min reassessment",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/10/"
+      } ]
     }]
   }, {
     "title": "Specific Agents- Paraffin",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=5&",
     "pages": [{
       "type": "Animation",
       "title": "Treatment procedure narrative",
@@ -78,15 +110,46 @@
       "title": "Maintaining the equipment",
       "content": ""
     }, {
-      "type": "text",
-      "title": "Treatment procedure video",
-      "content": ""
+      "type": "subsection",
+      "title": "Treatment procedure videos",
+      "content": "",
+      "subPages": [{
+        "type": "video",
+        "title": "Paraffin Patient Interview",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/4/"
+      }, {
+        "type": "video",
+        "title": "Paraffin Checking Temp and Insp",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/6/"
+      }, {
+        "type": "video",
+        "title": "Paraffin Outcome Measures",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/8/"
+      }, {
+        "type": "video",
+        "title": "Paraffin Correct Procedure",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/14/"
+      }, {
+        "type": "video",
+        "title": "Paraffin 5 Min Skin Check",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/5/"
+      }, {
+        "type": "video",
+        "title": "Paraffin End of Treatment",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/7/"
+      }, {
+        "type": "video",
+        "title": "Paraffin Quiz WNTD",
+        "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/3/"
+      } ]
     }],
     "overlayURLs": {
       "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
     }
   }, {
     "title": "Specific Agents- Fluidotherapy",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=6&",
     "pages": [{
       "type": "Voiceover",
       "title": "General Info Fluidotherapy",
@@ -102,6 +165,8 @@
     }]
   }, {
     "title": "Evidence",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=7&",
     "pages": [{
       "type": "Video",
       "title": "EBP Articles",
@@ -113,6 +178,8 @@
     }]
   }, {
     "title": "Check Your Understanding- QUIZ",
+    "type": "cover",
+    "content":"localData/SectionCovers/index.html?chapterNum=8&",
     "pages": [{
       "type": "quiz",
       "title": "Hotpack Quiz",
@@ -123,6 +190,5 @@
     "calipers": "https://apps.tlt.stonybrook.edu/ekg-slider/"
   },
   "localStorageKey": "PTP",
-  "zero": false,
   "numbers":true
 }

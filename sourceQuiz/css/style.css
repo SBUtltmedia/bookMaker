@@ -76,14 +76,15 @@ body {
 }
 
 #OverlayCorrectContainer{
-    width: 100%;
-    height: 80%;
-    top: 10%;
-    position: absolute;
+  width: 100%;
+  height: 88%;
+  top: 10%;
+  position: absolute;
 }
 
 #OverlayChosenOptionsHeader,
 #OverlayCorrectChoiceHeader,
+#OverlayCorrectQuestionHeader,
 #completedDisplayHeader,
 #imageEnlargeHeader,
 #completedDisplayText,
@@ -134,23 +135,45 @@ body {
   transition: 0.3s;
 }
 
-.OverlayCorrectDescription{
+#OverlayCorrectDescriptionImage{
   display: inline-block;
-  text-align: center;
-  float: right;
-  height: 100%;
-  width: 48%;
-  padding: 1%;
+      text-align: center;
+      left: 0;
+      position: absolute;
+      height: 48%;
+      width: 48%;
+      padding: 1%;
+      top: 50%;
+}
+
+#OverlayCorrectDescriptionQuestion{
+  overflow-y: auto;
+display: inline-block;
+text-align: center;
+right: 0;
+top: 0;
+position: absolute;
+height: 98%;
+width: 48%;
+padding: 1%;
 }
 
 #OverlayCorrectDescription{
   overflow-y: auto;
+  display: inline-block;
+      text-align: center;
+right: 0;
+position: absolute;
+      height: 98%;
+      width: 48%;
+      padding: 1%;
 }
 
 #OverlayCorrectImage{
   display: inline-block;
-  text-align: center;
-  width: 50%;
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
 }
 
 #imageEnlarge{

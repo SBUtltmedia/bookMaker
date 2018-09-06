@@ -1,8 +1,10 @@
-var chapters = [];
-
+var state={}
+state.chapters = [];
+state.chapterList=[]
+state.lookup={}
 var testing = false;
 var clearLocalStorage = false;
-
+var hideSpeed=0;
 var refreshInterval = -1;
 
 var currentPage = {
@@ -226,6 +228,8 @@ function setFullScreen(bool) {
   }
 }
 
+
+
 // Loads the module m into the view.
 function loadModule(m) {
   // Clear sidebar
@@ -233,18 +237,90 @@ function loadModule(m) {
   zero = m.zero;
   numbers = m.numbers;
   // Create sidebar thumbnails
+  state.chapters= m.chapters;
+
   for (var i = 0; i < m.chapters.length; i++) {
     // For each chapter...
-    initChapter(m.chapters[i]);
+
+    state.chapters[i].expanded=false;
+    //initChapter(m.chapters[i]);
     // Make chapter thumbnail
-    makeChapterThumbnail(m.chapters[i], i);
+    makeThumbnail(m.chapters[i], [i+1]);
     // Make page thumbnails
     for (var j = 0; j < m.chapters[i].pages.length; j++) {
-      makePageThumbnail(m.chapters[i].pages[j], i, j);
+      makeThumbnail(m.chapters[i].pages[j], [i+1, j+1]);
+      if(m.chapters[i].pages[j].subPages){
+        for (var k = 0; k < m.chapters[i].pages[j].subPages.length; k++) {
+            makeThumbnail(m.chapters[i].pages[j].subPages[k],[ i+1, j+1,k+1]);
+        }
+      }
     }
   }
+
+$(".thumb").on("click",function(evt){
+
+
+//
+//     var [,i,j] = evt.currentTarget.id.split("_");
+// //    console.log(i,j)
+// //console.log(evt.currentTarget.id)
+//
+//     currentPage.chapterID = i;
+//     currentPage.quizID = j;
+//     setContent(state.chapters[i].pages[j-1], i, j);
+//     $("#thumb_" + i + "_" + (j+1)).attr("clicked", true)
+//     updateCompletion();
+var stem=$(evt.currentTarget).attr("id").split("_");
+
+//Setting the currentPage chapterID and QuizID based on the clicked thumb for
+//later usage with next page and previous page
+currentPage.chapterID = stem.slice(1,2)-1;
+if(stem.slice(1).length==2){
+  currentPage.quizID=(stem.slice(2,3)-1)+1;
+}
+
+setContent(stem.slice(1).join("_"))
+
+  var branchClicked = "#thumbBox_"+$(evt.currentTarget).parent().attr("id").split("_")[1]
+
+
+ $(".thumbBox").each(function(idx,val){
+   var searchBranch= "#thumbBox_"+$(val).attr("id").split("_")[1]
+   if($(searchBranch).attr("id")!=$(branchClicked).attr("id")){
+   //  console.log($(val).attr("id"),$(branchClicked).attr("id"))
+   //  possibility one: make the subpages disapear before hidden
+   $(val).find(".thumbBox").hide(hideSpeed);
+
+  }
+})
+
+ var clickedItemSiblings= $(evt.currentTarget).parent().find('>  .thumbBox');
+
+// var menuChildren =$(thumbClicked).parent().pa;
+//  if(menuChildren.is(':not(:hidden)')&& clickedItemSiblings.is(':hidden')) {
+//   menuChildren.hide(/*animateToPosition*/);
+// }
+
+setTimeout(function(){clickedItemSiblings.toggle(hideSpeed)}, hideSpeed);
+ hideSpeed=500;
+//
+// for (var i = count-1; i >= 0; i--) {
+//     val = vals[i];
+//     var searchBranch= "#thumbBox_"+$(val).attr("id").split("_")[1]
+//     if($(searchBranch).attr("id")!=$(branchClicked).attr("id")){
+//     //  console.log($(val).attr("id"),$(branchClicked).attr("id"))
+//     //  possibility one: make the subpages disapear before hidden
+//     if ($(val).children.length > 0 && $(val).parent.length > 0) {
+//       valChildren = $(val).find(".thumbBox");
+//       if (jsonEqual(evt.currentTarget, $(val).parent) && !valChildren.is(':hidden')) {
+//         valChildren.hide();
+//       }
+//     }
+//   }
+// }
+})
   // Set positions of thumbnails
-  animateThumbPositions(chapters, true);
+  animateThumbPositions(true);
 
   setPages();
   // Check completion
@@ -252,152 +328,41 @@ function loadModule(m) {
   // refreshInterval = setInterval(function() {
   //   updateCompletion();
   // }, 1000);
-  setContent(chapters[0].pages[0], 0, 0);
+  setContent("1");
+
+
+
+
+
+// initChapterThumbnailsClick();
+// initPageThumbnailClick();
   resizeWindow();
 }
+
 
 function clearSidebar() {
   $("#sidebar").empty();
 }
 
-function makeChapterThumbnail(ch, chapterID) {
-  // Create divs
-  $("#sidebar").append('<div id="thumbBox' + chapterID + '" class="thumbBox chapterBox"></div>');
-  $("#thumbBox" + chapterID).append('<div id="thumb' + chapterID + '" class="thumb chapterThumb"></div>');
-  $("#thumb" + chapterID).append('<div id="thumbText' + chapterID + '" class="thumbText"></div>');
-  $("#thumb" + chapterID).append('<div id="thumbType' + chapterID + '" class="thumbType"></div>');
-  $("#thumb" + chapterID).append('<div id="thumbNumber' + chapterID + '" class="thumbNumber"></div>');
-
-  // Set title text
-  $("#thumbText" + chapterID).text(ch.title);
-  // Set chapter number
-  if (numbers) {
-    if (zero) {
-      $("#thumbNumber" + chapterID).text(chapterID);
-    } else {
-      $("#thumbNumber" + chapterID).text(chapterID + 1);
-    }
-  }
-  // Bind event listener
-  initChapterThumbnailClick(chapterID);
-}
-
-function initChapterThumbnailClick(i) {
-  $("#thumb" + i).click(function() {
-    for (var x = 0; x < chapters.length; x++) {
-      if (chapters[x].expanded == true && i != x) {
-        chapters[x].expanded = !chapters[x].expanded;
-        for (var j = 0; j < chapters[x].pages.length; j++) {
-          if ($("#thumbBox" + x + "-" + j).css("visibility") == "hidden") {
-            $("#thumbBox" + x + "-" + j).css("visibility", "visible");
-            $("#thumbGlow" + x + "-" + j).css("left", "11%");
-          } else {
-            $("#thumbBox" + x + "-" + j).css("visibility", "hidden");
-            $("#thumbGlow" + x + "-" + j).css("left", "6%");
-          }
-        }
-        animateThumbPositions(chapters, false);
-      }
-    }
-
-    if (chapters[i].expanded == false) {
-      chapters[i].expanded = !chapters[i].expanded;
-      for (var j = 0; j < chapters[i].pages.length; j++) {
-        if ($("#thumbBox" + i + "-" + j).css("visibility") == "hidden") {
-          $("#thumbBox" + i + "-" + j).css("visibility", "visible");
-          $("#thumbGlow" + i + "-" + j).css("left", "11%");
-        } else {
-          $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
-          $("#thumbGlow" + i + "-" + j).css("left", "6%");
-        }
-      }
-      animateThumbPositions(chapters, false);
-    }
-
-    currentPage.chapterID = i;
-    currentPage.quizID = 0;
-    setContent(chapters[i].pages[0], i, 0);
-    $("#thumb" + i + "-" + 0).attr("clicked", true)
-    updateCompletion();
-  });
-}
-
-function makePageThumbnail(pg, chapterID, pageID) {
-  // Create divs
-  $("#sidebar").append('<div id="thumbBox' + chapterID + '-' + pageID + '" class="thumbBox pageBox"></div>');
-  $("#thumbBox" + chapterID + "-" + pageID).append('<div id="thumb' + chapterID + '-' + pageID + '" class="thumb pageThumb"></div>');
-  $("#thumbBox" + chapterID + "-" + pageID).append('<div id="thumbGlow' + chapterID + '-' + pageID + '" class="thumbGlow"></div>');
-  $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbText' + chapterID + '-' + pageID + '" class="thumbText"></div>');
-  $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbType' + chapterID + '-' + pageID + '" class="thumbType"></div>');
-  $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbTypeText' + chapterID + '-' + pageID + '" class="thumbTypeText"></div>');
-  // Set title text
-  $("#thumbText" + chapterID + "-" + pageID).text(pg.title);
-  // Set type text
-
-  $("#thumbTypeText" + chapterID + "-" + pageID).text(pg.type.toUpperCase());
-
-  // if (pg.type == "text") {
-  //   $("#thumbTypeText" + chapterID + "-" + pageID).text("TEXT");
-  // } else if (pg.type == "vq") {
-  //   $("#thumbTypeText" + chapterID + "-" + pageID).text("VIDEO QUIZ");
-  // } else if (pg.type == "html") {
-  //   $("#thumbTypeText" + chapterID + "-" + pageID).text(pg.thumbText);
-  // }
-
-  // Bind event listener
-  initPageThumbnailClick(chapterID, pageID);
-}
-
-function initPageThumbnailClick(i, j) {
-  $("#thumb" + i + "-" + j).click(function() {
-    currentPage.chapterID = i;
-    currentPage.quizID = j;
-    setContent(chapters[i].pages[j], i, j);
-    $("#thumb" + i + "-" + j).attr("clicked", true)
-    updateCompletion();
-  });
-}
-
-function animateThumbPositions(chapters, isInstant) {
-  var thumbCount = -1;
-  var delay = 250;
-  if (isInstant) {
-    delay = 0;
-  }
-  for (var i = 0; i < chapters.length; i++) {
-    thumbCount++;
-    animateToPosition($("#thumbBox" + i), thumbCount, delay);
-    for (var j = 0; j < chapters[i].pages.length; j++) {
-      if (chapters[i].expanded) {
-        thumbCount++;
-      }
-
-      animateToPosition($("#thumbBox" + i + "-" + j), thumbCount, delay);
-    }
-  }
-}
-
-function animateToPosition(div, position, duration) {
-  div.animate({
-    "top": (12.5 * position) + "%"
-  }, duration);
-}
-
 function initChapter(ch) {
   var chapter = new Chapter(ch);
-  chapters.push(chapter);
+  state.chapters.push(chapter);
 }
 
 function Chapter(ch) {
-  var chapter = {};
-  chapter.title = ch.title;
-  chapter.pages = [];
-  for (var i = 0; i < ch.pages.length; i++) {
-    var page = new Page(ch.pages[i]);
-    chapter.pages.push(page);
-  }
-  chapter.expanded = false;
-  return chapter;
+
+  // var chapter = {};
+  // chapter.title = ch.title;
+  // chapter.content=ch.content;
+  // chapter.type=ch.type;
+  // chapter.pages = [];
+  // for (var i = 0; i < ch.pages.length; i++) {
+  //   var page = new Page(ch.pages[i]);
+  //   chapter.pages.push(page);
+  // }
+   // chapter.expanded = false;
+   ch.expanded = false;
+  return ch;
 }
 
 function Page(pg) {
@@ -410,19 +375,176 @@ function Page(pg) {
   return page;
 }
 
+
+function makeThumbnail(pg, treeInfo) {
+
+
+var pageTypes= ["chapter","page","subpage"]
+var treeInfoString=treeInfo.join("_");
+var [chapterID,pageID,subpageID]=treeInfo;
+var thumbClass=pageTypes[treeInfo.length-1]
+var chapterIndex =treeInfo[0];
+var navSelector="#sidebar"
+if (treeInfo.length!=1){
+  navSelector ="#thumbBox_"+treeInfo.slice(0,-1).join("_")
+}
+state.lookup[treeInfoString]=pg;
+
+//gives pages no 'chapter numbers'
+if (treeInfo.length > 1) {
+  chapterIndex = "";
+}
+ state.chapterList.push(treeInfoString)
+
+  var thumbBox= $('<div/>',{id:"thumbBox_" +treeInfoString, class:"thumbBox "+thumbClass+"Box"})
+  var thumb =$('<div/>',{id:"thumb_" + treeInfoString, class:"thumb "+thumbClass+"Thumb"})
+  var thumbText =$('<div/>',{id:"thumbText_" + treeInfoString,text:pg.title, class:"thumbText"})
+
+  var thumbNumber =$('<div/>',{id:"thumbNumber_" + treeInfoString, text:chapterIndex, class:"thumbNumber"})
+  var thumbGlow= $('<div/>',{id:"thumbGlow_" + treeInfoString, class:"thumbGlow"})
+  $(navSelector).append(thumbBox.append(thumb.append([thumbText,thumbNumber, thumbGlow])))
+
+  // Bind event listener
+  if (pageID=="chapter"){
+  //initChapterThumbnailClick(chapterID);
+}
+else {
+//initPageThumbnailClick(i, j)
+
+}
+}
+
+// function makePageThumbnail(pg, chapterID, pageID) {
+//   // Create divs
+//   $("#sidebar").append('<div id="thumbBox' + chapterID + '-' + pageID + '" class="thumbBox pageBox"></div>');
+//   $("#thumbBox" + chapterID + "-" + pageID).append('<div id="thumb' + chapterID + '-' + pageID + '" class="thumb pageThumb"></div>');
+//   $("#thumbBox" + chapterID + "-" + pageID).append('<div id="thumbGlow' + chapterID + '-' + pageID + '" class="thumbGlow"></div>');
+//   $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbText' + chapterID + '-' + pageID + '" class="thumbText"></div>');
+//   $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbType' + chapterID + '-' + pageID + '" class="thumbType"></div>');
+//   $("#thumb" + chapterID + "-" + pageID).append('<div id="thumbTypeText' + chapterID + '-' + pageID + '" class="thumbTypeText"></div>');
+//   // Set title text
+//   $("#thumbText" + chapterID + "-" + pageID).text(pg.title);
+//   // Set type text
+//
+//   $("#thumbTypeText" + chapterID + "-" + pageID).text(pg.type.toUpperCase());
+//
+//
+//   // Bind event listener
+//   initPageThumbnailClick(chapterID, pageID);
+// }
+
+
+function initChapterThumbnailsClick() {
+
+ for (var x = 0; x < state.chapters.length; x++) {
+  state.chapters[x].expanded = false;
+ }
+  //animateThumbPositions(state.chapters, false);
+
+$('.thumbBox,.thumbGlow').each(function(item, val){})
+
+  // $(".pageBox").css("visibility", "hidden");
+  // $(".chapterThumb").on("click", function(evt) {
+  //
+  //   var i = evt.currentTarget.id.split("_")[1];
+  //   console.log(i)
+  //   var wasExpanded = false
+  //   for (var x = 0; x < state.chapters.length; x++) {
+  //     if (state.chapters[x].expanded == true) {
+  //       state.chapters[x].expanded = false;
+  //       for (var j = 1; j < state.chapters[x].pages.length + 1; j++) {
+  //         if ($("#thumbBox_" + x + "_" + j).css("visibility") == "hidden") {
+  //           $("#thumbBox_" + x + "_" + j).css("visibility", "visible");
+  //           $("#thumbGlow_" + x + "_" + j).css("left", "11%");
+  //         } else {
+  //           $("#thumbBox_" + x + "_" + j).css("visibility", "hidden");
+  //           $("#thumbGlow_" + x + "_" + j).css("left", "6%");
+  //         }
+  //       }
+  //       animateThumbPositions(state.chapters, false);
+  //       if (i == x) {wasExpanded = true}
+  //     }
+  //   //}
+  //   console.log(state.chapters[i].expanded)
+  //   if (wasExpanded == false) {
+  //     if (state.chapters[i].expanded == false) {
+  //       state.chapters[i].expanded = true;
+  //       for (var j = 1; j < state.chapters[i].pages.length + 1; j++) {
+  //         if ($("#thumbBox_" + i + "_" + j).css("visibility") == "hidden") {
+  //           $("#thumbBox_" + i + "_" + j).css("visibility", "visible");
+  //           $("#thumbGlow_" + i + "_" + j).css("left", "11%");
+  //         } else {
+  //           $("#thumbBox_" + i + "_" + j).css("visibility", "hidden");
+  //           $("#thumbGlow_" + i + "_" + j).css("left", "6%");
+  //         }
+  //       }
+  //       animateThumbPositions(state.chapters, false);
+  //     }
+  //   }
+  //   else {wasExpanded = false}
+  //   currentPage.chapterID = i;
+  //   currentPage.quizID = 0;
+  //   var pageInfo={type:state.chapters[i].type,title:state.chapters[i].title,content:state.chapters[i].content}
+  //   console.log(pageInfo)
+  //   setContent(pageInfo , i, 0);
+  //   $("#thumb_" + i + "_" + 0).attr("clicked", true)
+  //   updateCompletion();
+  // });
+}
+
+
+function initPageThumbnailClick() {
+
+}
+
+function animateThumbPositions(isInstant) {
+  // var thumbCount = -1;
+  // var delay = 250;
+  // if (isInstant) {
+  //   delay = 0;
+  // }
+  // for (var i = 0; i < state.chapters.length; i++) {
+  //   thumbCount++;
+  //   animateToPosition($("#thumbBox_" + i), thumbCount, delay);
+  //   for (var j = 0; j < state.chapters[i].pages.length; j++) {
+  //     if (state.chapters[i].expanded) {
+  //       thumbCount++;
+  //     }
+  //
+  //     animateToPosition($("#thumbBox_" + i + "_" + (j+1)), thumbCount, delay);
+  //   }
+  // }
+}
+
+function animateToPosition(div, position, duration) {
+  // div.animate({
+  //   "top": (12.5 * position) + "%"
+  // }, duration);
+}
+
+
+
 // Set content in the center of the page to
-function setContent(pg, chapterID, pageID) {
-  $("#contentLoader").empty();
+function setContent(stem) {
+if($("#contentLoader").data("stem")==stem){return}
+
+  $("#contentLoader").data("stem",stem)
+  var pg=state.lookup[stem];
+  var content = pg.content;
+  console.log(pg)
   if (pg.type == "text") {
     // TODO: display text
-    $("#contentLoader").append('<div id="contentText" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></div>');
+    $("#contentLoader").html('<div id="contentText" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></div>');
     $("#contentText").html(pg.content);
-
   } else {
     // Display an iframe containing the specified video quiz
-    $("#contentLoader").append('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
+    $("#contentLoader").html('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
     if (pg.content) {
-      $("#contentFrame").attr("src", pg.content + "?testing=" + testing + "&key=" + pg.type + "_" + chapterID + "_" + pageID + "&local=" + module.localStorageKey);
+      var contentSource=pg.content + "?testing=" + testing + "&key=" + pg.type + "_" +stem+ "&local=" + module.localStorageKey;
+      if (pg.type=="cover"){
+        contentSource=pg.content+"title="+pg.title;
+      }
+      $("#contentFrame").attr("src",contentSource);
       if (pg.type.toLowerCase() == "vq") {
         $('#contentFrame').on("load", function() {
           $('#contentFrame')
@@ -430,79 +552,75 @@ function setContent(pg, chapterID, pageID) {
             .append($('<script>$("#scoreBox").css("display","none"); $("#noQuestionText").css("display","none");            </script>'));
         });
       }
-      if (pg.type.toLowerCase() == "cover") {
-        $('#contentFrame').on("load", function() {
-          $('#contentFrame')
-            .contents().find("body")
-            .append($('<div style="width:50.5%; position: absolute; left: 21.75%; height:8%; top:1%; background-color:white; z-index:-1;padding:3%; font-size:3rem; ">' + ((chapters[chapterID].title).split(":"))[1] + '</div>'));
-          if (chapterID > 0) {
-            $('#contentFrame')
-              .contents().find("body")
-              .append($('<div style="width: 5.5%; position: absolute; left: 69%; height: 5.5%; top: 10.5%; color: white; z-index: 1; font-size: 2.5rem; text-align: center;">' + chapterID + '</div>'));
-          }
-        });
-      }
     }
   }
-  if (showingOverlay) {
-    showOverlay(false);
-  }
-  $(".overlayButton").removeClass("caliperButton");
-  $(".overlayButton").removeClass("btn");
-  $(".overlayButton").removeClass("hidden");
-  $("#overlayMenu").addClass("hidden");
-  $("#overlay").empty();
-  $("#overlayMenuOptions").html("");
-  canShowOverlay = false;
-  if (pg.overlays != null && pg.overlays != undefined) {
-    if (pg.overlays.length > 0) {
-      $("#overlayButton1").addClass("btn");
-
-      if (pg.overlays.length == 1) {
-        var overlay = pg.overlays[0];
-        if (overlay == "calipers") {
-          $("#overlayButton1").addClass("caliperButton");
-        }
-        $("#overlay").append('<iframe id="overlayFrame" ALLOWTRANSPARENCY="true"></iframe>');
-        $("#overlayFrame").attr("src", module.overlayURLs[overlay]);
-        canShowOverlay = true;
-
-        $("#overlayButton1").click(function() {
-          if (canShowOverlay) {
-            if (!showingOverlay) {
-              showOverlay(true);
-            } else {
-              showOverlay(false);
-            }
-          }
-          resizeWindow();
-        });
-
-      } else {
-        for (var i = 0; i < pg.overlays.length; i++) {
-          linkOverlay(pg.overlays[i]);
-        }
-        $("#overlayButton1").off("click");
-        $("#overlayButton1").on("click",
-          function() {
-            if ($("#overlayMenu").hasClass("hidden")) {
-              $("#overlayMenu").removeClass("hidden");
-            } else {
-              $("#overlayMenu").addClass("hidden");
-            }
-          }
-        );
-        canShowOverlay = true;
-      }
-
+  var sectionArr = stem.split("_");
+  if (sectionArr.constructor === Array) {
+    var sectionStr = "" + sectionArr[0];
+    for (i = 1; i < sectionArr.length; i++) {
+      sectionStr = sectionStr + "-" + sectionArr[i];
     }
-  } else {
-    $(".overlayButton").addClass("hidden");
   }
-  $(".thumbGlow").css("visibility", "hidden");
-  $("#thumbGlow" + chapterID + "-" + pageID).css("visibility", "visible");
-  $("#pageNumberText").text((chapterID + 1) + "-" + (pageID + 1));
-  resizeWindow();
+  $('#pageNumberText').text(sectionStr);
+  // if (showingOverlay) {
+  //   showOverlay(false);
+  // }
+  // $(".overlayButton").removeClass("caliperButton");
+  // $(".overlayButton").removeClass("btn");
+  // $(".overlayButton").removeClass("hidden");
+  // $("#overlayMenu").addClass("hidden");
+  // $("#overlay").empty();
+  // $("#overlayMenuOptions").html("");
+  // canShowOverlay = false;
+  // if (pg.overlays != null && pg.overlays != undefined) {
+  //   if (pg.overlays.length > 0) {
+  //     $("#overlayButton1").addClass("btn");
+  //
+  //     if (pg.overlays.length == 1) {
+  //       var overlay = pg.overlays[0];
+  //       if (overlay == "calipers") {
+  //         $("#overlayButton1").addClass("caliperButton");
+  //       }
+  //       $("#overlay").append('<iframe id="overlayFrame" ALLOWTRANSPARENCY="true"></iframe>');
+  //       $("#overlayFrame").attr("src", module.overlayURLs[overlay]);
+  //       canShowOverlay = true;
+  //
+  //       $("#overlayButton1").click(function() {
+  //         if (canShowOverlay) {
+  //           if (!showingOverlay) {
+  //             showOverlay(true);
+  //           } else {
+  //             showOverlay(false);
+  //           }
+  //         }
+  //         resizeWindow();
+  //       });
+  //
+  //     } else {
+  //       for (var i = 0; i < pg.overlays.length; i++) {
+  //         linkOverlay(pg.overlays[i]);
+  //       }
+  //       $("#overlayButton1").off("click");
+  //       $("#overlayButton1").on("click",
+  //         function() {
+  //           if ($("#overlayMenu").hasClass("hidden")) {
+  //             $("#overlayMenu").removeClass("hidden");
+  //           } else {
+  //             $("#overlayMenu").addClass("hidden");
+  //           }
+  //         }
+  //       );
+  //       canShowOverlay = true;
+  //     }
+  //
+  //   }
+  // } else {
+  //   $(".overlayButton").addClass("hidden");
+  // }
+  // $(".thumbGlow").css("visibility", "hidden");
+  // // $("#thumbGlow" + chapterID + "-" + pageID).css("visibility", "visible");
+  // // $("#pageNumberText").text((chapterID + 1) + "-" + (pageID + 1));
+  // resizeWindow();
 
 
 }
@@ -545,17 +663,20 @@ function nextPage(offset) {
   var moved = false;
   while (offset != 0) {
     if (offset > 0) {
-      if (currentPage.quizID < chapters[currentPage.chapterID].pages.length - 1) {
+      if (currentPage.quizID < state.chapters[currentPage.chapterID].pages.length) {
         currentPage.quizID++;
+        console.log(currentPage.quizID)
+        console.log(currentPage.chapterID)
         moved = true;
       } else {
-        if (currentPage.chapterID < chapters.length - 1) {
+        if (currentPage.chapterID < state.chapters.length - 1) {
           currentPage.chapterID++;
           currentPage.quizID = 0;
           moved = true;
         }
       }
       offset--;
+
     } else if (offset < 0) {
       if (currentPage.quizID > 0) {
         currentPage.quizID--;
@@ -563,7 +684,7 @@ function nextPage(offset) {
       } else {
         if (currentPage.chapterID > 0) {
           currentPage.chapterID--;
-          currentPage.quizID = chapters[currentPage.chapterID].pages.length - 1;
+          currentPage.quizID = state.chapters[currentPage.chapterID].pages.length - 1;
           moved = true;
         }
       }
@@ -573,41 +694,45 @@ function nextPage(offset) {
   console.log(moved);
   if (moved) {
     //#####################################
-    var i = currentPage.chapterID;
+    var i = currentPage.chapterID + 1;
     var j = currentPage.quizID;
-    setContent(chapters[i].pages[j], i, j);
-    $("#thumb" + i + "-" + j).attr("clicked", true)
+    stem = i + "";
+    if (j > 0) {
+      stem = i + "_" + j;
+    }
+    setContent(stem);
+    $("#thumb_" + i + "_" + (j+1)).attr("clicked", true)
     updateCompletion();
     //#####################################
     if (j == 0) {
-      for (var x = 0; x < chapters.length; x++) {
-        if (chapters[x].expanded == true && i != x) {
-          chapters[x].expanded = !chapters[x].expanded;
-          for (var j = 0; j < chapters[x].pages.length; j++) {
-            if ($("#thumbBox" + x + "-" + j).css("visibility") == "hidden") {
-              $("#thumbBox" + x + "-" + j).css("visibility", "visible");
-              $("#thumbGlow" + x + "-" + j).css("left", "11%");
+      for (var x = 0; x < state.chapters.length; x++) {
+        if (state.chapters[x].expanded == true && i != x) {
+          state.chapters[x].expanded = !state.chapters[x].expanded;
+          for (var j = 1; j < state.chapters[x].pages.length+1; j++) {
+            if ($("#thumbBox" + x + "_" + j).css("visibility") == "hidden") {
+              $("#thumbBox" + x + "_" + j).css("visibility", "visible");
+              $("#thumbGlow" + x + "_" + j).css("left", "11%");
             } else {
-              $("#thumbBox" + x + "-" + j).css("visibility", "hidden");
-              $("#thumbGlow" + x + "-" + j).css("left", "6%");
+              $("#thumbBox" + x + "_" + j).css("visibility", "hidden");
+              $("#thumbGlow" + x + "_" + j).css("left", "6%");
             }
           }
-          animateThumbPositions(chapters, false);
+          animateThumbPositions(false);
         }
       }
 
-      if (chapters[i].expanded == false) {
-        chapters[i].expanded = !chapters[i].expanded;
-        for (var j = 0; j < chapters[i].pages.length; j++) {
-          if ($("#thumbBox" + i + "-" + j).css("visibility") == "hidden") {
-            $("#thumbBox" + i + "-" + j).css("visibility", "visible");
-            $("#thumbGlow" + i + "-" + j).css("left", "11%");
+      if (state.chapters[i].expanded == false) {
+        state.chapters[i].expanded = !state.chapters[i].expanded;
+        for (var j = 1; j < state.chapters[i].pages.length+1; j++) {
+          if ($("#thumbBox" + i + "_" + j).css("visibility") == "hidden") {
+            $("#thumbBox" + i + "_" + j).css("visibility", "visible");
+            $("#thumbGlow" + i + "_" + j).css("left", "11%");
           } else {
-            $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
-            $("#thumbGlow" + i + "-" + j).css("left", "6%");
+            $("#thumbBox" + i + "_" + j).css("visibility", "hidden");
+            $("#thumbGlow" + i + "_" + j).css("left", "6%");
           }
         }
-        animateThumbPositions(chapters, false);
+        animateThumbPositions(false);
       }
     }
     //#####################################
@@ -653,8 +778,8 @@ function grading(studentInfo) {
     $("#quizGrading").addClass("hidden");
   });
 
-  for (var x = 0; x < chapters.length; x++) {
-    var currentChapter = chapters[x];
+  for (var x = 0; x < state.chapters.length; x++) {
+    var currentChapter = state.chapters[x];
     for (var y = 0; y < currentChapter.pages.length; y++) {
       var currentPage = currentChapter.pages[y];
       if (currentPage.type.toLowerCase() == "vq") {
@@ -665,8 +790,6 @@ function grading(studentInfo) {
     }
   }
 }
-
-function resetGrading
 
 function showDemQuizGrades(fullgrades) {
   var gradeTitle = "<div class='gradeTitleItem'><u>" + fullgrades.page + "</u></div>";
@@ -739,10 +862,10 @@ function updateCompletion() {
   if (debug) {
     console.log('\n' + "----------Update Completion----------");
   }
-  for (var i = 0; i < chapters.length; i++) {
+  for (var i = 0; i < state.chapters.length; i++) {
 
     var completedPages = 0;
-    var chapterSelected = chapters[i];
+    var chapterSelected = state.chapters[i];
     var chapterEl = $("#thumbType" + i);
 
     completedPages = updatePages(i, completedPages);
@@ -759,11 +882,11 @@ function updateCompletion() {
 }
 
 function updatePages(i, completedPages) {
-
-  for (var j = 0; j < chapters[i].pages.length; j++) {
+// thumb type no longer exists. code must be edited to show complete
+  for (var j = 0; j < state.chapters[i].pages.length; j++) {
 
     var complete = false;
-    var pg = chapters[i].pages[j];
+    var pg = state.chapters[i].pages[j];
     var thumbEl = $("#thumbType" + i + "-" + j)
     var key = progress.getKey(pg.type + "_" + i + "_" + j);
 
@@ -818,8 +941,8 @@ function showOverlay(bool) {
 }
 
 function setPages() {
-  for (var i = 0; i < chapters.length; i++) {
-    for (var j = 0; j < chapters[i].pages.length; j++) {
+  for (var i = 0; i < state.chapters.length; i++) {
+    for (var j = 0; j < state.chapters[i].pages.length; j++) {
       $("#thumbBox" + i + "-" + j).css("visibility", "hidden");
     }
   }

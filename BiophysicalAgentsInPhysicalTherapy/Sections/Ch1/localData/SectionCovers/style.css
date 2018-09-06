@@ -1,0 +1,70 @@
+#content{
+  width:100%;
+  height:100%;
+  background-image: url(img/background.svg);
+
+}
+img{
+  position:absolute;
+  left:20%;
+  width:60%;
+  top:12%;
+}
+#title{
+    text-align: center;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 3%;
+    position:absolute;
+    font-weight: 900;
+    color: #000;
+    font-family: "Helvetica", sans-serif;
+    font-size: 2rem;
+    /* z-index: 10; */
+}
+
+.image_1{
+
+
+}
+.image_2{
+
+
+
+}
+.image_3{
+
+
+
+}
+.image_4{
+
+
+
+}
+
+.image_5{
+
+  top:17%;
+  left:33%;
+  width:35%;
+
+
+}
+.image_6{
+
+
+
+}
+
+.image_7{
+
+
+
+}
+.image_8{
+
+
+
+}
