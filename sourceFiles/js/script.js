@@ -590,15 +590,26 @@ function updateCompletion() {
 
 //CHANGE: parameters used to be 'i' -> currentChapter and 'completedPages', which was always 0. Now takes no parameters.
 function updatePages() {
+  var lastChapter="1";
+  var chapComplete=true;
   numChapters = state.chapterList.length;
   for (var j = 0; j < numChapters; j++) {
-    currentState = "";
     var key = state.chapterList[j];
-    if (progress.getKey(key)) {
-      currentState = progress.getKey(key);
+    var keySplit=key.split("_");
+    currentChapter=keySplit.slice(0,Math.max(1,keySplit.length-1)).join("_");
+    if (lastChapter!=currentChapter){
+      if (chapComplete) {
+        $("#thumb_"+lastChapter).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
+        chapComplete=true;
+      }
+      lastChapter=currentChapter;
+      continue;
     }
-    if (localStorage.PTP.includes("\"" + key + "\"") && currentState=="done") {
+
+    if (progress.getKey(key)=="done") {
       $("#thumb_"+key).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
+    } else if (key != currentChapter) {
+      chapComplete=false;
     }
   }
 // thumb type no longer exists. code must be edited to show complete
