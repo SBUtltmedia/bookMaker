@@ -10,9 +10,16 @@
   background: #0F1626;
 }
 
-.chapterThumb,
-.pageThumb, .subpageThumb{
+.chapterThumb {
   background-color: #FF533D;
+}
+
+.pageThumb {
+  background-color: #FF733D;
+}
+
+.subpageThumb {
+  background-color: #FF933D;
 }
 
 .thumbText{
