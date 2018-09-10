@@ -69,3 +69,23 @@
 [12-Apr-2018 17:06:17] PHP Fatal error:  Cannot use object of type stdClass as array in /home1/tltsecure/apache2/htdocs/bookMaker/sourceFiles/api/getUserInfo.php on line 28
 [12-Apr-2018 17:06:17] PHP Fatal error:  Cannot use object of type stdClass as array in /home1/tltsecure/apache2/htdocs/bookMaker/sourceFiles/api/getUserInfo.php on line 28
 [12-Apr-2018 17:06:17] PHP Fatal error:  Cannot use object of type stdClass as array in /home1/tltsecure/apache2/htdocs/bookMaker/sourceFiles/api/getUserInfo.php on line 28
+[10-Sep-2018 16:22:07] PHP Warning:  file_get_contents(/home1/tltsecure/apache2/htdocs/bookMakerDev/BiophysicalAgentsInPhysicalTherapy/Sections/Ch1/localData/admins.json) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 8
+[10-Sep-2018 16:22:07] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:07] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:07] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:07] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:14] PHP Warning:  file_get_contents(/home1/tltsecure/apache2/htdocs/bookMakerDev/BiophysicalAgentsInPhysicalTherapy/Sections/Ch1/localData/admins.json) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 8
+[10-Sep-2018 16:22:14] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:14] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:14] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:14] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:16] PHP Warning:  file_get_contents(/home1/tltsecure/apache2/htdocs/bookMakerDev/BiophysicalAgentsInPhysicalTherapy/Sections/Ch1/localData/admins.json) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 8
+[10-Sep-2018 16:22:16] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:16] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:16] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:16] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:17] PHP Warning:  file_get_contents(/home1/tltsecure/apache2/htdocs/bookMakerDev/BiophysicalAgentsInPhysicalTherapy/Sections/Ch1/localData/admins.json) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 8
+[10-Sep-2018 16:22:17] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:17] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 10
+[10-Sep-2018 16:22:17] PHP Notice:  Trying to get property of non-object in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
+[10-Sep-2018 16:22:17] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home1/tltsecure/apache2/htdocs/bookMakerDev/sourceFiles/api/isAdmin.php on line 11
