@@ -291,7 +291,7 @@ function navigateToPage(thumbID){
   //later usage with next page and previous page
   currentPage.chapterID = state.stem
   // $("#thumb_"+(thumbID+1)).style.border="solid";
-
+  console.log(branchClicked[0],branchClicked);
   setContent(state.stem)
 
 
@@ -303,7 +303,6 @@ function navigateToPage(thumbID){
    })
    hideSpeed=500;
    var clickedItemSiblings= $("#thumb_"+thumbID).parent().find('>  .thumbBox');
-
   $(clickedItemSiblings).find(".thumbText").css({opacity:0})
 
   if( clickedItemSiblings.is(':visible') ){
