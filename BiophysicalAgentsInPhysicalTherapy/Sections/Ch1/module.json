@@ -68,9 +68,9 @@
       "title": "Treatment procedure narrative",
       "content": "localData/CH04/CH04_Treatment_procedure_narrative/index.html"
     }, {
-      "type": "text",
-      "title": "Maintaining equipment",
-      "content": ""
+      "type": "Video",
+      "title": "Maintaining The Equipment",
+      "content": "localData/CH04/CH04_Maintaining_equipment/index.html"
     }, {
       "type": "subsection",
       "title": "Hot Pack Treatment Procedure Videos",
@@ -106,9 +106,9 @@
       "title": "Treatment procedure narrative",
       "content": "localData/CH05/CH05_Treatment_procedure_narrative/index.html"
     }, {
-      "type": "text",
-      "title": "Maintaining the equipment",
-      "content": ""
+      "type": "video",
+      "title": "Maintaining the Equipment",
+      "content": "localData/CH05/CH05_Maintaining_equipment/index.html"
     }, {
       "type": "subsection",
       "title": "Paraffin Treatment Procedure Videos",
@@ -151,9 +151,9 @@
     "type": "cover",
     "content":"localData/SectionCovers/index.html?chapterNum=6&",
     "pages": [{
-      "type": "Voiceover",
+      "type": "Video",
       "title": "General Info Fluidotherapy",
-      "content": ""
+      "content": "localData/CH06/CH06_General_info/index.html"
     }, {
       "type": "Animation",
       "title": "Control Panel Explanation",

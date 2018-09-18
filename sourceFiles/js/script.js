@@ -265,13 +265,15 @@ function loadModule(m) {
   }
 
 $(".thumb").on("click",function(evt){
+
+
+
   var thumbID=  $(evt.currentTarget).attr("id").split("thumb_")[1];
   navigateToPage(thumbID);
 })
 
   // Set positions of thumbnails
   // animateThumbPositions(true);
-
   setPages();
   // Check completion
   updateCompletion();
@@ -281,12 +283,14 @@ $(".thumb").on("click",function(evt){
 }
 function navigateToPage(thumbID){
   state.stem=thumbID;
+  $('.thumb').removeClass("selected")
+  $('#thumb_'+thumbID).addClass("selected")
   console.log(state.stem);
   var branchClicked = $("#thumbBox_"+$("#thumb_"+thumbID).parent().attr("id").split("_")[1])
   //Setting the currentPage chapterID and QuizID based on the clicked thumb for
   //later usage with next page and previous page
   currentPage.chapterID = state.stem
-
+  // $("#thumb_"+(thumbID+1)).style.border="solid";
 
   setContent(state.stem)
 
@@ -441,10 +445,7 @@ function linkOverlay(overlay) {
 }
 
 
-function nextPage(offset) {
 
-
-}
 
 function showGrades() {
   var htAccess = true;
@@ -562,30 +563,8 @@ function organizeKey(keydata) {
 
 // Update completion
 function updateCompletion() {
-
-
-
-  if (debug) {
-    console.log('\n' + "----------Update Completion----------");
-  }
-  // for (var i = 0; i < state.chapters.length; i++) {
-    //
-    // var completedPages = 0;
-    // var chapterSelected = state.chapters[i];
-    // var chapterEl = $("#thumbType" + i);
-
     updatePages(0, 0);
 
-    //
-    // if (completedPages == chapterSelected.pages.length) {
-    //   chapterEl.addClass("chapter_complete")
-    // } else {
-    //   chapterEl.addClass("chapter_incomplete")
-    // }
-  // }
-  if (debug) {
-    console.log("----------End Update Completion----------" + '\n');
-  }
 }
 
 //CHANGE: parameters used to be 'i' -> currentChapter and 'completedPages', which was always 0. Now takes no parameters.
@@ -597,67 +576,37 @@ function updatePages() {
     var key = state.chapterList[j];
     var keySplit=key.split("_");
     currentChapter=keySplit.slice(0,Math.max(1,keySplit.length-1)).join("_");
-    if (lastChapter!=currentChapter){
+    if (lastChapter!=currentChapter ){
+      console.log(lastChapter,currentChapter,chapComplete)
       if (chapComplete) {
         $("#thumb_"+lastChapter).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
         chapComplete=true;
       }
+      // if(keySplit[keySplit.length-1]==1 && chapComplete==false) {
+      //   j--;
+      // }
       lastChapter=currentChapter;
-      continue;
+      chapComplete=true;
+      // continue;
     }
 
     if (progress.getKey(key)=="done") {
       $("#thumb_"+key).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
-    } else if (key != currentChapter) {
+    } else if (key != currentChapter  && isLeaf(j) ) {
       chapComplete=false;
     }
   }
-// thumb type no longer exists. code must be edited to show complete
-  // for (var j = 0; j < state.chapters[i].pages.length; j++) {
-  //
-  //   var complete = false;
-  //   var pg = state.chapters[i].pages[j];
-  //   var thumbEl = $("#thumbType" + i + "-" + j)
-  //   var key = progress.getKey(pg.type + "_" + i + "_" + j);
-  //
-  //   if (debug) {
-  //     console.log(key, pg.type, i, j, $("#thumb" + i + "-" + j).attr("clicked"))
-  //   }
-  //   if (pg.type == "text" && $("#thumb" + i + "-" + j).attr("clicked")) {
-  //
-  //     thumbEl.addClass("page_complete");
-  //     completedPages++;
-  //
-  //   } else if (pg.type == "cover" && $("#thumb" + i + "-" + j).attr("clicked")) {
-  //
-  //     thumbEl.addClass("page_complete");
-  //     completedPages++;
-  //
-  //   } else if (pg.type == "vq") {
-  //
-  //     // Check local storage
-  //     var quizCompletion = JSON.parse(localStorage.getItem(pg.content));
-  //     var complete = false;
-  //
-  //     if (quizCompletion != null) {
-  //       complete = true;
-  //       for (var k = 0; k < quizCompletion.length; k++) {
-  //         if (quizCompletion[k] == false) {
-  //           complete = false;
-  //         }
-  //       }
-  //     }
-  //   } else if (progress.getKey(pg.type + "_" + i + "_" + j)) {
-  //     thumbEl.addClass("page_complete");
-  //     completedPages++;
-  //   } else {
-  //     thumbEl.addClass("page_incomplete");
-  //   }
-  // }
-  //
-  // return completedPages;
+}
+
+function isLeaf(index){
+var listLen= state.chapterList.length
+
+return  (state.chapterList[index].length==state.chapterList[(index+1)%listLen].length)
+
+
 
 }
+
 
 function showOverlay(bool) {
   showingOverlay = bool;
