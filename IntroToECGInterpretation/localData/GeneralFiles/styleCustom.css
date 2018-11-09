@@ -99,21 +99,7 @@
     }
 }
 
-.page_incomplete {
 
-}
-
-.page_complete{
-    background-image: url(img/green_check.svg);
-}
-
-.chapter_incomplete {
-
-}
-
-.chapter_complete{
-  background-image: url(img/green_check.svg);
-}
 
 #buttonPrevious {
     width: 7.5%;

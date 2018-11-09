@@ -44,11 +44,9 @@ $(function() {
 
   $(buttons.join(",")).on("click",function(evt) {
     var direction = (buttons.indexOf("#"+evt.currentTarget.id) * 2) - 1;
-    console.log(direction);
     var chapterListLength = state.chapterList.length;
     var  chapterIndex=state.chapterList.indexOf(currentPage.chapterID);
     var newPageIndex =(chapterIndex+chapterListLength+direction)%chapterListLength;
-    console.log(state.chapterList[newPageIndex]);
     navigateToPage(state.chapterList[newPageIndex]);
     //$().click();
     //setContent(state.chapterList[newPageIndex]);
@@ -91,6 +89,53 @@ $(function() {
   });
 
 });
+
+
+function navigateToPage(thumbID){
+
+  state.stem=thumbID;
+
+window.location='#thumb_'+thumbID;
+  $('.thumb').removeClass("selected")
+  $('#thumb_'+thumbID).addClass("selected")
+  var branchClicked = $("#thumbBox_"+$("#thumb_"+thumbID).parent().attr("id").split("_")[1])
+  //Setting the currentPage chapterID and QuizID based on the clicked thumb for
+  //later usage with next page and previous page
+  currentPage.chapterID = state.stem
+  setContent(state.stem)
+
+
+   $(".thumbBox").each(function(idx,val){
+
+     var searchBranch= "#thumbBox_"+$(val).attr("id").split("_")[1];
+     if($(searchBranch).attr("id")!=branchClicked.attr("id")){
+       $(val).find(".thumbBox").hide(hideSpeed);
+     }
+   })
+   hideSpeed=500;
+
+   thumbBoxID = "#thumbBox_"+state.stem;
+
+   var clickedItemSiblings= $("#thumb_"+thumbID).parent().find('>  .thumbBox');
+   var buttonItemSiblings = $("#thumb_"+thumbID).parent().parent().find('> .thumbBox');
+   var buttonItemUncles = $("#thumb_"+thumbID).parent().parent().parent().find('> .thumbBox');
+  $(clickedItemSiblings).find(".thumbText").css({opacity:0})
+
+  if ($(thumbBoxID).is(':hidden')) {
+    $(thumbBoxID).show(hideSpeed);
+    buttonItemSiblings.show(hideSpeed);
+    buttonItemUncles.show(hideSpeed);
+  }
+  else if (clickedItemSiblings.is(':visible')){
+    clickedItemSiblings.hide(hideSpeed)
+  }
+  else{
+    branchClicked.show(hideSpeed)
+    clickedItemSiblings.show(hideSpeed)
+  }
+  $(clickedItemSiblings).find(".thumbText").animate({opacity:1},1000)
+
+}
 
 // Find the right method, call on correct element
 function launchFullscreen() {
@@ -245,8 +290,8 @@ function loadModule(m) {
   zero = m.zero;
   numbers = m.numbers;
   // Create sidebar thumbnails
-  state.chapters= m.chapters;
-
+  state.chapters = m.chapters;
+  insertIDs(state.chapters);
   for (var i = 0; i < m.chapters.length; i++) {
     // For each chapter...
 
@@ -256,9 +301,9 @@ function loadModule(m) {
     // Make page thumbnails
     for (var j = 0; j < m.chapters[i].pages.length; j++) {
       makeThumbnail(m.chapters[i].pages[j], [i+1, j+1]);
-      if(m.chapters[i].pages[j].subPages){
-        for (var k = 0; k < m.chapters[i].pages[j].subPages.length; k++) {
-            makeThumbnail(m.chapters[i].pages[j].subPages[k],[ i+1, j+1,k+1]);
+      if(m.chapters[i].pages[j].pages){
+        for (var k = 0; k < m.chapters[i].pages[j].pages.length; k++) {
+            makeThumbnail(m.chapters[i].pages[j].pages[k],[ i+1, j+1,k+1]);
         }
       }
     }
@@ -281,40 +326,7 @@ $(".thumb").on("click",function(evt){
 
   resizeWindow();
 }
-function navigateToPage(thumbID){
-  state.stem=thumbID;
-  $('.thumb').removeClass("selected")
-  $('#thumb_'+thumbID).addClass("selected")
-  console.log(state.stem);
-  var branchClicked = $("#thumbBox_"+$("#thumb_"+thumbID).parent().attr("id").split("_")[1])
-  //Setting the currentPage chapterID and QuizID based on the clicked thumb for
-  //later usage with next page and previous page
-  currentPage.chapterID = state.stem
-  // $("#thumb_"+(thumbID+1)).style.border="solid";
-  console.log(branchClicked[0],branchClicked);
-  setContent(state.stem)
 
-
-   $(".thumbBox").each(function(idx,val){
-     var searchBranch= "#thumbBox_"+$(val).attr("id").split("_")[1]
-     if($(searchBranch).attr("id")!=branchClicked.attr("id")){
-       $(val).find(".thumbBox").hide(hideSpeed);
-     }
-   })
-   hideSpeed=500;
-   var clickedItemSiblings= $("#thumb_"+thumbID).parent().find('>  .thumbBox');
-  $(clickedItemSiblings).find(".thumbText").css({opacity:0})
-
-  if( clickedItemSiblings.is(':visible') ){
-    clickedItemSiblings.hide(hideSpeed)
-  }
-  else{
-    branchClicked.show(hideSpeed)
-    clickedItemSiblings.show(hideSpeed)
-  }
-  $(clickedItemSiblings).find(".thumbText").animate({opacity:1},1000)
-
-}
 
 function clearSidebar() {
   $("#sidebar").empty();
@@ -347,7 +359,7 @@ if (treeInfo.length > 1) {
  state.chapterList.push(treeInfoString)
 
   var thumbBox= $('<div/>',{id:"thumbBox_" +treeInfoString, class:"thumbBox "+thumbClass+"Box"})
-  var thumb =$('<div/>',{id:"thumb_" + treeInfoString, class:"thumb "+thumbClass+"Thumb"})
+  var thumb =$('<div/>',{id:"thumb_" + treeInfoString, class:"page_incomplete thumb "+thumbClass+"Thumb"})
   var thumbText =$('<div/>',{id:"thumbText_" + treeInfoString,text:pg.title, class:"thumbText"})
 
   var thumbNumber =$('<div/>',{id:"thumbNumber_" + treeInfoString, text:chapterIndex, class:"thumbNumber"})
@@ -371,23 +383,32 @@ else {
 function setContent(stem) {
 
 if($("#contentLoader").data("stem")==stem){return}
+$("#contentLoader").css({"opacity":0})
+setTimeout(function(){$('#contentLoader').fadeTo("fast", 1, function() {})}, 500)
+$('#contentLoader').fadeTo("fast", 0, function() {$('#contentLoader').fadeTo("fast", 1, function() {})});
 currentPage.chapterID = stem;
   $("#contentLoader").data("stem",stem)
   var pg=state.lookup[stem];
   var content = pg.content;
-  console.log(pg)
-  if (pg.type == "text") {
+  var qs="?testing=" + testing + "&key=" +stem+ "&local=" + module.localStorageKey;
+  if (pg.type == "cover") {
+    query="?title="+pg.title;
+    $("#contentLoader").html('<div id="contentCover" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></div>');
+    $("#contentCover").load("sourceFiles/html/SectionCovers/index.html");
+  }
+
+  else if (pg.type == "text") {
     // TODO: display text
     $("#contentLoader").html('<div id="contentText" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></div>');
-    $("#contentText").html(pg.content);
+    $("#contentText").load(pg.content);
   } else {
     // Display an iframe containing the specified video quiz
     $("#contentLoader").html('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
     if (pg.content) {
-      var contentSource=pg.content + "?testing=" + testing + "&key=" +stem+ "&local=" + module.localStorageKey;
-      if (pg.type=="cover"){
-        contentSource=pg.content+"title="+pg.title;
-      }
+      var contentSource=pg.content + qs;
+
+
+
       $("#contentFrame").attr("src",contentSource);
       if (pg.type.toLowerCase() == "vq") {
         $('#contentFrame').on("load", function() {
@@ -523,7 +544,6 @@ function createVQGrade(currentPage, studentInfo) {
     var calcgrade = keydata.split("/");
     if (calcgrade[1] != 0) {
       grade.grade = ((calcgrade[0] / calcgrade[1]) * 100.00).toFixed(2);
-      console.log(grade.grade);
     } else {
       grade.grade = 100;
     }
@@ -560,51 +580,13 @@ function organizeKey(keydata) {
   return data;
 }
 
-// Update completion
-function updateCompletion() {
-    updatePages(0, 0);
 
-}
-
-//CHANGE: parameters used to be 'i' -> currentChapter and 'completedPages', which was always 0. Now takes no parameters.
-function updatePages() {
-  var lastChapter="1";
-  var chapComplete=true;
-  numChapters = state.chapterList.length;
-  for (var j = 0; j < numChapters; j++) {
-    var key = state.chapterList[j];
-    var keySplit=key.split("_");
-    currentChapter=keySplit.slice(0,Math.max(1,keySplit.length-1)).join("_");
-    if (lastChapter!=currentChapter ){
-      console.log(lastChapter,currentChapter,chapComplete)
-      if (chapComplete) {
-        $("#thumb_"+lastChapter).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
-        chapComplete=true;
-      }
-      // if(keySplit[keySplit.length-1]==1 && chapComplete==false) {
-      //   j--;
-      // }
-      lastChapter=currentChapter;
-      chapComplete=true;
-      // continue;
-    }
-
-    if (progress.getKey(key)=="done") {
-      $("#thumb_"+key).css({"background-image":"url(../Ch1/sourceFiles/img/complete.svg)"})
-    } else if (key != currentChapter  && isLeaf(j) ) {
-      chapComplete=false;
-    }
+function updateCompletion(){
+  for (var i = 0; i < state.chapters.length; i++) {
+    isChecked(state.chapters[i]);
   }
 }
 
-function isLeaf(index){
-var listLen= state.chapterList.length
-
-return  (state.chapterList[index].length==state.chapterList[(index+1)%listLen].length)
-
-
-
-}
 
 
 function showOverlay(bool) {

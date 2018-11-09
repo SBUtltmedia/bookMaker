@@ -105,21 +105,7 @@
     }
 }
 
-.page_incomplete {
-    background-image: url(img/gray_check.svg);
-}
 
-.page_complete{
-    background-image: url(img/green_check.svg);
-}
-
-.chapter_incomplete {
-    background-image: url(img/lightgray_check.svg);
-}
-
-.chapter_complete{
-  background-image: url(img/green_check.svg);
-}
 
 #buttonPrevious {
     width: 7.5%;
@@ -145,4 +131,45 @@
     background-size: contain;
     background-position: center center;
     cursor: pointer;
+}
+
+#image_1{
+  background-image: url(img/chapter1.svg);
+
+}
+#image_2{
+  background-image: url(img/chapter2.svg);
+  width: 35%;
+  left: 33%;
+  top: 10%;
+}
+#image_3{
+  background-image: url(img/chapter3.svg);
+
+}
+#image_4{
+  background-image: url(img/chapter4.svg);
+}
+
+#image_4_3, #image_5_3 {
+  background-image: url(../../sourceFiles/html/SectionCovers/img/videos.svg);
+}
+
+#image_5{
+  background-image: url(img/chapter5.svg);
+  width: 42%;
+  left: 30%;
+  top: 10%;
+}
+#image_6{
+  background-image: url(img/chapter6.svg);
+
+}
+#image_7{
+  background-image: url(img/chapter7.svg);
+
+}
+#image_8{
+  background-image: url(img/chapter8.svg);
+
 }

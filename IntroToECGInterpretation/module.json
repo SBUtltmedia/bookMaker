@@ -1,31 +1,27 @@
 {
-  "chapters": [    {
-        "title": "Introduction To ECG Interpretation",
-        "pages": [{
-          "type": "cover",
-          "title": "Book Cover",
-          "content": "localData/CH00/CH00_Title/index.html"
-        },{
-          "type": "cover",
+  "chapters": [{
+      "title": "Introduction To ECG Interpretation",
+      "type": "cover",
+      "content": "localData/CH00/CH00_Title/index.html?chapterNum=1&",
+      "pages": [{
+          "type": "document",
           "title": "Introduction to Modules",
           "content": "localData/CH00/Intro to modules.html"
         }]
       },{
       "title": "Module 1: ECG Basics",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=2&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 1 Title Page",
-        "content": "localData/CH01/CH01_Title/index.html"
-      }, {
-        "type": "VQ",
+        "type": "video",
         "title": "The Normal ECG 1",
         "content": "/vq/users/towan/2/"
       }, {
-        "type": "VQ",
+        "type": "video",
         "title": "The Normal ECG 2",
         "content": "/vq/users/towan/3/"
       }, {
-        "type": "VQ",
+        "type": "video",
         "title": "ECG Interpretation",
         "content": "/vq/users/towan/14/"
       }, {
@@ -33,17 +29,13 @@
         "title": "Module 1 Quiz",
         "content": "localData/CH01/CH01_Quiz/index.html",
         "overlays": ["calipers","cheatSheet"]
-      }
-    ]
-    },
-    {
+      }]
+    },{
       "title": "Module 2: ECG Abnormalities",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=3&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 2 Title Page",
-        "content": "localData/CH02/CH02_Title/index.html"
-      },{
-        "type": "VQ",
+        "type": "video",
         "title": "ECG Abnormalities",
         "content": "/vq/users/towan/4/"
       }, {
@@ -52,23 +44,20 @@
         "content": "localData/CH02/CH02_Quiz/index.html",
         "overlays": ["calipers","cheatSheet"]
       }]
-    },
-    {
+    },{
       "title": "Module 3: ECG Rhythms and Arrythmias",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=4&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 3 Title Page",
-        "content": "localData/CH03/CH03_Title/index.html"
-      },{
-        "type": "VQ",
+        "type": "video",
         "title": "Sinus Tachycardia & Bradycardia",
         "content": "/vq/users/towan/15/"
       },{
-        "type": "VQ",
+        "type": "video",
         "title": "Atrial Fibrillation & Atrial Flutter",
         "content": "/vq/users/towan/16/"
       },{
-        "type": "VQ",
+        "type": "video",
         "title": "WPW & pSVT",
         "content": "/vq/users/towan/17/"
       }, {
@@ -80,12 +69,10 @@
     },
     {
       "title": "Module 4: AV Blocks ",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=5&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 4 Title Page",
-        "content": "localData/CH04/CH04_Title/index.html"
-      },{
-        "type": "VQ",
+        "type": "video",
         "title": "AV Block",
         "content": "/vq/users/towan/18/"
       }, {
@@ -97,12 +84,10 @@
     },
     {
       "title": "Module 5: Ventricular Arrhythmias",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=6&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 5 Title Page",
-        "content": "localData/CH05/CH05_Title/index.html"
-      },{
-        "type": "VQ",
+        "type": "video",
         "title": "Ventricular Arrhythmias",
         "content": "/vq/users/towan/19/"
       }, {
@@ -114,12 +99,10 @@
     },
     {
       "title": "Module 6: Ischemia / ACS",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=7&",
       "pages": [{
-        "type": "cover",
-        "title": "Module 6 Title Page",
-        "content": "localData/CH06/CH06_Title/index.html"
-      },{
-        "type": "VQ",
+        "type": "video",
         "title": "Ischemia/ACS",
         "content": "/vq/users/towan/20/"
       }, {
@@ -131,9 +114,11 @@
     },
     {
       "title": "Credits",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=8&",
       "pages": [{
-        "type": "cover",
-        "title": "Credits Page",
+      "type": "document",
+    "title": "Credits Page",
         "content": "localData/CH06/Credits Page.html"
       }]
     }

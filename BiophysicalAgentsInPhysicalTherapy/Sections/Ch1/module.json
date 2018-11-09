@@ -2,7 +2,7 @@
   "chapters": [{
     "title": "Introduction",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=1&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=1&",
     "pages":
     [{
       "type": "Voiceover",
@@ -20,7 +20,7 @@
   }, {
     "title": "Physiological Response to Heat",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=2&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=2&",
     "pages": [{
       "type": "Animation",
       "title": "Metabolic Reactions",
@@ -49,7 +49,7 @@
   }, {
     "title": "To Use or Not to Use",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=3&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=3&",
     "pages": [{
       "type": "Video",
       "title": "Indications",
@@ -62,7 +62,7 @@
   }, {
     "title": "Specific Agents- Moist Heat",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=4&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=4&",
     "pages": [{
       "type": "Animation",
       "title": "Treatment procedure narrative",
@@ -72,10 +72,10 @@
       "title": "Maintaining The Equipment",
       "content": "localData/CH04/CH04_Maintaining_equipment/index.html"
     }, {
-      "type": "subsection",
+      "type": "cover",
       "title": "Hot Pack Treatment Procedure Videos",
-      "content": "",
-      "subPages": [{
+      "content": "localData/SectionCovers/index.html?chapterNum=4v&",
+      "pages": [{
         "type": "video",
         "title": "Hot Pack Contrainidications",
         "content": "https://apps.tlt.stonybrook.edu/vq/users/jcesiro/1/"
@@ -100,7 +100,7 @@
   }, {
     "title": "Specific Agents- Paraffin",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=5&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=5&",
     "pages": [{
       "type": "Animation",
       "title": "Treatment procedure narrative",
@@ -110,10 +110,10 @@
       "title": "Maintaining the Equipment",
       "content": "localData/CH05/CH05_Maintaining_equipment/index.html"
     }, {
-      "type": "subsection",
+      "type": "cover",
       "title": "Paraffin Treatment Procedure Videos",
-      "content": "",
-      "subPages": [{
+      "content": "../../../sourceFiles/html/SectionCovers/index.html?chapterNum=5v&",
+      "pages": [{
         "type": "video",
         "title": "Paraffin Patient Interview",
         "content": "https://apps.tlt.stonybrook.edu/vq/users/jlgreco/4/"
@@ -149,7 +149,7 @@
   }, {
     "title": "Specific Agents- Fluidotherapy",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=6&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=6&",
     "pages": [{
       "type": "Video",
       "title": "General Info Fluidotherapy",
@@ -166,7 +166,7 @@
   }, {
     "title": "Evidence",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=7&",
+    "content":"../../../sourceFiles/htmlSectionCovers/index.html?chapterNum=7&",
     "pages": [{
       "type": "Video",
       "title": "EBP Articles",
@@ -179,7 +179,7 @@
   }, {
     "title": "Check Your Understanding- QUIZ",
     "type": "cover",
-    "content":"localData/SectionCovers/index.html?chapterNum=8&",
+    "content":"../../../sourceFiles/html/SectionCovers/index.html?chapterNum=8&",
     "pages": [{
       "type": "quiz",
       "title": "Hotpack Quiz",

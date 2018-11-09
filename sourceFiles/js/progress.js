@@ -5,8 +5,6 @@ function Progress(dictName) {
   this.setKey = function(key,val) {
     progressDict[key] = val;
     localStorage.setItem(dictName, JSON.stringify(progressDict))
-
-
   };
   this.getKey = function(key) {
     progressDict = JSON.parse(localStorage.getItem(dictName)) || {};
