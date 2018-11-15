@@ -7,7 +7,7 @@ var testing = false;
 var clearLocalStorage = false;
 var hideSpeed=0;
 var refreshInterval = -1;
-
+var timeOut=null;
 var currentPage = {
   chapterIndex: 0,
   quizIndex: 0
@@ -381,10 +381,13 @@ else {
 
 // Set content in the center of the page to
 function setContent(stem) {
+clearTimeout(timeOut);
 
 if($("#contentLoader").data("stem")==stem){return}
 $("#contentLoader").css({"opacity":0})
 setTimeout(function(){$('#contentLoader').fadeTo("fast", 1, function() {})}, 500)
+$('#contentLoader').stop(true, true)
+
 $('#contentLoader').fadeTo("fast", 0, function() {$('#contentLoader').fadeTo("fast", 1, function() {})});
 currentPage.chapterID = stem;
   $("#contentLoader").data("stem",stem)
@@ -403,6 +406,12 @@ currentPage.chapterID = stem;
     $("#contentText").load(pg.content);
   } else {
     // Display an iframe containing the specified video quiz
+    if (pg.type == "document") {
+      if (progress.getKey(pg.label) != "done") {
+      progress.setKey(pg.label, "done")
+      updateCompletion()
+    }
+    }
     $("#contentLoader").html('<iframe id="contentFrame" style="width: 100%; height: 100%;" ALLOWTRANSPARENCY="true"></iframe>');
     if (pg.content) {
       var contentSource=pg.content + qs;
