@@ -1,0 +1,13 @@
+ShibCompatWith24 on
+AuthType shibboleth
+#ShibDisable Off
+#ShibRequireSession Off
+#ShibRequestSetting isPassive On
+ShibRequestSetting requireSession true
+#Require shib-attr affiliation  faculty@stonybrook.edu
+require shibboleth
+
+php_flag display_startup_errors on
+  php_flag display_errors on
+  php_flag html_errors on
+  php_flag log_errors on

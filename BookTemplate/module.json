@@ -1,0 +1,49 @@
+{
+    "chapters": [
+        {
+            "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=2&",
+            "pages": [
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/142/",
+                    "duration": 182.0,
+                    "title": "Introduction to Cardiovascular Diseases",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/144/",
+                    "duration": 217.0,
+                    "title": "Vessels and Blood Flow",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/145/",
+                    "duration": 126.0,
+                    "title": "Heart Valves",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/146/",
+                    "duration": 128.0,
+                    "title": "Electrical Activity of the Heart",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/147/",
+                    "duration": 113.0,
+                    "title": "Heart Muscle Contraction",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/meichan/148/",
+                    "duration": 180.0,
+                    "title": "Cardiovascular Disease Diagnosis & Treatment",
+                    "type": "video"
+                }
+            ],
+            "title": "Cycle 2.1 - The Cardiovascular System",
+            "type": "cover"
+        }
+    ],
+    "localStorageKey": "Cycle 2.1",
+    "overlayURLs": {}
+}

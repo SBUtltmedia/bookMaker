@@ -1,0 +1,37 @@
+{
+  "chapters": [{
+      "title": "Chapter 1",
+      "pages": [{
+        "type": "QUIZ",
+        "title": "Chapter 1 Quiz",
+        "content": "localData/CH01/CH01_Quiz/index.html",
+        "overlays": ["calipers"]
+      }, {
+        "type": "VQ",
+        "title": "Chapter 1 Video",
+        "content": "localData/CH01/CH01/index.html"
+      }]
+    },
+    {
+      "title": "Chapter 2",
+      "pages": [{
+        "type": "VQ",
+        "title": "Chapter 2 Video",
+        "content": "localData/CH02/CH02/index.html"
+      }]
+    },
+    {
+      "title": "Chapter 3",
+      "pages": [{
+        "type": "VQ",
+        "title": "Chapter 3 Video",
+        "content": "localData/CH03/CH03/index.html"
+      }]
+    }
+  ],
+  "overlayURLs": {
+    "calipers": "/ekg-slider/"
+  },
+  "localStorageKey": "CardioB"
+
+}

@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.screen {
+    position: absolute;
+}
+
+#stage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/ekg_97.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    z-index: 0;
+}
+
+#sliderRegion {
+    width: 99%;
+    height: 100%;
+    left: 0.1%;
+    top: 0%;
+    position: absolute;
+    z-index: 200;
+    overflow: hidden;
+}
+
+.slider {
+    height: 100%;
+    width: .75%;
+    top: 0%;
+    left: 0%;
+    background-color: #FF3B3F;
+    position: absolute;
+    z-index: 100%;
+    opacity: .3;
+    z-index: 300;
+}
+
+#sliderLeft {
+    cursor: w-resize;
+}
+
+#sliderRight {
+    cursor: e-resize;
+}
+
+.sliderHitbox {
+    height: 100%;
+    width: 2%;
+    position: absolute;
+    z-index: 0;
+}
+
+#sliderHitboxLeft {
+    cursor: w-resize;
+}
+
+#sliderHitboxRight {
+    cursor: e-resize;
+}

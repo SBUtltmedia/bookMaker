@@ -1,17 +1,118 @@
 function Progress(dictName) {
+this.dictName = dictName;
+this.progressDict={}
+var bookRoot=window.location.href.split("index.html")[0].split("#")[0].split("localData")[0];
+this.setKey = (dict)=> {
+//if(val=="done")
+//{
+//val={status:"done"}
 
-  var progressDict = JSON.parse(localStorage.getItem(dictName)) || {};
+//}
+  var defer =$.Deferred();
+  
+if(Object.keys(dict).find(i=>isNaN(dict[i].grade))){console.log("NaN alert!"); defer.resolve(); }
+  //Object.keys(dict).find(i=>isNadict[i]))
+  $.post({
+  type: "POST",
+  url: `${bookRoot}sourceFiles/progress.php`,
+  data: dict,
+  success: (data) =>{
+  defer.resolve("done")
+  this.progressDict = data;
+  },
+  error: (data) =>{
+ defer.resolve("done")
 
-  this.setKey = function(key,val) {
-    progressDict[key] = val;
-    localStorage.setItem(dictName, JSON.stringify(progressDict))
-  };
-  this.getKey = function(key) {
-    progressDict = JSON.parse(localStorage.getItem(dictName)) || {};
-    return progressDict[key]||false;
+
+  },
+  dataType: "JSON"
+});
+
+this.syncKeys = (ivqArray)=> {
+var defer =$.Deferred();
+    $.post({
+  type: "POST",
+  url: `${bookRoot}sourceFiles/syncIVQ.php`,
+  data: ivqArray,
+  success: (data) =>{
+for(i of Object.keys(data)){
+console.log(i);
+}
+this.setKey(data).then(()=>defer.resolve("done"))
+  },
+  error: (data) =>{
+ defer.resolve("done")
+console.log("Can't sync "+key);
+
+  },
+  dataType: "JSON"
+});
+return defer.promise();
+}
 
 
-  };
+
+
+return defer.promise();
+};
+
+  this.load =()=>{
+var defer =$.Deferred();
+var url = `${bookRoot}sourceFiles/progress.php`;  
+$.get(`${bookRoot}sourceFiles/progress.php`,(data)=>{
+//this.progressDict=data
+  defer.resolve(data);
+  })
+
+return defer.promise();
+
+  }
+
+this.getDict=()=>{
+return this.progressDict
+}
+
+  this.getKey = (key)=> {
+    return this.progressDict[key]||false;
+
+
+  }
+this.getTotalTime=()=>{
+
+return module.chapters.reduce((acc2,chapter)=>acc2+chapter.pages.reduce((acc,val)=>acc+val.duration, 0),0);
+
+
+
+}
+
+
+
+
+
+
+
+this.calculateGrade =()=>{
+var totalGrade=0;
+var totalTime=this.getTotalTime();
+for(i in module.chapters){
+  for(j in module.chapters[i].pages){
+        // var page = i+1+"_"+j+1
+    //    console.log(module.chapters[i].pages[j].duration)
+   var page = `${parseInt(i)+1}_${parseInt(j)+1}`
+  var currentGrade=(this.getKey(page).grade||0)
+  var currentTime=module.chapters[i].pages[j].duration
+  var weight=currentTime/totalTime;
+  totalGrade=totalGrade+ weight*currentGrade
+
+
+  }
+}
+
+return totalGrade
+
+}
+
+
 }
 
 function getUrlVars() {
@@ -31,6 +132,3 @@ function getUrlVars() {
   return vars;
 }
 
-function clearStorage(){
-  localStorage.clear();
-}

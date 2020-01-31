@@ -1,0 +1,93 @@
+{
+    "chapters": [
+        {
+            "content": "localData/TitlePdf/Lecture1-descriptions.html",
+            "pages": [
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/68/",
+                    "duration": 1101,
+                    "title": "Introduction to PHY132",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/69/",
+                    "duration": 923,
+                    "title": "Intro to Electric Forces",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/70/",
+                    "duration": 1064,
+                    "title": "Free-Body Analysis of Point Charges",
+                    "type": "video"
+                }
+            ],
+            "title": "PHY132 - Week 1",
+            "type": "customCover"
+        },
+        {
+            "content": "localData/TitlePdf/Lecture2-descriptions.html",
+            "pages": [
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/71/",
+                    "duration": 391,
+                    "title": "Continued Force Analysis of Point Charges",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/72/",
+                    "duration": 552,
+                    "title": "Finding Symmetry in Electric Forces",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/73/",
+                    "duration": 772,
+                    "title": "Force From Electric Field",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/74/",
+                    "duration": 194,
+                    "title": "Overview-Point Charge and Electric Force and Field",
+                    "type": "video"
+                }
+            ],
+            "title": "PHY132 - Week 1",
+            "type": "customCover"
+        },
+        {
+            "content": "localData/TitlePdf/Lecture3-descriptions.html",
+            "pages": [
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/75/",
+                    "duration": 1071,
+                    "title": "Breaking up Electric Field",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/76/",
+                    "duration": 474,
+                    "title": "Using 3D Calculus in Intro Physics",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/77/",
+                    "duration": 225,
+                    "title": "Explaining dQ",
+                    "type": "video"
+                },
+                {
+                    "content": "https://apps.tlt.stonybrook.edu/vq/users/evannieuwenh/78/",
+                    "duration": 853,
+                    "title": "New Coordinate Systems",
+                    "type": "video"
+                }
+            ],
+            "title": "PHY132 - Week 1",
+            "type": "customCover"
+        }
+    ],
+    "localStorageKey": "PHY132",
+    "overlayURLs": {}
+}
