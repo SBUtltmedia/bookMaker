@@ -33,7 +33,8 @@ function isiChecked(node,internal=false) {
 }
 
 function isChecked(node) {
-    if (!node.pages){
+	//console.log(node)
+if (!node.pages){
       var isDone=progress.getKey(node.label).status=="done";
       if(isDone){
             $("#thumb_"+node.label).addClass("page_complete")

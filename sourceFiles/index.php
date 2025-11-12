@@ -1,14 +1,44 @@
+<?php
+session_start();
+print"<script>var ses;</script>";
+if(array_key_exists("lis_person_name_given", $_POST)){
+        $_SESSION['mail']= $_POST['lis_person_contact_email_primary'];
+        $_SESSION['givenName']= $_POST['lis_person_name_given'];
+        $_SESSION['nickname']=  $_POST['lis_person_name_given'];;
+        $_SESSION['sn']=  $_POST['lis_person_name_family'];
+        $JSON_POST=json_encode($_POST);
+        print <<<EOT
+ 
+ <script src="/LTI/js/grading.js"></script>
+                <script>
+                ses=$JSON_POST;
+        </script>
+EOT;
+}
+else{
+        if (!array_key_exists("cn",$_SERVER) && file_exists(".htaccess")){
+                $server= $_SERVER['SERVER_NAME'];
+                $target = "https://${server}${_SERVER['REQUEST_URI']}";
+header("Location: /shib/?shibtarget=$target");
+}
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Book Maker</title>
-    <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="sourceFiles/js/checkMenu.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+   <script src="sourceFiles/js/checkMenu.js"></script>
     <script src="/resize/resize.js"></script>
     <script src="sourceFiles/js/progress.js"></script>
     <script src="sourceFiles/js/script.js"></script>
+    <script src="sourceFiles/js/colorPicker.js"></script>
     <link rel="stylesheet" href="sourceFiles/css/style.css">
     <link rel="stylesheet" href="localData/GeneralFiles/styleCustom.css">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,7 +51,8 @@
     <link rel="shortcut icon" href="/bookMaker/icon/favicon.ico">
     <meta name="msapplication-config" content="/bookMaker/icon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-<?
+<?php
+/*
 print"<script>var ses;</script>";
 if(array_key_exists("lis_person_name_given", $_POST)){
 $JSON_POST=json_encode($_POST);
@@ -37,7 +68,7 @@ print_r("<!---not found $_POST----->");
 
 }
 
-
+*/
 ?>
 
 </head>

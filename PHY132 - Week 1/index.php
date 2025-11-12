@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="/bookMaker/icon/favicon.ico">
     <meta name="msapplication-config" content="/bookMaker/icon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-<?
+<?php
 print"<script>var ses;</script>";
 if(array_key_exists("lis_person_name_given", $_POST)){
 $JSON_POST=json_encode($_POST);

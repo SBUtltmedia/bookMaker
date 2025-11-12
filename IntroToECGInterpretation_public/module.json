@@ -1,0 +1,134 @@
+{
+  "chapters": [{
+      "title": "Introduction To ECG Interpretation",
+      "type": "cover",
+      "content": "localData/CH00/CH00_Title/index.html?chapterNum=1&",
+      "pages": [{
+          "type": "document",
+          "title": "Introduction to Modules",
+          "content": "localData/CH00/Intro to modules.html"
+        }]
+      },{
+      "title": "Module 1: ECG Basics",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=2&",
+      "pages": [{
+        "type": "video",
+        "title": "The Normal ECG 1",
+        "content": "/vq/users/towan/2/"
+      }, {
+        "type": "video",
+        "title": "The Normal ECG 2",
+        "content": "/vq/users/towan/3/"
+      }, {
+        "type": "video",
+        "title": "ECG Interpretation",
+        "content": "/vq/users/towan/14/"
+      }, {
+        "type": "quiz",
+        "title": "Module 1 Quiz",
+        "content": "localData/CH01/CH01_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },{
+      "title": "Module 2: ECG Abnormalities",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=3&",
+      "pages": [{
+        "type": "video",
+        "title": "ECG Abnormalities",
+        "content": "/vq/users/towan/4/"
+      }, {
+        "type": "quiz",
+        "title": "Module 2 Quiz",
+        "content": "localData/CH02/CH02_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },{
+      "title": "Module 3: ECG Rhythms and Arrythmias",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=4&",
+      "pages": [{
+        "type": "video",
+        "title": "Sinus Tachycardia & Bradycardia",
+        "content": "/vq/users/towan/15/"
+      },{
+        "type": "video",
+        "title": "Atrial Fibrillation & Atrial Flutter",
+        "content": "/vq/users/towan/16/"
+      },{
+        "type": "video",
+        "title": "WPW & pSVT",
+        "content": "/vq/users/towan/17/"
+      }, {
+        "type": "quiz",
+        "title": "Module 3 Quiz",
+        "content": "localData/CH03/CH03_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 4: AV Blocks ",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=5&",
+      "pages": [{
+        "type": "video",
+        "title": "AV Block",
+        "content": "/vq/users/towan/18/"
+      }, {
+        "type": "quiz",
+        "title": "Module 4 Quiz",
+        "content": "localData/CH04/CH04_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 5: Ventricular Arrhythmias",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=6&",
+      "pages": [{
+        "type": "video",
+        "title": "Ventricular Arrhythmias",
+        "content": "/vq/users/towan/19/"
+      }, {
+        "type": "quiz",
+        "title": "Module 5 Quiz",
+        "content": "localData/CH05/CH05_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Module 6: Ischemia / ACS",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=7&",
+      "pages": [{
+        "type": "video",
+        "title": "Ischemia/ACS",
+        "content": "/vq/users/towan/20/"
+      }, {
+        "type": "quiz",
+        "title": "Module 6 Quiz",
+        "content": "localData/CH06/CH06_Quiz/index.html",
+        "overlays": ["calipers","cheatSheet"]
+      }]
+    },
+    {
+      "title": "Credits",
+      "type": "cover",
+      "content": "../sourceFiles/html/SectionCovers/index.html?chapterNum=8&",
+      "pages": [{
+      "type": "document",
+    "title": "Credits Page",
+        "content": "localData/CH06/Credits Page.html"
+      }]
+    }
+  ],
+  "overlayURLs": {
+    "calipers": "localData/ekg-slider/index.html",
+    "cheatSheet": "localData/GeneralFiles/cheatSheet/cheatSheet.html"
+  },
+  "localStorageKey": "CardioB",
+  "zero": false,
+  "numbers":false
+
+}

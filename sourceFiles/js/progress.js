@@ -3,14 +3,9 @@ this.dictName = dictName;
 this.progressDict={}
 var bookRoot=window.location.href.split("index.html")[0].split("#")[0].split("localData")[0];
 this.setKey = (dict)=> {
-//if(val=="done")
-//{
-//val={status:"done"}
-
-//}
   var defer =$.Deferred();
   
-if(Object.keys(dict).find(i=>isNaN(dict[i].grade))){console.log("NaN alert!"); defer.resolve(); }
+//if(Object.keys(dict).find(i=>isNaN(dict[i].grade))){console.log("NaN alert!",dict); defer.resolve(); }
   //Object.keys(dict).find(i=>isNadict[i]))
   $.post({
   type: "POST",
@@ -22,23 +17,21 @@ if(Object.keys(dict).find(i=>isNaN(dict[i].grade))){console.log("NaN alert!"); d
   },
   error: (data) =>{
  defer.resolve("done")
-
+//location.reload();
 
   },
   dataType: "JSON"
 });
 
 this.syncKeys = (ivqArray)=> {
+console.log(ivqArray)
 var defer =$.Deferred();
     $.post({
   type: "POST",
   url: `${bookRoot}sourceFiles/syncIVQ.php`,
   data: ivqArray,
   success: (data) =>{
-for(i of Object.keys(data)){
-console.log(i);
-}
-this.setKey(data).then(()=>defer.resolve("done"))
+  this.setKey(data).then(()=>defer.resolve("done"))
   },
   error: (data) =>{
  defer.resolve("done")

@@ -362,6 +362,21 @@ function initChapter(ch) {
 	state.chapters.push(chapter);
 }
 
+function secsToMinSecs(time) {
+   if(!time) return ""; 
+    var hrs = ~~(time / 3600);
+    var mins = ~~((time % 3600) / 60);
+    var secs = ~~time % 60;
+    var ret = "";
+    if (hrs > 0) {
+        ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
+
+
+}  
 
 function makeThumbnail(pg, treeInfo) {
 
@@ -386,10 +401,10 @@ function makeThumbnail(pg, treeInfo) {
 		var thumbBox= $('<div/>',{id:"thumbBox_" +treeInfoString, class:"thumbBox "+thumbClass+"Box"})
 											    var thumb =$('<div/>',{id:"thumb_" + treeInfoString, class:"page_incomplete thumb "+thumbClass+"Thumb"})
 																						var thumbText =$('<div/>',{id:"thumbText_" + treeInfoString,text:pg.title, class:"thumbText"})
-
+var thumbDuration =$('<div/>',{id:"thumbDuration_" + treeInfoString,text:secsToMinSecs(pg.duration), class:"thumbDuration"})
 																							var thumbNumber =$('<div/>',{id:"thumbNumber_" + treeInfoString, text:chapterIndex, class:"thumbNumber"})
 																								var thumbGlow= $('<div/>',{id:"thumbGlow_" + treeInfoString, class:"thumbGlow"})
-																									$(navSelector).append(thumbBox.append(thumb.append([thumbText,thumbNumber, thumbGlow])))
+																									$(navSelector).append(thumbBox.append(thumb.append([thumbText,thumbDuration,thumbNumber, thumbGlow])))
 
 																										// Bind event listener
 																										if (pageID=="chapter"){
@@ -431,9 +446,9 @@ function setContent(stem) {
 		$("#contentText").load(pg.content);
 	} else {
 		// Display an iframe containing the specified video quiz
-		if (pg.type == "document") {
+		if (pg.type == "document" && pg.label) {
 			if (progress.getKey(pg.label).status != "done") {
-				console.log(pg.label)
+				//console.log(pg)
 					updateCompletion(pg.label,100,"done")
 			}
 		}
@@ -682,8 +697,8 @@ function organizeKey(keydata) {
 
 
 function updateCompletion(key,grade=100,status="incomplete"){
+	console.log({key,grade,status})
 	var promiseList=[];
-	console.log(progress.getDict())
 		dict={}
 	dict[key]={status:status, grade:grade}
 
@@ -691,8 +706,8 @@ function updateCompletion(key,grade=100,status="incomplete"){
 			promiseList.push(isChecked(state.chapters[i]));
 			}})
 	if(ses){
-		ses.grade=progress.calculateGrade()/2000
-			$('#gradingInfo').html(`Your cummulative score for this book: ${Math.floor(ses.grade*2000)}`);
+		ses.grade=Math.min(1,progress.calculateGrade()/2000)
+			$('#gradingInfo').html(`Your cummulative score for this book: ${Math.floor(ses.grade*2000)}<br>user:${progress.progressDict.mail}`);
 
 		if(ses.grade){
 			postLTI(ses)

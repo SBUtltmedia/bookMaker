@@ -3,6 +3,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   margin: 0;
+ font-family: "Helvetica", sans-serif;
 }
 
 .screen {
@@ -230,6 +231,7 @@ body {
   margin: 0;
   position: absolute;
   background-color: #202020;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
@@ -410,6 +412,15 @@ iframe {
 
   display: none;
 }
+
+.thumbDuration{
+position:relative;
+left:6.2rem;
+top:5.2rem;
+color:white;
+
+}
+
 
 .thumbGlow {
   width: 88%;

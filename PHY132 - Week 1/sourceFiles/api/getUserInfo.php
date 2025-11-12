@@ -1,4 +1,4 @@
-<?
+<?php
 
 function getUser(){
 global $path;

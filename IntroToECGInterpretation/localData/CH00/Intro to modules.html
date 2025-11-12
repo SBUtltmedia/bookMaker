@@ -12,7 +12,7 @@
 
   var progress = new Progress(urlVars["local"]);
   progress.setKey(urlVars["key"], "done");
-  window.parent.updateCompletion();
+  window.parent.updateCompletion(urlVars["key"],100,"done");
 </script>
 <style type="text/css">
 /*!
